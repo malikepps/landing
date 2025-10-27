@@ -73,18 +73,18 @@
     const minCenterX = margin + groupWidth / 2;
     const maxCenterX = (windowWidth - margin) - groupWidth / 2;
 
-    // Mobile: Center avatars perfectly between button and green section (60% to 70% of screen)
-    // Desktop: Keep them in the bottom third
-    const bottomThirdMin = isMobile ? windowHeight * 0.60 : windowHeight * (2 / 3);
-    const bottomThirdMax = isMobile ? windowHeight * 0.70 : windowHeight - margin;
+    // Mobile: Position avatars well below button (70% to 85% of screen height)
+    // Desktop: Keep them in the very bottom area (75% to 90%)
+    const bottomThirdMin = isMobile ? windowHeight * 0.70 : windowHeight * 0.75;
+    const bottomThirdMax = isMobile ? windowHeight * 0.85 : windowHeight * 0.90;
     const minCenterY = Math.max(bottomThirdMin + groupHeight / 2, margin + groupHeight / 2);
-    const maxCenterY = bottomThirdMax - groupHeight / 2;
+    const maxCenterY = Math.min(bottomThirdMax - groupHeight / 2, windowHeight - margin - groupHeight / 2);
 
     const textAreaCenterX = windowWidth / 2;
     const textAreaCenterY = windowHeight / 2;
-    // Mobile: Very small avoid radius since avatars settle well below the button
-    // Desktop: Larger avoid radius for text
-    const textAvoidRadius = isMobile ? Math.min(100, windowHeight * 0.08) : Math.min(300, windowHeight * 0.22);
+    // Mobile: Larger avoid radius to stay clear of button
+    // Desktop: Even larger avoid radius to never overlap button area
+    const textAvoidRadius = isMobile ? Math.min(220, windowHeight * 0.35) : Math.min(400, windowHeight * 0.40);
 
     let attempts = 0;
     let centerX = minCenterX;
