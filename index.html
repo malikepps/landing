@@ -714,9 +714,17 @@ input,select,textarea {
     aspect-ratio: 16/9 !important;
   }
 }
-@media (min-width: 769px) {
+@media (max-width: 768px) {
   .video-container-mobile {
     max-width: 800px !important;
+    margin: 0 auto !important;
+  }
+}
+@media (min-width: 769px) {
+  .video-container-mobile {
+    max-width: 600px !important;
+    margin-left: auto !important;
+    margin-right: 0 !important;
   }
 }
 </style>

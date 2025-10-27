@@ -73,18 +73,21 @@
     const minCenterX = margin + groupWidth / 2;
     const maxCenterX = (windowWidth - margin) - groupWidth / 2;
 
-    // Mobile: Position avatars well below button (70% to 85% of screen height)
-    // Desktop: Keep them in the very bottom area (75% to 90%)
-    const bottomThirdMin = isMobile ? windowHeight * 0.70 : windowHeight * 0.75;
-    const bottomThirdMax = isMobile ? windowHeight * 0.85 : windowHeight * 0.90;
+    // Mobile: ONLY spawn avatars at the VERY BOTTOM of screen (below 85% height)
+    // This ensures they're always below any button that would be centered on screen
+    // Desktop: Keep them in the bottom area (75% to 90%)
+    const bottomThirdMin = isMobile ? windowHeight * 0.85 : windowHeight * 0.75;
+    const bottomThirdMax = isMobile ? windowHeight * 0.98 : windowHeight * 0.90;
     const minCenterY = Math.max(bottomThirdMin + groupHeight / 2, margin + groupHeight / 2);
     const maxCenterY = Math.min(bottomThirdMax - groupHeight / 2, windowHeight - margin - groupHeight / 2);
 
+    // On mobile, we assume the button is in the top 70% of the screen
+    // So we don't need an avoid radius if we only spawn below 85%
     const textAreaCenterX = windowWidth / 2;
-    const textAreaCenterY = windowHeight / 2;
-    // Mobile: Larger avoid radius to stay clear of button
-    // Desktop: Even larger avoid radius to never overlap button area
-    const textAvoidRadius = isMobile ? Math.min(220, windowHeight * 0.35) : Math.min(400, windowHeight * 0.40);
+    const textAreaCenterY = isMobile ? windowHeight * 0.4 : windowHeight / 2;
+    // Mobile: No avoid radius needed since we're spawning way below the button area
+    // Desktop: Large avoid radius to never overlap button area
+    const textAvoidRadius = isMobile ? 0 : Math.min(400, windowHeight * 0.40);
 
     let attempts = 0;
     let centerX = minCenterX;
@@ -137,15 +140,18 @@
 
   function createAvatarGroup() {
     const isMobile = windowWidth <= 768;
-    const baseAvatarSize = Math.max(48, Math.min(96, 64 + (windowWidth / 1920) * 32));
-    const avatarsPerGroup = isMobile ? 8 : 5; // Mobile: 8 avatars (2 rows x 4 cols), Desktop: 5
+    // Make avatars smaller on mobile to ensure they stay in the bottom area
+    const baseAvatarSize = isMobile ? 
+      Math.max(36, Math.min(56, 48 + (windowWidth / 768) * 8)) : 
+      Math.max(48, Math.min(96, 64 + (windowWidth / 1920) * 32));
+    const avatarsPerGroup = isMobile ? 6 : 5; // Mobile: 6 avatars (2 rows x 3 cols), Desktop: 5
     const groupId = avatarIdCounter;
     avatarIdCounter += avatarsPerGroup;
 
     let groupAvatarSize = baseAvatarSize;
     let spacing = groupAvatarSize;
-    // Mobile: 2 rows x 4 columns, Desktop: square-ish grid
-    const gridCols = isMobile ? 4 : Math.ceil(Math.sqrt(avatarsPerGroup));
+    // Mobile: 2 rows x 3 columns (6 avatars), Desktop: square-ish grid
+    const gridCols = isMobile ? 3 : Math.ceil(Math.sqrt(avatarsPerGroup));
     const gridRows = isMobile ? 2 : Math.ceil(avatarsPerGroup / gridCols);
     let gridWidth = (gridCols - 1) * spacing + groupAvatarSize;
     let gridHeight = (gridRows - 1) * spacing + groupAvatarSize;
