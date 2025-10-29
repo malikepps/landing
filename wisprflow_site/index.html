@@ -447,6 +447,259 @@ fs-list
     sans-serif;
 }
 
+/* Message bubbles for community messaging animation */
+.features_message-thread {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+}
+
+.message-bubble {
+  max-width: 75%;
+  padding: 12px 16px;
+  border-radius: 16px;
+  word-wrap: break-word;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Organization messages - right aligned */
+.org-message {
+  align-self: flex-end;
+  background: #034F46;
+  color: #FFFADD;
+  border-bottom-right-radius: 4px;
+}
+
+/* User messages - left aligned */
+.user-message {
+  align-self: flex-start;
+  background: #F0D7FF;
+  color: #1A1A1A;
+  border-bottom-left-radius: 4px;
+}
+
+.message-bubble .text-size-regular {
+  font-size: 14px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Responsive adjustments for message bubbles */
+@media (max-width: 767px) {
+  .features_message-thread {
+    padding: 15px;
+    gap: 10px;
+  }
+  
+  .message-bubble {
+    max-width: 85%;
+    padding: 10px 14px;
+  }
+}
+
+/* Contact import animation container */
+.contact-import-container {
+  position: relative;
+  height: 520px;
+  overflow: hidden;
+  padding: 20px;
+}
+
+/* Contact import items - hidden, used for data only */
+.contact-import-item {
+  display: none;
+}
+
+/* Email list at top - FIXED ZONE */
+.contact-email-list {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 1;
+}
+
+.contact-email-item {
+  font-size: 13px;
+  color: #666;
+  font-weight: 500;
+  padding: 9px 14px;
+  background: #FAFAFA;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid #E0E0E0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Performance optimization */
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Conversion Box - full width, extends to bottom */
+.conversion-box {
+  position: absolute;
+  top: 240px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  background: #034F46;
+  border-radius: 24px 24px 0 0; /* Rounded top corners only */
+  border: 8px solid #FFFADD; /* Thick border matching page background */
+  border-bottom: none; /* No border at bottom since it extends to edge */
+  z-index: 5;
+  box-shadow: none;
+}
+
+/* Descending email element */
+.descending-email {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 320px;
+  z-index: 10; /* Above box initially */
+  will-change: transform, opacity;
+}
+
+.descending-email-content {
+  font-size: 13px;
+  color: #666;
+  font-weight: 500;
+  padding: 9px 14px;
+  background: #FAFAFA;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid #E0E0E0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Single card that appears on top of conversion box */
+.box-card-container {
+  position: absolute;
+  top: 300px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 360px;
+  z-index: 15; /* Above box */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Cards that appear on box - larger and more prominent */
+.box-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: #F0D7FF;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 340px;
+  height: 70px;
+  will-change: opacity;
+  transform: translateZ(0) translateX(0) translateY(0); /* Lock position */
+  backface-visibility: hidden;
+  position: absolute; /* Absolutely positioned to prevent any shifting */
+  left: 50%;
+  margin-left: -170px; /* Center (half of 340px) */
+}
+
+.box-card .contact-avatar {
+  width: 42px;
+  height: 42px;
+}
+
+.box-card .contact-name {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.box-card .contact-role {
+  font-size: 13px;
+}
+
+.contact-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: #E0E0E0;
+}
+
+.contact-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.contact-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1A1A1A;
+  margin: 0;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.contact-role {
+  font-size: 11px;
+  color: #666;
+  margin: 1px 0 0 0;
+  line-height: 1.2;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .contact-import-container {
+    height: 520px;
+    padding: 12px;
+  }
+  
+  .contact-email-list {
+    max-width: 100%;
+  }
+  
+  .box-card-container {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+  
+  .box-card {
+    max-width: 100%;
+  }
+}
+
+/* Reduced motion support - Issue 7.2 */
+@media (prefers-reduced-motion: reduce) {
+  .contact-email-item,
+  .morphing-card,
+  .contact-card,
+  .contact-transform-item {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
 [promo-wrap] {
 	display: none;
 }
@@ -910,10 +1163,10 @@ margin: 0rem !important;
 </style></div></div></div></div></div></section></div><div class="ribbon_wrapper"><section class="section_faster"><div class="padding-global"><div class="padding-section-large"><div class="container-large"><div><div class="text-align-center"><h2 class="heading-style-h1">Reach your audience <div class="heading_text-wrapper"><div>directly</div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 387 16" fill="none" height="auto" class="heading_border"><path d="M4.23059 11.782C50.3846 10.1795 96.5723 10.4079 142.653 7.76456C202.017 4.3592 322.467 1.92554 382.231 11.7818" stroke="#F0D7FF" stroke-width="8" stroke-linecap="round" id="heading-underline" preserveAspectRatio="none"></path></svg></div></h2><div class="spacer-xlarge"></div><div class="spacer-xsmall hide-mobile-landscape"></div><div class="max-width-large align-center"><p class="text-size-large">On Instagram, your posts get lost in the algorithm—reaching only 5% of your followers. With Collective, every post flows directly from your account into your supporters' inboxes. No algorithms, no boosted posts—just direct, meaningful connection with 100% of your community.</p></div><div class="spacer-xlarge"></div><div class="spacer-xsmall hide-mobile-landscape"></div><div id="hero-button-group" hero-button-group="" class="button-group"><div><a cta="" cta_location="reach_section" cta_type="see_action" href="about.html" class="button is-secondary w-inline-block"><div>See it in action</div></a></div><a cta="" cta_location="reach_section" cta_type="apply" href="apply.html" class="button w-inline-block"><div>Apply to join Collective</div></a></div></div><div class="spacer-xlarge"></div><div class="faster_grid"><div id="w-node-_1ca9eff4-2ea1-8588-e3ca-3ff1aecd62b5-aecd62a0" class="faster_grid-left"><div class="faster_content left"><div class="text-size-large">Instagram</div><h3>5% reach</h3></div><div class="faster_straight-marquee" style="position: relative; width: 110%; height: 100px; overflow: visible;"><svg id="svg-straight" width="100%" height="2" viewBox="0 0 350 2" fill="none" xmlns="http://www.w3.org/2000/svg" style="position: absolute; top: 30%; transform: translateY(-50%);">
   <path id="curve-straight" d="M0.726196 0.594727H764.221" stroke="transparent" stroke-width="2">
   </path>
-</svg><div id="keyboard-avatars-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div></div></div><div class="faster_grid-right"><img src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/683c80552dab37fd47216e74_Frame%2048096435.avif" loading="lazy" sizes="(max-width: 2881px) 100vw, 2881px" srcset="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/683c80552dab37fd47216e74_Frame%2048096435-p-500.avif 500w, https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/683c80552dab37fd47216e74_Frame%2048096435-p-800.avif 800w, https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/683c80552dab37fd47216e74_Frame%2048096435-p-1080.avif 1080w, https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/683c80552dab37fd47216e74_Frame%2048096435-p-1600.avif 1600w, https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/683c80552dab37fd47216e74_Frame%2048096435-p-2000.avif 2000w, https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/683c80552dab37fd47216e74_Frame%2048096435.avif 2881w" alt="" class="faster_flow-image"/><div class="faster_content"><div class="text-size-large">Collective</div><h3>100% reach</h3></div><div class="faster_flow-marquee" style="position: relative; width: 100%; height: 100px; overflow: visible;"><svg id="svg-curve" width="100%" height="76" viewBox="0 0 928 76" xmlns="http://www.w3.org/2000/svg" style="position: absolute; top: 0; left: 0;">
+</svg><div id="keyboard-avatars-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div></div></div><div class="faster_grid-right"><img src="assets/Untitled design (2).png" loading="lazy" alt="" class="faster_flow-image"/><div class="faster_content"><div class="text-size-large">Collective</div><h3>100% reach</h3></div><div class="faster_flow-marquee" style="position: relative; width: 100%; height: 100px; overflow: visible;"><svg id="svg-curve" width="100%" height="76" viewBox="0 0 928 76" xmlns="http://www.w3.org/2000/svg" style="position: absolute; top: 0; left: 0;">
   <path id="curve" d="M0.535156 74.7977C216.035 74.7977 283.147 0.534007 467.535 0.797575C650.383 1.05894 649.035 74.7977 927.535 74.7977" stroke="transparent" stroke-width="2" fill="none">
   </path>
-</svg><div id="flow-avatars-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div></div><div class="faster_flow-lottie" data-w-id="1ca9eff4-2ea1-8588-e3ca-3ff1aecd62c4" data-animation-type="lottie" data-src="assets/682f84b3838c89f8ff7667db/683a874f2714dc8d38242818_Flow%20-%204x%20faster.lottie" data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0" data-renderer="svg" data-default-duration="8" data-duration="0"></div></div></div></div></div></div></div></div></section><div class="spacer-huge"></div><section class="section_use-cases min-height-desktop-50rem" style="background-color: #034F46;"><div class="padding-global"><div class="padding-section-large"><div class="container-large"><div class="max-width-medium-plus"><h2 class="heading-style-h1" style="color: #FFFFEB;">Home for <span class="text-color-tertiary">any organization</span></h2></div><div class="spacer-xxlarge"></div><div fs-list-element="tabs" data-current="Tab 1" data-easing="ease" data-duration-in="300" data-duration-out="100" class="use-cases_tab w-tabs"><div class="use-cases_tab-menu w-tab-menu"><a data-w-tab="Tab 1" class="use-cases_tab-link w-inline-block w-tab-link w--current"><div>Tab Active</div></a><a data-w-tab="Tab 2" class="use-cases_tab-link w-inline-block w-tab-link"><div>Tab Inactive</div></a></div><div class="use-cases_tab-content w-tab-content"><div data-w-tab="Tab 1" class="use-cases_tab-pane w-tab-pane w--tab-active"></div><div data-w-tab="Tab 2" class="use-cases_tab-pane w-tab-pane"></div></div></div><div class="use-cases_cms hide"><div fs-list-element="list" class="w-dyn-list"><div role="list" class="w-dyn-items"><div role="listitem" class="use-cases_tab-cms-content w-dyn-item"><div class="hide"><div fs-list-element="tab-link" class="use-cases_fs-tablink">Social Justice</div></div><img src="assets/682fa12727f78b943ed45584/68485a9b3f5985030355f9d8_acessibility.avif" loading="lazy" alt="" class="use-cases_image"/><div class="usercase-rtf w-richtext"><h3>Collective for <em>Social Justice</em></h3></div><p class="text-size-large">Build movements, not just followings. Collective helps social justice organizations mobilize supporters, share urgent updates, and coordinate action—without algorithms deciding who sees your message.</p><div><a href="apply.html" cta="" cta_location="home_tab_section" cta_type="get_started" class="button w-button">Apply to Join</a></div></div><div role="listitem" class="use-cases_tab-cms-content w-dyn-item"><div class="hide"><div fs-list-element="tab-link" class="use-cases_fs-tablink">Environmental</div></div><img src="assets/682fa12727f78b943ed45584/68485a9b3f5985030355f9d8_acessibility.avif" loading="lazy" alt="" class="use-cases_image"/><div class="usercase-rtf w-richtext"><h3>Collective for <em>Environmental</em></h3></div><p class="text-size-large">Every voice matters for climate action. Share conservation updates, rally volunteers for clean-up events, and build a community committed to protecting our planet.</p><div><a href="apply.html" cta="" cta_location="home_tab_section" cta_type="get_started" class="button w-button">Apply to Join</a></div></div><div role="listitem" class="use-cases_tab-cms-content w-dyn-item"><div class="hide"><div fs-list-element="tab-link" class="use-cases_fs-tablink">Education</div></div><img src="assets/682fa12727f78b943ed45584/68485a9b3f5985030355f9d8_acessibility.avif" loading="lazy" alt="" class="use-cases_image"/><div class="usercase-rtf w-richtext"><h3>Collective for <em>Education</em></h3></div><p class="text-size-large">Connect with students, parents, and supporters directly. Share program updates, celebrate student achievements, and build a thriving educational community that stays engaged.</p><div><a href="apply.html" cta="" cta_location="home_tab_section" cta_type="get_started" class="button w-button">Apply to Join</a></div></div><div role="listitem" class="use-cases_tab-cms-content w-dyn-item"><div class="hide"><div fs-list-element="tab-link" class="use-cases_fs-tablink">Healthcare</div></div><img src="assets/682fa12727f78b943ed45584/68485a9b3f5985030355f9d8_acessibility.avif" loading="lazy" alt="" class="use-cases_image"/><div class="usercase-rtf w-richtext"><h3>Collective for <em>Healthcare</em></h3></div><p class="text-size-large">Keep patients, families, and donors informed. Share health resources, announce wellness programs, and build a supportive community around your healthcare mission.</p><div><a href="apply.html" cta="" cta_location="home_tab_section" cta_type="get_started" class="button w-button">Apply to Join</a></div></div><div role="listitem" class="use-cases_tab-cms-content w-dyn-item"><div class="hide"><div fs-list-element="tab-link" class="use-cases_fs-tablink">Arts & Culture</div></div><img src="assets/682fa12727f78b943ed45584/68485a9b3f5985030355f9d8_acessibility.avif" loading="lazy" alt="" class="use-cases_image"/><div class="usercase-rtf w-richtext"><h3>Collective for <em>Arts & Culture</em></h3></div><p class="text-size-large">Engage your audience beyond event night. Share artist spotlights, behind-the-scenes content, and build a dedicated community that shows up for every performance.</p><div><a href="apply.html" cta="" cta_location="home_tab_section" cta_type="get_started" class="button w-button">Apply to Join</a></div></div><div role="listitem" class="use-cases_tab-cms-content w-dyn-item"><div class="hide"><div fs-list-element="tab-link" class="use-cases_fs-tablink">Animal Welfare</div></div><img src="assets/682fa12727f78b943ed45584/68485a9b3f5985030355f9d8_acessibility.avif" loading="lazy" alt="" class="use-cases_image"/><div class="usercase-rtf w-richtext"><h3>Collective for <em>Animal Welfare</em></h3></div><p class="text-size-large">Every rescue story deserves to be heard. Share adoption success stories, urgent needs, and rally your community of animal lovers to support your mission.</p><div><a href="apply.html" cta="" cta_location="home_tab_section" cta_type="get_started" class="button w-button">Apply to Join</a></div></div><div role="listitem" class="use-cases_tab-cms-content w-dyn-item"><div class="hide"><div fs-list-element="tab-link" class="use-cases_fs-tablink">Community Development</div></div><img src="assets/682fa12727f78b943ed45584/68485a9b3f5985030355f9d8_acessibility.avif" loading="lazy" alt="" class="use-cases_image"/><div class="usercase-rtf w-richtext"><h3>Collective for <em>Community Development</em></h3></div><p class="text-size-large">Strengthen neighborhoods, one connection at a time. Share local initiatives, coordinate volunteer efforts, and build the engaged community your area deserves.</p><div><a href="apply.html" cta="" cta_location="home_tab_section" cta_type="get_started" class="button w-button">Apply to Join</a></div></div><div role="listitem" class="use-cases_tab-cms-content w-dyn-item"><div class="hide"><div fs-list-element="tab-link" class="use-cases_fs-tablink">Youth Programs</div></div><img src="assets/682fa12727f78b943ed45584/68485a9b3f5985030355f9d8_acessibility.avif" loading="lazy" alt="" class="use-cases_image"/><div class="usercase-rtf w-richtext"><h3>Collective for <em>Youth Programs</em></h3></div><p class="text-size-large">Empower the next generation. Connect with parents, share program updates and success stories, and build a community invested in young people's futures.</p><div><a href="apply.html" cta="" cta_location="home_tab_section" cta_type="get_started" class="button w-button">Apply to Join</a></div></div><div role="listitem" class="use-cases_tab-cms-content w-dyn-item"><div class="hide"><div fs-list-element="tab-link" class="use-cases_fs-tablink">Human Rights</div></div><img src="assets/682fa12727f78b943ed45584/68485a9b3f5985030355f9d8_acessibility.avif" loading="lazy" alt="" class="use-cases_image"/><div class="usercase-rtf w-richtext"><h3>Collective for <em>Human Rights</em></h3></div><p class="text-size-large">Amplify voices that need to be heard. Share critical updates, mobilize advocates, and build a community committed to dignity and justice for all.</p><div><a href="apply.html" cta="" cta_location="home_tab_section" cta_type="get_started" class="button w-button">Apply to Join</a></div></div><div role="listitem" class="use-cases_tab-cms-content w-dyn-item"><div class="hide"><div fs-list-element="tab-link" class="use-cases_fs-tablink">Food Security</div></div><img src="assets/682fa12727f78b943ed45584/68485a9b3f5985030355f9d8_acessibility.avif" loading="lazy" alt="" class="use-cases_image"/><div class="usercase-rtf w-richtext"><h3>Collective for <em>Food Security</em></h3></div><p class="text-size-large">Fight hunger with community power. Coordinate food drives, share distribution schedules, and rally volunteers to ensure no one in your community goes without.</p><div><a href="apply.html" cta="" cta_location="home_tab_section" cta_type="get_started" class="button w-button">Apply to Join</a></div></div><div role="listitem" class="use-cases_tab-cms-content w-dyn-item"><div class="hide"><div fs-list-element="tab-link" class="use-cases_fs-tablink">Housing & Homelessness</div></div><img src="assets/682fa12727f78b943ed45584/68485a9b3f5985030355f9d8_acessibility.avif" loading="lazy" alt="" class="use-cases_image"/><div class="usercase-rtf w-richtext"><h3>Collective for <em>Housing & Homelessness</em></h3></div><p class="text-size-large">Everyone deserves a home. Share housing resources, coordinate outreach efforts, and build a community dedicated to ending homelessness in your area.</p><div><a href="apply.html" cta="" cta_location="home_tab_section" cta_type="get_started" class="button w-button">Apply to Join</a></div></div><div role="listitem" class="use-cases_tab-cms-content w-dyn-item"><div class="hide"><div fs-list-element="tab-link" class="use-cases_fs-tablink">Mental Health</div></div><img src="assets/682fa12727f78b943ed45584/68485a9b3f5985030355f9d8_acessibility.avif" loading="lazy" alt="" class="use-cases_image"/><div class="usercase-rtf w-richtext"><h3>Collective for <em>Mental Health</em></h3></div><p class="text-size-large">Break the stigma, build the support. Share resources, wellness tips, and create a safe community space where mental health conversations happen openly.</p><div><a href="apply.html" cta="" cta_location="home_tab_section" cta_type="get_started" class="button w-button">Apply to Join</a></div></div></div></div></div></div></div></div></section><section class="section_features"><div class="padding-global"><div class="padding-section-large"><div class="spacer-large"></div><div class="container-large"><div data-w-id="00b13108-5923-428d-cb56-0f8bf509b42e" class="features_grid-top"><div class="features_content-left is-relative" style="min-height: 800px;"><img src="pexels-bertellifotografia-3856033 1.png" alt="" class="features_content-bg-image is-home" style="width: 100%; height: 100%; object-fit: cover;"/><div id="root" class="features_content-overlay" style="display: flex; align-items: center; justify-content: center; pointer-events: none;"></div></div><div id="w-node-e76aff3c-0f3d-329d-a32f-2461a06b2cc1-59ff8fc2" class="features_content-right"><div class="position-relative"><h2 class="features_heading"><div class="features_heading-span"><div>Recurring </div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 132 117" fill="none" class="features_heading-svg"><path d="M71 12L73 4" stroke="#FFA946" stroke-width="8" stroke-linecap="round"></path><path d="M91.75 23L99 14.5" stroke="#FFA946" stroke-width="8" stroke-linecap="round"></path><path d="M110.545 35.6253L127.458 31.1232" stroke="#FFA946" stroke-width="8" stroke-linecap="round"></path><path d="M105 62C108.158 63.3664 111.006 65.0694 114 66.75" stroke="#FFA946" stroke-width="8" stroke-linecap="round"></path><path d="M93 94.75L101.25 105" stroke="#FFA946" stroke-width="8" stroke-linecap="round"></path><path d="M62 99C62.6012 103.667 63.3333 108.333 64 113" stroke="#FFA946" stroke-width="8" stroke-linecap="round"></path><path d="M35 90C32.7477 94.9825 29.7733 99.5866 29 105" stroke="#FFA946" stroke-width="8" stroke-linecap="round"></path><path d="M19 68C14.6134 65.3005 9.34297 62 4 62" stroke="#FFA946" stroke-width="8" stroke-linecap="round"></path><path d="M32 42C26.5986 39.5448 19.3693 35.054 16 30" stroke="#FFA946" stroke-width="8" stroke-linecap="round"></path><path d="M47 22C44.7667 18.65 43.574 14.6728 42 11" stroke="#FFA946" stroke-width="8" stroke-linecap="round"></path></svg></div><div>Donations</div></h2></div><div class="spacer-large"></div><p class="text-size-large">Every supporter chooses an impact tier that matches their capacity. Recurring giving is the norm—creating sustainable funding and deeper community bonds.</p><div class="spacer-large"></div><div id="hero-button-group" hero-button-group="" class="button-group"><div><a cta="" cta_location="recurring_donations_section" cta_type="learn_more" href="about.html" class="button is-icon is-secondary w-inline-block"><img src="assets/682f84b3838c89f8ff7667db/68335d5ca4a30e3a678bf92d_mic-icon.svg" loading="lazy" alt="" class="icon-1x1-small"/><div>Learn More</div></a></div><a cta="" cta_location="recurring_donations_section" cta_type="apply" href="apply.html" class="button w-inline-block"><div>Apply to Join Collective</div></a></div></div></div></div></div></div></section><section class="section_features"><div class="padding-global"><div class="padding-section-medium"><div class="container-large"><div class="fatures_grid-mid"><div id="trigger-dictionary" data-gsap-trigger="dictionary" class="features_grid-mid-comp is-1st w-node-d1122902-e1b7-1ba8-437e-358419202124-59ff8fc2"><h3>Personal dictionary</h3><p class="text-size-regular">Flow automatically learns your unique words and adds them to your personal dictionary.</p><div class="features_grid-card is-dictionary"><div class="features_dict-header"><div class="text-size-xlarge text-weight-bold">Your Dictionary</div><img src="assets/682f84b3838c89f8ff7667db/68328a69e88b12bfc3d28d97_plus.svg" loading="lazy" alt="" class="features_dict-icon"/></div><div class="features_grid-mid-chip-wrap"><div data-gsap-target="dictionary-chip" data-wf--home-fetures---dictionary-chips--variant="base" class="home_features_grid-2-chip"><div class="text-size-regular text-weight-bold">Robyn</div></div><div data-gsap-target="dictionary-chip" data-wf--home-fetures---dictionary-chips--variant="base" class="home_features_grid-2-chip"><div class="text-size-regular text-weight-bold">Viktor<br/></div></div><div data-gsap-target="dictionary-chip" data-wf--home-fetures---dictionary-chips--variant="base" class="home_features_grid-2-chip"><div class="text-size-regular text-weight-bold">SaaS</div></div><div data-gsap-target="dictionary-chip" data-wf--home-fetures---dictionary-chips--variant="base" class="home_features_grid-2-chip"><div class="text-size-regular text-weight-bold">Caltrain<br/></div></div><div data-gsap-target="dictionary-chip" data-wf--home-fetures---dictionary-chips--variant="base" class="home_features_grid-2-chip"><div class="text-size-regular text-weight-bold">Mackey</div></div><div data-gsap-target="dictionary-chip" data-wf--home-fetures---dictionary-chips--variant="base" class="home_features_grid-2-chip"><div class="text-size-regular text-weight-bold">Nguyen<br/></div></div><div data-gsap-target="dictionary-chip" data-wf--home-fetures---dictionary-chips--variant="base" class="home_features_grid-2-chip"><div class="text-size-regular text-weight-bold">Leong<br/></div></div></div></div></div><div data-gsap-trigger="dictionary" id="w-node-_8b14419b-a8a7-f177-3755-f5ef6dd37e73-59ff8fc2" class="features_grid-mid-comp gap-big"><div><h3 class="text-wrap-balance">Snippet library</h3></div><p class="text-size-regular text-wrap-balance">Create voice shortcuts for the things your team says over and over. From scheduling links to FAQs, just speak a cue and get the full formatted text.</p><div class="features_grid-card is-dictionary"><div class="features_dict-header"><div class="text-size-xlarge text-weight-bold">Your Snippets</div><img src="assets/682f84b3838c89f8ff7667db/68328a69e88b12bfc3d28d97_plus.svg" loading="lazy" alt="" class="features_dict-icon"/></div><div class="features_grid-mid-chip-wrap"><div data-gsap-target="dictionary-chip"><div class="home_features_grid-2-chip v2"><div class="text-size-regular text-weight-bold">Calendar</div></div><div class="chip-squiggly-wrp"><img src="assets/682f84b3838c89f8ff7667db/68a2f7b01a0cde72bf0f9177_squiggly.svg" alt="" class="squiggly-icon"/><div class="home_features_grid-2-chip v3"><div class="text-size-regular text-weight-bold">You can book a 30-minute call with me here: calendly.com/wisprflow</div></div></div></div><div data-gsap-target="dictionary-chip" data-wf--home-fetures---dictionary-chips--variant="design-v2" class="home_features_grid-2-chip w-variant-b661db0b-c1b3-a332-9e2d-49838eea3230"><div class="text-size-regular text-weight-bold">Hours<br/></div></div><div data-gsap-target="dictionary-chip" data-wf--home-fetures---dictionary-chips--variant="design-v2" class="home_features_grid-2-chip w-variant-b661db0b-c1b3-a332-9e2d-49838eea3230"><div class="text-size-regular text-weight-bold">Support intro</div></div><div data-gsap-target="dictionary-chip" data-wf--home-fetures---dictionary-chips--variant="design-v2" class="home_features_grid-2-chip w-variant-b661db0b-c1b3-a332-9e2d-49838eea3230"><div class="text-size-regular text-weight-bold">FAQ<br/></div></div><div data-gsap-target="dictionary-chip" data-wf--home-fetures---dictionary-chips--variant="design-v2" class="home_features_grid-2-chip w-variant-b661db0b-c1b3-a332-9e2d-49838eea3230"><div class="text-size-regular text-weight-bold">Careers link</div></div><div data-gsap-target="dictionary-chip" data-wf--home-fetures---dictionary-chips--variant="design-v2" class="home_features_grid-2-chip w-variant-b661db0b-c1b3-a332-9e2d-49838eea3230"><div class="text-size-regular text-weight-bold">Elevator pitch<br/></div></div><div data-gsap-target="dictionary-chip" data-wf--home-fetures---dictionary-chips--variant="design-v2" class="home_features_grid-2-chip w-variant-b661db0b-c1b3-a332-9e2d-49838eea3230"><div class="text-size-regular text-weight-bold">Address<br/></div></div></div></div></div><div id="w-node-d1122902-e1b7-1ba8-437e-35841920213d-59ff8fc2" class="features_grid-mid-comp"><div class="max-width-small align-center"><h3 class="text-wrap-balance">Different tones for each app</h3></div><p class="text-size-regular">Flow automatically adjusts tone based on the app youâre using. Sound like youânot a robot.</p><div data-w-id="d1122902-e1b7-1ba8-437e-358419202143" class="features_grid-card is-tone"><div data-is-ix2-target="1" class="features_content-bg-image" data-w-id="d1122902-e1b7-1ba8-437e-358419202144" data-animation-type="lottie" data-src="assets/682f84b3838c89f8ff7667db/683a8750659c503193f7f5de_Flow%20-%20Different%20apps.lottie" data-loop="0" data-direction="1" data-autoplay="0" data-renderer="svg" data-default-duration="0" data-duration="0" data-ix2-initial-state="0"></div></div></div><div id="w-node-d1122902-e1b7-1ba8-437e-358419202145-59ff8fc2" class="features_grid-mid-comp"><h3>100+ languages</h3><p class="text-size-regular">Flow automatically detects and transcribes in your language, letting you move between themâjust like you do.</p><div class="features_grid-card is-flags"><div class="flags-track"><div class="flag">ðºð¸ ð¨ð³ ð©ðª ð¯ðµ ð®ð³ ð¬ð§ ð«ð· ð®ð¹ ð¨ð¦ ð§ð· ð·ðº ð°ð· ð¦ðº ðªð¸ ð²ð½ ð®ð© ð¹ð· ð³ð± ðºð¸ ð¨ð³ ð©ðª ð¯ðµ ð®ð³ ð¬ð§ ð«ð· ð®ð¹ ð¨ð¦ ð§ð· ð·ðº ð°ð· ð¦ðº ðªð¸ ð²ð½ ð®ð© ð¹ð· ð³ð±</div></div><div class="flag-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 707 755" fill="none" class="language_path"><path d="M364.912,112.589 C32.164,112.589 184.371,580.696 483.035,723.146 780.891,769.76 694.001,626.363 694.001,362.801 688.75933,244.86965 683.51767,126.93831 678.276,9.00696 461.1955,6.38627 244.115,3.76559 27.0345,1.1449 27.0345,71.9036 27.0345,142.6623 27.0345,213.421 -5.483,439.332 -46.0837,831.346 179.035,740.18 538.305,622.979 697.659,112.589 364.912,112.589 " id="curve-flag"></path></svg></div><div class="pos-center"><div class="text-size-large text-weight-bold">100+Â Languages</div></div></div></div></div></div></div></div></section><section class="section_features"><div class="padding-global"><div class="padding-section-large"><div class="container-large"><div class="features_grid-bottom"><div id="w-node-_052f7d2b-e7ec-555f-f754-113f32b51459-32b51458" class="features_grid-bottom-left"><div class="home_integrations_chips-div"><div class="home_integrations_chip is-dark"><img src="assets/682f84b3838c89f8ff7667db/683292faea21a80a4ec2ab80_apple_symbol-dark.svg" alt="" class="home_integrations_chip-logo"/><div>IOS</div></div><div class="home_integrations_chip is-dark"><img src="assets/682f84b3838c89f8ff7667db/683292faea21a80a4ec2ab80_apple_symbol-dark.svg" alt="" class="home_integrations_chip-logo"/><div>Mac</div></div><div class="home_integrations_chip is-dark"><img src="assets/682f84b3838c89f8ff7667db/6832323fbe339316d0a134c8_windows_symbol.svg.svg" alt="" class="home_integrations_chip-logo"/><div>Windows</div></div></div><div class="spacer-large"></div><h2>On-the-go or at your desk</h2><div class="spacer-medium"></div><p class="text-size-large">With apps for Desktop and iPhone, flow freely from wherever you are. Your personal dictionary and notes sync seamlessly between all devices.</p><div class="spacer-large"></div><a cta="" cta_location="on_the_go_section" cta_type="apply" href="apply.html" class="button w-button">Download for free</a></div><div id="w-node-_052f7d2b-e7ec-555f-f754-113f32b5146f-32b51458" data-w-id="052f7d2b-e7ec-555f-f754-113f32b5146f" class="features_grid-bottom-right"><img src="assets/682f84b3838c89f8ff7667db/683c97e9250a60766fe58275_Frame%20480.avif" alt="" class="features_grid-bottom-bg"/><img src="assets/682f84b3838c89f8ff7667db/68359c7eced9028aa72378c0_flowin-worksapce.avif" alt="" class="features_grid-bottom-dashboard"/><div class="features_grid-bottom-mobile"><img src="assets/682f84b3838c89f8ff7667db/6834fa9b0bf28f079fcd6657_Frame%2048096378.avif" alt="" class="mobile-screen_top"/><div class="mobile-screen_bottom"><img src="assets/682f84b3838c89f8ff7667db/684a1a8bb2e8d8efc7773ad4_Frame%2048096378.svg" loading="lazy" alt="" class="mobile-screen_bottom-img"/><div class="mobile-screen_bottom-wave" data-w-id="3180e3c7-018a-654e-3711-134583464f43" data-animation-type="lottie" data-src="assets/682f84b3838c89f8ff7667db/683a875074894e1be0d6250c_Flow%20-%20Write%20faster.lottie" data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0" data-renderer="svg" data-duration="0"></div></div></div></div></div></div><div class="spacer-huge"></div></div></div></section></div><section class="section_testimonials"><div class="padding-global"><div class="padding-top padding-section-medium"><div class="container-small"><div class="testimonials_header"><h2 class="testimonials_heading">Stories from <br/>our community</h2><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 785 525" fill="none" class="testimonials_svg"><path d="M383 2V102" stroke="#034F46" stroke-width="4" stroke-linecap="round"></path><path d="M546 101C546 75.8565 559.025 53.3813 563 29" stroke="#034F46" stroke-width="4" stroke-linecap="round"></path><path d="M634 138C644.156 128.056 655.728 119.802 666.185 110.183C669.924 106.743 675.729 103.675 678 99" stroke="#034F46" stroke-width="4" stroke-linecap="round"></path><path d="M706 253C716.647 253 728.358 246.026 737.807 242C748.683 237.366 759.454 233.08 770.029 227.877C773.23 226.301 781.482 222.987 783 220" stroke="#034F46" stroke-width="4" stroke-linecap="round"></path><path d="M722 381C742.831 381.982 794.123 420.282 779.376 405.688" stroke="#034F46" stroke-width="4" stroke-linecap="round"></path><path d="M583 401V458" stroke="#034F46" stroke-width="4" stroke-linecap="round"></path><path d="M411 418C411 449.023 410.603 479.983 410 511" stroke="#034F46" stroke-width="4" stroke-linecap="round"></path><path d="M250 438C229.974 458.141 212.54 480.596 192.138 500.5C186.12 506.371 173.245 523 163 523" stroke="#034F46" stroke-width="4" stroke-linecap="round"></path><path d="M77 386C52.0274 393.096 27.0333 400.106 2 407" stroke="#034F46" stroke-width="4" stroke-linecap="round"></path><path d="M113 273C88.7129 260.066 68.3931 241.333 45.9359 225.722C35.4663 218.445 24.885 211.318 14.2052 204.344C11.5236 202.594 8.69889 201.52 7 199" stroke="#034F46" stroke-width="4" stroke-linecap="round"></path><path d="M226 128C219.65 120.591 213.451 109.47 210.933 99.8586C210.17 96.9432 210.384 87.264 208 86" stroke="#034F46" stroke-width="4" stroke-linecap="round"></path></svg></div></div></div></div><div class="hide w-embed"><style>
+</svg><div id="flow-avatars-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div></div><div class="faster_flow-lottie" data-w-id="1ca9eff4-2ea1-8588-e3ca-3ff1aecd62c4" data-animation-type="lottie" data-src="assets/682f84b3838c89f8ff7667db/683a874f2714dc8d38242818_Flow%20-%204x%20faster.lottie" data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0" data-renderer="svg" data-default-duration="8" data-duration="0"></div></div></div></div></div></div></div></div></section><div class="spacer-huge"></div><section class="section_use-cases min-height-desktop-50rem" style="background-color: #034F46;"><div class="padding-global"><div class="padding-section-large"><div class="container-large"><div class="max-width-medium-plus"><h2 class="heading-style-h1" style="color: #FFFFEB;">Home for <span class="text-color-tertiary">any organization</span></h2></div><div class="spacer-xxlarge"></div><div fs-list-element="tabs" data-current="Tab 1" data-easing="ease" data-duration-in="300" data-duration-out="100" class="use-cases_tab w-tabs"><div class="use-cases_tab-menu w-tab-menu"><a data-w-tab="Tab 1" class="use-cases_tab-link w-inline-block w-tab-link w--current"><div>Tab Active</div></a><a data-w-tab="Tab 2" class="use-cases_tab-link w-inline-block w-tab-link"><div>Tab Inactive</div></a></div><div class="use-cases_tab-content w-tab-content"><div data-w-tab="Tab 1" class="use-cases_tab-pane w-tab-pane w--tab-active"></div><div data-w-tab="Tab 2" class="use-cases_tab-pane w-tab-pane"></div></div></div><div class="use-cases_cms hide"><div fs-list-element="list" class="w-dyn-list"><div role="list" class="w-dyn-items"><div role="listitem" class="use-cases_tab-cms-content w-dyn-item"><div class="hide"><div fs-list-element="tab-link" class="use-cases_fs-tablink">Social Justice</div></div><img src="assets/682fa12727f78b943ed45584/68485a9b3f5985030355f9d8_acessibility.avif" loading="lazy" alt="" class="use-cases_image"/><div class="usercase-rtf w-richtext"><h3>Collective for <em>Social Justice</em></h3></div><p class="text-size-large">Build movements, not just followings. Collective helps social justice organizations mobilize supporters, share urgent updates, and coordinate action—without algorithms deciding who sees your message.</p><div><a href="apply.html" cta="" cta_location="home_tab_section" cta_type="get_started" class="button w-button">Apply to Join</a></div></div><div role="listitem" class="use-cases_tab-cms-content w-dyn-item"><div class="hide"><div fs-list-element="tab-link" class="use-cases_fs-tablink">Environmental</div></div><img src="assets/682fa12727f78b943ed45584/68485a9b3f5985030355f9d8_acessibility.avif" loading="lazy" alt="" class="use-cases_image"/><div class="usercase-rtf w-richtext"><h3>Collective for <em>Environmental</em></h3></div><p class="text-size-large">Every voice matters for climate action. Share conservation updates, rally volunteers for clean-up events, and build a community committed to protecting our planet.</p><div><a href="apply.html" cta="" cta_location="home_tab_section" cta_type="get_started" class="button w-button">Apply to Join</a></div></div><div role="listitem" class="use-cases_tab-cms-content w-dyn-item"><div class="hide"><div fs-list-element="tab-link" class="use-cases_fs-tablink">Education</div></div><img src="assets/682fa12727f78b943ed45584/68485a9b3f5985030355f9d8_acessibility.avif" loading="lazy" alt="" class="use-cases_image"/><div class="usercase-rtf w-richtext"><h3>Collective for <em>Education</em></h3></div><p class="text-size-large">Connect with students, parents, and supporters directly. Share program updates, celebrate student achievements, and build a thriving educational community that stays engaged.</p><div><a href="apply.html" cta="" cta_location="home_tab_section" cta_type="get_started" class="button w-button">Apply to Join</a></div></div><div role="listitem" class="use-cases_tab-cms-content w-dyn-item"><div class="hide"><div fs-list-element="tab-link" class="use-cases_fs-tablink">Healthcare</div></div><img src="assets/682fa12727f78b943ed45584/68485a9b3f5985030355f9d8_acessibility.avif" loading="lazy" alt="" class="use-cases_image"/><div class="usercase-rtf w-richtext"><h3>Collective for <em>Healthcare</em></h3></div><p class="text-size-large">Keep patients, families, and donors informed. Share health resources, announce wellness programs, and build a supportive community around your healthcare mission.</p><div><a href="apply.html" cta="" cta_location="home_tab_section" cta_type="get_started" class="button w-button">Apply to Join</a></div></div><div role="listitem" class="use-cases_tab-cms-content w-dyn-item"><div class="hide"><div fs-list-element="tab-link" class="use-cases_fs-tablink">Arts & Culture</div></div><img src="assets/682fa12727f78b943ed45584/68485a9b3f5985030355f9d8_acessibility.avif" loading="lazy" alt="" class="use-cases_image"/><div class="usercase-rtf w-richtext"><h3>Collective for <em>Arts & Culture</em></h3></div><p class="text-size-large">Engage your audience beyond event night. Share artist spotlights, behind-the-scenes content, and build a dedicated community that shows up for every performance.</p><div><a href="apply.html" cta="" cta_location="home_tab_section" cta_type="get_started" class="button w-button">Apply to Join</a></div></div><div role="listitem" class="use-cases_tab-cms-content w-dyn-item"><div class="hide"><div fs-list-element="tab-link" class="use-cases_fs-tablink">Animal Welfare</div></div><img src="assets/682fa12727f78b943ed45584/68485a9b3f5985030355f9d8_acessibility.avif" loading="lazy" alt="" class="use-cases_image"/><div class="usercase-rtf w-richtext"><h3>Collective for <em>Animal Welfare</em></h3></div><p class="text-size-large">Every rescue story deserves to be heard. Share adoption success stories, urgent needs, and rally your community of animal lovers to support your mission.</p><div><a href="apply.html" cta="" cta_location="home_tab_section" cta_type="get_started" class="button w-button">Apply to Join</a></div></div><div role="listitem" class="use-cases_tab-cms-content w-dyn-item"><div class="hide"><div fs-list-element="tab-link" class="use-cases_fs-tablink">Community Development</div></div><img src="assets/682fa12727f78b943ed45584/68485a9b3f5985030355f9d8_acessibility.avif" loading="lazy" alt="" class="use-cases_image"/><div class="usercase-rtf w-richtext"><h3>Collective for <em>Community Development</em></h3></div><p class="text-size-large">Strengthen neighborhoods, one connection at a time. Share local initiatives, coordinate volunteer efforts, and build the engaged community your area deserves.</p><div><a href="apply.html" cta="" cta_location="home_tab_section" cta_type="get_started" class="button w-button">Apply to Join</a></div></div><div role="listitem" class="use-cases_tab-cms-content w-dyn-item"><div class="hide"><div fs-list-element="tab-link" class="use-cases_fs-tablink">Youth Programs</div></div><img src="assets/682fa12727f78b943ed45584/68485a9b3f5985030355f9d8_acessibility.avif" loading="lazy" alt="" class="use-cases_image"/><div class="usercase-rtf w-richtext"><h3>Collective for <em>Youth Programs</em></h3></div><p class="text-size-large">Empower the next generation. Connect with parents, share program updates and success stories, and build a community invested in young people's futures.</p><div><a href="apply.html" cta="" cta_location="home_tab_section" cta_type="get_started" class="button w-button">Apply to Join</a></div></div><div role="listitem" class="use-cases_tab-cms-content w-dyn-item"><div class="hide"><div fs-list-element="tab-link" class="use-cases_fs-tablink">Human Rights</div></div><img src="assets/682fa12727f78b943ed45584/68485a9b3f5985030355f9d8_acessibility.avif" loading="lazy" alt="" class="use-cases_image"/><div class="usercase-rtf w-richtext"><h3>Collective for <em>Human Rights</em></h3></div><p class="text-size-large">Amplify voices that need to be heard. Share critical updates, mobilize advocates, and build a community committed to dignity and justice for all.</p><div><a href="apply.html" cta="" cta_location="home_tab_section" cta_type="get_started" class="button w-button">Apply to Join</a></div></div><div role="listitem" class="use-cases_tab-cms-content w-dyn-item"><div class="hide"><div fs-list-element="tab-link" class="use-cases_fs-tablink">Food Security</div></div><img src="assets/682fa12727f78b943ed45584/68485a9b3f5985030355f9d8_acessibility.avif" loading="lazy" alt="" class="use-cases_image"/><div class="usercase-rtf w-richtext"><h3>Collective for <em>Food Security</em></h3></div><p class="text-size-large">Fight hunger with community power. Coordinate food drives, share distribution schedules, and rally volunteers to ensure no one in your community goes without.</p><div><a href="apply.html" cta="" cta_location="home_tab_section" cta_type="get_started" class="button w-button">Apply to Join</a></div></div><div role="listitem" class="use-cases_tab-cms-content w-dyn-item"><div class="hide"><div fs-list-element="tab-link" class="use-cases_fs-tablink">Housing & Homelessness</div></div><img src="assets/682fa12727f78b943ed45584/68485a9b3f5985030355f9d8_acessibility.avif" loading="lazy" alt="" class="use-cases_image"/><div class="usercase-rtf w-richtext"><h3>Collective for <em>Housing & Homelessness</em></h3></div><p class="text-size-large">Everyone deserves a home. Share housing resources, coordinate outreach efforts, and build a community dedicated to ending homelessness in your area.</p><div><a href="apply.html" cta="" cta_location="home_tab_section" cta_type="get_started" class="button w-button">Apply to Join</a></div></div><div role="listitem" class="use-cases_tab-cms-content w-dyn-item"><div class="hide"><div fs-list-element="tab-link" class="use-cases_fs-tablink">Mental Health</div></div><img src="assets/682fa12727f78b943ed45584/68485a9b3f5985030355f9d8_acessibility.avif" loading="lazy" alt="" class="use-cases_image"/><div class="usercase-rtf w-richtext"><h3>Collective for <em>Mental Health</em></h3></div><p class="text-size-large">Break the stigma, build the support. Share resources, wellness tips, and create a safe community space where mental health conversations happen openly.</p><div><a href="apply.html" cta="" cta_location="home_tab_section" cta_type="get_started" class="button w-button">Apply to Join</a></div></div></div></div></div></div></div></div></section><section class="section_features"><div class="padding-global"><div class="padding-section-large"><div class="spacer-large"></div><div class="container-large"><div data-w-id="00b13108-5923-428d-cb56-0f8bf509b42e" class="features_grid-top"><div class="features_content-left is-relative" style="min-height: 800px; max-height: 800px; height: 800px; overflow: hidden; position: relative;"><img src="assets/Untitled design (1).png" alt="" class="features_content-bg-image is-home" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;"/><div id="root" class="features_content-overlay" style="display: flex; align-items: center; justify-content: center; pointer-events: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div></div><div id="w-node-e76aff3c-0f3d-329d-a32f-2461a06b2cc1-59ff8fc2" class="features_content-right"><div class="position-relative"><h2 class="features_heading">Where recurring donations are the default</h2></div><div class="spacer-large"></div><p class="text-size-large">Every supporter chooses an impact tier that matches their capacity. Recurring giving is the norm—creating sustainable funding and deeper community bonds.</p><div class="spacer-large"></div><div id="hero-button-group" hero-button-group="" class="button-group"><div><a cta="" cta_location="recurring_donations_section" cta_type="learn_more" href="about.html" class="button is-icon is-secondary w-inline-block"><img src="assets/682f84b3838c89f8ff7667db/68335d5ca4a30e3a678bf92d_mic-icon.svg" loading="lazy" alt="" class="icon-1x1-small"/><div>Learn More</div></a></div><a cta="" cta_location="recurring_donations_section" cta_type="apply" href="apply.html" class="button w-inline-block"><div>Apply to Join Collective</div></a></div></div></div></div></div></div></section><section class="section_features"><div class="padding-global"><div class="padding-section-medium"><div class="container-large"><div class="fatures_grid-mid"><div id="trigger-messages" data-gsap-trigger="messages" class="features_grid-mid-comp is-1st w-node-d1122902-e1b7-1ba8-437e-358419202124-59ff8fc2"><h3>Community messaging</h3><p class="text-size-regular">Send instant messages to your community, and they will be notified via email. Customize groups and watch your engagement increase.</p><div class="features_grid-card is-dictionary"><div class="features_dict-header"><div class="text-size-xlarge text-weight-bold">Your Supporters</div></div><div class="features_message-thread"><div data-gsap-target="message-chip" data-message-side="right" class="message-bubble org-message"><div class="text-size-regular text-weight-semibold">Hey everyone! Join us for our virtual event tonight at 7pm! 🎉</div></div><div data-gsap-target="message-chip" data-message-side="left" class="message-bubble user-message"><div class="text-size-regular text-weight-semibold">Count me in!</div></div><div data-gsap-target="message-chip" data-message-side="left" class="message-bubble user-message"><div class="text-size-regular text-weight-semibold">Can't wait! 🙌</div></div><div data-gsap-target="message-chip" data-message-side="left" class="message-bubble user-message"><div class="text-size-regular text-weight-semibold">Will there be a recording?</div></div><div data-gsap-target="message-chip" data-message-side="left" class="message-bubble user-message"><div class="text-size-regular text-weight-semibold">See you there!</div></div></div></div></div><div data-gsap-trigger="contact-import" id="w-node-_8b14419b-a8a7-f177-3755-f5ef6dd37e73-59ff8fc2" class="features_grid-mid-comp gap-big"><div><h3 class="text-wrap-balance">Import your audience</h3></div><p class="text-size-regular text-wrap-balance">Bring your existing email list from platforms like MailChimp or your CRM. Your contacts become engaged community members in Collective.</p><div class="features_grid-card is-dictionary"><div class="features_dict-header"><div class="text-size-xlarge text-weight-bold">Importing Contacts</div></div><div class="contact-import-container"><div class="contact-import-item" data-contact-email="sarah.miller@email.com" data-contact-name="Sarah Miller" data-contact-role="Community Member"></div><div class="contact-import-item" data-contact-email="michael.chen@email.com" data-contact-name="Michael Chen" data-contact-role="Supporter"></div><div class="contact-import-item" data-contact-email="jessica.park@email.com" data-contact-name="Jessica Park" data-contact-role="Advocate"></div><div class="contact-import-item" data-contact-email="david.lopez@email.com" data-contact-name="David Lopez" data-contact-role="Champion"></div><div class="contact-import-item" data-contact-email="emma.wilson@email.com" data-contact-name="Emma Wilson" data-contact-role="Partner"></div></div></div></div><div id="w-node-d1122902-e1b7-1ba8-437e-35841920213d-59ff8fc2" class="features_grid-mid-comp"><div class="max-width-small align-center"><h3 class="text-wrap-balance">Different tones for each app</h3></div><p class="text-size-regular">Flow automatically adjusts tone based on the app youâre using. Sound like youânot a robot.</p><div data-w-id="d1122902-e1b7-1ba8-437e-358419202143" class="features_grid-card is-tone"><div data-is-ix2-target="1" class="features_content-bg-image" data-w-id="d1122902-e1b7-1ba8-437e-358419202144" data-animation-type="lottie" data-src="assets/682f84b3838c89f8ff7667db/683a8750659c503193f7f5de_Flow%20-%20Different%20apps.lottie" data-loop="0" data-direction="1" data-autoplay="0" data-renderer="svg" data-default-duration="0" data-duration="0" data-ix2-initial-state="0"></div></div></div><div id="w-node-d1122902-e1b7-1ba8-437e-358419202145-59ff8fc2" class="features_grid-mid-comp"><h3>100+ languages</h3><p class="text-size-regular">Flow automatically detects and transcribes in your language, letting you move between themâjust like you do.</p><div class="features_grid-card is-flags"><div class="flags-track"><div class="flag">ðºð¸ ð¨ð³ ð©ðª ð¯ðµ ð®ð³ ð¬ð§ ð«ð· ð®ð¹ ð¨ð¦ ð§ð· ð·ðº ð°ð· ð¦ðº ðªð¸ ð²ð½ ð®ð© ð¹ð· ð³ð± ðºð¸ ð¨ð³ ð©ðª ð¯ðµ ð®ð³ ð¬ð§ ð«ð· ð®ð¹ ð¨ð¦ ð§ð· ð·ðº ð°ð· ð¦ðº ðªð¸ ð²ð½ ð®ð© ð¹ð· ð³ð±</div></div><div class="flag-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 707 755" fill="none" class="language_path"><path d="M364.912,112.589 C32.164,112.589 184.371,580.696 483.035,723.146 780.891,769.76 694.001,626.363 694.001,362.801 688.75933,244.86965 683.51767,126.93831 678.276,9.00696 461.1955,6.38627 244.115,3.76559 27.0345,1.1449 27.0345,71.9036 27.0345,142.6623 27.0345,213.421 -5.483,439.332 -46.0837,831.346 179.035,740.18 538.305,622.979 697.659,112.589 364.912,112.589 " id="curve-flag"></path></svg></div><div class="pos-center"><div class="text-size-large text-weight-bold">100+Â Languages</div></div></div></div></div></div></div></div></section><section class="section_features"><div class="padding-global"><div class="padding-section-large"><div class="container-large"><div class="features_grid-bottom"><div id="w-node-_052f7d2b-e7ec-555f-f754-113f32b51459-32b51458" class="features_grid-bottom-left"><div class="home_integrations_chips-div"><div class="home_integrations_chip is-dark"><img src="assets/682f84b3838c89f8ff7667db/683292faea21a80a4ec2ab80_apple_symbol-dark.svg" alt="" class="home_integrations_chip-logo"/><div>IOS</div></div><div class="home_integrations_chip is-dark"><img src="assets/682f84b3838c89f8ff7667db/683292faea21a80a4ec2ab80_apple_symbol-dark.svg" alt="" class="home_integrations_chip-logo"/><div>Mac</div></div><div class="home_integrations_chip is-dark"><img src="assets/682f84b3838c89f8ff7667db/6832323fbe339316d0a134c8_windows_symbol.svg.svg" alt="" class="home_integrations_chip-logo"/><div>Windows</div></div></div><div class="spacer-large"></div><h2>On-the-go or at your desk</h2><div class="spacer-medium"></div><p class="text-size-large">With apps for Desktop and iPhone, flow freely from wherever you are. Your personal dictionary and notes sync seamlessly between all devices.</p><div class="spacer-large"></div><a cta="" cta_location="on_the_go_section" cta_type="apply" href="apply.html" class="button w-button">Download for free</a></div><div id="w-node-_052f7d2b-e7ec-555f-f754-113f32b5146f-32b51458" data-w-id="052f7d2b-e7ec-555f-f754-113f32b5146f" class="features_grid-bottom-right"><img src="assets/682f84b3838c89f8ff7667db/683c97e9250a60766fe58275_Frame%20480.avif" alt="" class="features_grid-bottom-bg"/><img src="assets/682f84b3838c89f8ff7667db/68359c7eced9028aa72378c0_flowin-worksapce.avif" alt="" class="features_grid-bottom-dashboard"/><div class="features_grid-bottom-mobile"><img src="assets/682f84b3838c89f8ff7667db/6834fa9b0bf28f079fcd6657_Frame%2048096378.avif" alt="" class="mobile-screen_top"/><div class="mobile-screen_bottom"><img src="assets/682f84b3838c89f8ff7667db/684a1a8bb2e8d8efc7773ad4_Frame%2048096378.svg" loading="lazy" alt="" class="mobile-screen_bottom-img"/><div class="mobile-screen_bottom-wave" data-w-id="3180e3c7-018a-654e-3711-134583464f43" data-animation-type="lottie" data-src="assets/682f84b3838c89f8ff7667db/683a875074894e1be0d6250c_Flow%20-%20Write%20faster.lottie" data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0" data-renderer="svg" data-duration="0"></div></div></div></div></div></div><div class="spacer-huge"></div></div></div></section></div><section class="section_testimonials"><div class="padding-global"><div class="padding-top padding-section-medium"><div class="container-small"><div class="testimonials_header"><h2 class="testimonials_heading">Stories from <br/>our community</h2><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 785 525" fill="none" class="testimonials_svg"><path d="M383 2V102" stroke="#034F46" stroke-width="4" stroke-linecap="round"></path><path d="M546 101C546 75.8565 559.025 53.3813 563 29" stroke="#034F46" stroke-width="4" stroke-linecap="round"></path><path d="M634 138C644.156 128.056 655.728 119.802 666.185 110.183C669.924 106.743 675.729 103.675 678 99" stroke="#034F46" stroke-width="4" stroke-linecap="round"></path><path d="M706 253C716.647 253 728.358 246.026 737.807 242C748.683 237.366 759.454 233.08 770.029 227.877C773.23 226.301 781.482 222.987 783 220" stroke="#034F46" stroke-width="4" stroke-linecap="round"></path><path d="M722 381C742.831 381.982 794.123 420.282 779.376 405.688" stroke="#034F46" stroke-width="4" stroke-linecap="round"></path><path d="M583 401V458" stroke="#034F46" stroke-width="4" stroke-linecap="round"></path><path d="M411 418C411 449.023 410.603 479.983 410 511" stroke="#034F46" stroke-width="4" stroke-linecap="round"></path><path d="M250 438C229.974 458.141 212.54 480.596 192.138 500.5C186.12 506.371 173.245 523 163 523" stroke="#034F46" stroke-width="4" stroke-linecap="round"></path><path d="M77 386C52.0274 393.096 27.0333 400.106 2 407" stroke="#034F46" stroke-width="4" stroke-linecap="round"></path><path d="M113 273C88.7129 260.066 68.3931 241.333 45.9359 225.722C35.4663 218.445 24.885 211.318 14.2052 204.344C11.5236 202.594 8.69889 201.52 7 199" stroke="#034F46" stroke-width="4" stroke-linecap="round"></path><path d="M226 128C219.65 120.591 213.451 109.47 210.933 99.8586C210.17 96.9432 210.384 87.264 208 86" stroke="#034F46" stroke-width="4" stroke-linecap="round"></path></svg></div></div></div></div><div class="hide w-embed"><style>
 .testimonials_list-wrapper{
     animation: logoTicker 80s linear infinite;
   }
@@ -1545,7 +1798,7 @@ $(document).ready(function () {
     SplitText
   );
 
-  // 1) Home Features Grid Chips Animation
+  // 1) Home Features Grid Chips Animation (Dictionary)
   function initChipsAnimation() {
 	  const triggers = document.querySelectorAll('[data-gsap-trigger="dictionary"]');
 	  
@@ -1569,6 +1822,228 @@ $(document).ready(function () {
 	    );
 	  });
 	}
+
+  // 2) Community Messaging Animation
+  function initMessagesAnimation() {
+    const triggers = document.querySelectorAll('[data-gsap-trigger="messages"]');
+    
+    triggers.forEach((trigger) => {
+      const messages = trigger.querySelectorAll('[data-gsap-target="message-chip"]');
+      
+      gsap.fromTo(
+        messages,
+        // Initial state - conditional based on message side
+        { 
+          x: (i, element) => {
+            const side = element.getAttribute('data-message-side');
+            if (side === 'right') {
+              // Organization messages come from right (positive)
+              return `${Math.min(80, 150 / (i + 1))}%`;
+            } else {
+              // User messages come from left (negative)
+              return `-${Math.min(80, 150 / (i + 1))}%`;
+            }
+          },
+          opacity: 0
+        },
+        // Target state
+        {
+          x: "0%",
+          opacity: 1,
+          ease: "power1.inOut",  // Smoother, more natural easing
+          stagger: { 
+            each: 0.06,           // Slightly tighter stagger for smoother flow
+            from: "start",
+            ease: "power1.inOut"  // Smooth easing for stagger too
+          },
+          scrollTrigger: {
+            trigger: trigger,
+            start: "top bottom",
+            end: "top 10%",
+            scrub: 0.8,            // Lower value = smoother, more responsive animation
+            invalidateOnRefresh: true  // Ensures smooth behavior on window resize
+          },
+        }
+      );
+    });
+  }
+
+  // 3) Contact Import Animation - Simple flow like avatar marquee
+  function initContactImportAnimation() {
+    const containers = document.querySelectorAll('[data-gsap-trigger="contact-import"]');
+    
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+    
+    containers.forEach((container) => {
+      const items = container.querySelectorAll('.contact-import-item');
+      if (items.length === 0) return;
+      
+      const importContainer = container.querySelector('.contact-import-container');
+      if (!importContainer) return;
+      
+      // Get contact data from data attributes
+      const contacts = Array.from(items).map(item => ({
+        email: item.getAttribute('data-contact-email').replace('@email.com', '@gmail.com'),
+        name: item.getAttribute('data-contact-name'),
+        role: item.getAttribute('data-contact-role')
+      }));
+      
+      // Avatar photos for each contact
+      const avatarPhotos = [
+        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=faces',
+        'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=faces',
+        'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&h=80&fit=crop&crop=faces',
+        'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&h=80&fit=crop&crop=faces',
+        'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=faces'
+      ];
+      
+      // Get email addresses (for display in stream)
+      const emails = contacts.map(c => c.email);
+      
+      // Create email list container first
+      const emailList = document.createElement('div');
+      emailList.className = 'contact-email-list';
+      emailList.style.cssText = 'position: relative; width: 100%; max-width: 320px; margin: 0 auto; height: 520px; overflow: hidden; z-index: 1;';
+      importContainer.appendChild(emailList);
+      
+      // Create conversion box (covers emails in bottom half)
+      const conversionBox = document.createElement('div');
+      conversionBox.style.cssText = 'position: absolute; top: 260px; left: 0; right: 0; bottom: 0; width: 100%; background: #034F46; border-radius: 24px 24px 0 0; border: 8px solid #FFFADD; border-bottom: none; z-index: 10;';
+      importContainer.appendChild(conversionBox);
+      
+      // Create card container (on top of box, centered)
+      const cardContainer = document.createElement('div');
+      cardContainer.style.cssText = 'position: absolute; top: 260px; bottom: 0; left: 0; right: 0; width: 100%; display: flex; align-items: center; justify-content: center; z-index: 15; pointer-events: none;';
+      importContainer.appendChild(cardContainer);
+      
+      // Simple card rotation - just cycle through contacts
+      let currentCardIndex = 0;
+      let currentCard = null;
+      
+      function showCard(contactIndex) {
+        const contact = contacts[contactIndex % contacts.length];
+        const avatarUrl = avatarPhotos[contactIndex % avatarPhotos.length];
+        
+        // Fade out old card, then fade in new card
+        if (currentCard) {
+          gsap.to(currentCard, {
+            opacity: 0,
+            duration: 0.3,
+            ease: 'linear',
+            onComplete: () => {
+              if (currentCard && currentCard.parentNode) {
+                currentCard.remove();
+              }
+              // Now fade in new card
+              createAndShowCard(contact, avatarUrl);
+            }
+          });
+        } else {
+          // No old card, just show new one
+          createAndShowCard(contact, avatarUrl);
+        }
+      }
+      
+      function createAndShowCard(contact, avatarUrl) {
+        // Create new card
+        const newCard = document.createElement('div');
+        newCard.style.cssText = 'background: #F0D7FF; border-radius: 16px; padding: 24px; text-align: center; width: 240px; margin: 0 auto; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); opacity: 0;';
+        
+        // Avatar
+        const avatar = document.createElement('img');
+        avatar.src = avatarUrl;
+        avatar.alt = contact.name;
+        avatar.style.cssText = 'width: 80px; height: 80px; border-radius: 20px; object-fit: cover; margin: 0 auto 16px; display: block;';
+        newCard.appendChild(avatar);
+        
+        // Name
+        const name = document.createElement('div');
+        name.textContent = contact.name;
+        name.style.cssText = 'font-size: 17px; font-weight: 600; color: #1A1A1A; margin-bottom: 6px;';
+        newCard.appendChild(name);
+        
+        // Role
+        const role = document.createElement('div');
+        role.textContent = contact.role;
+        role.style.cssText = 'font-size: 14px; color: #666;';
+        newCard.appendChild(role);
+        
+        cardContainer.appendChild(newCard);
+        currentCard = newCard;
+        
+        // Simple fade in
+        gsap.to(newCard, {
+          opacity: 1,
+          duration: 0.3,
+          ease: 'linear'
+        });
+      }
+      
+      // Simple interval - rotate cards every 3 seconds
+      let cardInterval = setInterval(() => {
+        showCard(currentCardIndex);
+        currentCardIndex = (currentCardIndex + 1) % contacts.length;
+      }, 3000);
+      
+      // Initial card
+      showCard(0);
+      
+      // Calculate spacing
+      const emailHeight = 34;
+      const emailGap = 5;
+      const stepSize = emailHeight + emailGap; // 39px between emails
+      
+      // Create enough emails for continuous stream (enough to fill screen + buffer)
+      const emailCount = 15;
+      const duration = 40; // Slower animation
+      const totalDistance = stepSize * emailCount;
+      
+      // Create emails and animate them
+      for (let i = 0; i < emailCount; i++) {
+        const contactIndex = i % contacts.length;
+        const emailEl = document.createElement('div');
+        emailEl.className = 'contact-email-item';
+        emailEl.textContent = emails[contactIndex];
+        emailEl.style.cssText = 'position: absolute; left: 0; right: 0; top: 0; font-size: 13px; color: #666; font-weight: 500; padding: 9px 14px; background: #FAFAFA; border-radius: 8px; text-align: center; border: 1px solid #E0E0E0; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04); height: 34px; display: flex; align-items: center; justify-content: center; width: 100%;';
+        emailList.appendChild(emailEl);
+        
+        // Animate like avatar marquee - simple infinite loop
+        const tween = gsap.to(emailEl, {
+          y: totalDistance,
+          duration: duration,
+          repeat: -1,
+          ease: 'none',
+          modifiers: {
+            y: (y) => {
+              const currentY = parseFloat(y);
+              const wrappedY = currentY % totalDistance;
+              
+              // Emails fade as they approach and enter the box
+              if (wrappedY >= 230) {
+                const fadeStart = 230;
+                const fadeEnd = 260;
+                if (wrappedY < fadeEnd) {
+                  const opacity = 1 - ((wrappedY - fadeStart) / (fadeEnd - fadeStart));
+                  emailEl.style.opacity = Math.max(0, opacity);
+                } else {
+                  emailEl.style.opacity = '0';
+                }
+              } else {
+                emailEl.style.opacity = '1';
+              }
+              
+              return wrappedY + 'px';
+            }
+          }
+        });
+        
+        // Stagger starting positions evenly - this creates the continuous stream
+        tween.progress(i / emailCount);
+      }
+    });
+  }
 
   // 2) Features section â draws as you scroll
   function initFeaturesDraw() {
@@ -1723,6 +2198,8 @@ initGSAPQuarterlyRefresh();
   // combine and run them all after full load + layout
   function initAllAnimations() {
     initChipsAnimation();
+    initMessagesAnimation();
+    initContactImportAnimation();
     initFeaturesDraw();
     initTestimonialsDraw();
     initUnderlineDraw();
