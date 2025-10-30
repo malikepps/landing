@@ -1274,6 +1274,10 @@ margin: 0rem !important;
   transform: skewY(-4deg);
   transform-origin: center;
   margin-top: 20px;
+  margin-left: 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .hero-avatar-speech-bubble p {
@@ -1282,6 +1286,17 @@ margin: 0rem !important;
   font-weight: 600;
   color: #000000;
   line-height: 1.4;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.hero-avatar-speech-bubble p.fade-out {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.hero-avatar-speech-bubble p.fade-in {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .hero-avatar-row {
@@ -1385,7 +1400,7 @@ margin: 0rem !important;
   
   <!-- Speech Bubble -->
   <div class="hero-avatar-speech-bubble">
-    <p>Hey Caty, I'll meet you at 6pm.</p>
+    <p id="hero-speech-text">Antonio just started a recurring donation</p>
   </div>
 </div></div></div></div></section>
 
@@ -2594,6 +2609,7 @@ initGSAPQuarterlyRefresh();
     initDashboardSlideIn();
     initAvatarMarquees();
     initHeroAvatarScrolling();
+    initHeroSpeechBubbleRotation();
   }
   
   function initAvatarMarquees() {
@@ -2746,6 +2762,42 @@ initGSAPQuarterlyRefresh();
       img2Clone.alt = 'Community member';
       row2Clone.appendChild(img2Clone);
     }
+  }
+
+  // Hero Speech Bubble Text Rotation
+  function initHeroSpeechBubbleRotation() {
+    const messages = [
+      'Antonio just started a recurring donation',
+      'Lisa joined your community',
+      'Alexander viewed your video'
+    ];
+    
+    const textElement = document.getElementById('hero-speech-text');
+    if (!textElement) return;
+    
+    let currentIndex = 0;
+    
+    function rotateMessage() {
+      // Fade out
+      textElement.classList.add('fade-out');
+      
+      setTimeout(() => {
+        // Change text
+        currentIndex = (currentIndex + 1) % messages.length;
+        textElement.textContent = messages[currentIndex];
+        
+        // Fade in
+        textElement.classList.remove('fade-out');
+        textElement.classList.add('fade-in');
+        
+        setTimeout(() => {
+          textElement.classList.remove('fade-in');
+        }, 300);
+      }, 300);
+    }
+    
+    // Rotate message every 4 seconds
+    setInterval(rotateMessage, 4000);
   }
 
   window.addEventListener("load", () => {
