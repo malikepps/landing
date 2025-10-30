@@ -1207,6 +1207,7 @@ margin: 0rem !important;
   grid-template-columns: 1.2fr 0.8fr;
   gap: 3rem;
   align-items: center;
+  min-height: 600px;
 }
 
 .section_icpv2-hero h1 {
@@ -1248,7 +1249,105 @@ margin: 0rem !important;
     padding-top: 10rem;
   }
 }
-</style><div class="padding-global"><div class="container-large"><div promo-wrap="" class="promo-wrap homepage"><div class="promo-div homepage"><div promo-text="">Promo</div></div></div><div class="icpv2-hero_grid"><div><h1 heading-element="" class="heading-style-h1 ab-v2"><span style="opacity: 0.5;">Build community. Tell your story. </span><em>Get results.</em></h1><div class="hide"><div class="ab-v1"></div><div class="ab-v2"></div><div class="ab-v3"></div></div><div class="spacer-small hide-mobile-landscape"></div><div class="spacer-medium"></div><div><div class="max-width-large align-center"><p para-element="" class="text-size-large text-wrap-balance">Flow turns your voice into formatted text across your entire tech stack. Use it in every app, every device across Mac, Windows, and iPhone. SOC 2 Type II and HIPAA compliance available.</p></div><div class="spacer-medium"></div><div><div class="hide"><img apple-icon="" src="assets/6838259bd246e848c14f0840/683829796f346a9a6f931363_apple.png" alt="" class="download_button-icon homepage"/><img windows-icon="" src="assets/682f84b3838c89f8ff7667db/686d4881d944a4b80f7d047e_windows.svg" alt="" class="download_button-icon homepage"/></div><a app-download="" cta="" cta_location="leaders_hero_section" cta_type="download_for_free" href="index.html" class="button w-inline-block"><div>Download for free</div></a></div></div></div><div id="w-node-_7a9c4326-1dfa-b9ed-4848-c80c2baa4ea8-1e144653"><img src="assets/682f84b3838c89f8ff7667db/68850123801227c046db4d78_leaders-hero.png" loading="eager" alt="" class="icpv2-hero_img"/></div></div></div></div></section>
+
+/* Hero Avatar Scrolling Animation Styles */
+.hero-avatar-container {
+  width: 480px;
+  height: 180px;
+  border: 4px solid #000000;
+  border-radius: 30px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background-color: #FFFFEB;
+  transform: rotate(-4deg);
+  transform-origin: center;
+}
+
+.hero-avatar-row {
+  height: 90px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.hero-avatar-track {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding: 0 20px;
+  animation: scrollLeft 20s linear infinite;
+  will-change: transform;
+}
+
+.hero-avatar-track-reverse {
+  animation: scrollRight 20s linear infinite;
+}
+
+.hero-avatar-track img {
+  width: 60px;
+  height: 60px;
+  border-radius: 20%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+@keyframes scrollLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollRight {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 991px) {
+  .hero-avatar-container {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 479px) {
+  .hero-avatar-container {
+    width: 100%;
+    max-width: 320px;
+    height: 140px;
+  }
+  
+  .hero-avatar-row {
+    height: 70px;
+  }
+}
+</style><div class="padding-global"><div class="container-large"><div promo-wrap="" class="promo-wrap homepage"><div class="promo-div homepage"><div promo-text="">Promo</div></div></div><div class="icpv2-hero_grid"><div><h1 heading-element="" class="heading-style-h1 ab-v2"><span style="opacity: 0.5;">Build community. Tell your story. </span><em>Get results.</em></h1><div class="hide"><div class="ab-v1"></div><div class="ab-v2"></div><div class="ab-v3"></div></div><div class="spacer-small hide-mobile-landscape"></div><div class="spacer-medium"></div><div><div class="max-width-large align-center"><p para-element="" class="text-size-large text-wrap-balance">Flow turns your voice into formatted text across your entire tech stack. Use it in every app, every device across Mac, Windows, and iPhone. SOC 2 Type II and HIPAA compliance available.</p></div><div class="spacer-medium"></div><div><div class="hide"><img apple-icon="" src="assets/6838259bd246e848c14f0840/683829796f346a9a6f931363_apple.png" alt="" class="download_button-icon homepage"/><img windows-icon="" src="assets/682f84b3838c89f8ff7667db/686d4881d944a4b80f7d047e_windows.svg" alt="" class="download_button-icon homepage"/></div><a app-download="" cta="" cta_location="leaders_hero_section" cta_type="download_for_free" href="index.html" class="button w-inline-block"><div>Download for free</div></a></div></div></div><div id="w-node-_7a9c4326-1dfa-b9ed-4848-c80c2baa4ea8-1e144653">
+  <!-- Avatar Scrolling Animation Container -->
+  <div id="hero-avatar-animation-container" class="hero-avatar-container">
+    <!-- Row 1: Scrolling Left -->
+    <div class="hero-avatar-row" id="hero-avatar-row-1">
+      <div class="hero-avatar-track" id="hero-avatars-row-1"></div>
+      <div class="hero-avatar-track" id="hero-avatars-row-1-clone" aria-hidden="true"></div>
+    </div>
+    
+    <!-- Row 2: Scrolling Right -->
+    <div class="hero-avatar-row" id="hero-avatar-row-2">
+      <div class="hero-avatar-track hero-avatar-track-reverse" id="hero-avatars-row-2"></div>
+      <div class="hero-avatar-track hero-avatar-track-reverse" id="hero-avatars-row-2-clone" aria-hidden="true"></div>
+    </div>
+  </div>
+</div></div></div></div></section>
 
 <div data-w-id="9ebabd72-f963-4b5b-90e4-ce5c0c1355ea" class="section_integrations-clients" style="background-color: #034F46;"><section ab-test-variant="control" data-w-id="1ec5bcfa-2dd7-75a6-30f7-be48ce0ca1df" class="section_app-integrations" style="background-color: #034F46;"><div class="padding-global padding-section-xlarge"><div class="container-large"><div class="integrations_grid" style="min-height: 600px; max-height: 800px;"><div id="w-node-_98716837-3cd9-581b-b37b-7806f8b862df-59ff8fc2" class="integrations_left"><div data-wf--integrations-light-color--variant="base" class="home_integrations_chips-div" style="justify-content: center;"><div class="home_integrations_chip"><div class="text-color-alternate text-weight-bold">🌐 100% web based — works on any device</div></div></div><div class="spacer-large"></div><h2 class="text-color-secondary">Built for community, not algorithms</h2><div class="spacer-large"></div><div class="max-width-small align-center"><p class="text-size-large">Bring your people together in a space designed for connection, not clicks. No algorithms deciding who sees what—just direct communication with your community.</p></div><div class="spacer-medium"></div><a href="about.html" class="w-inline-block"><div cta_type="learn_more" cta="" cta_location="community_section" class="button is-secondary"><div>Learn More</div></div><script type="application/json" class="w-json">{
   "items": [
@@ -2454,6 +2553,7 @@ initGSAPQuarterlyRefresh();
     initGSAPQuarterlyRefresh();
     initDashboardSlideIn();
     initAvatarMarquees();
+    initHeroAvatarScrolling();
   }
   
   function initAvatarMarquees() {
@@ -2551,6 +2651,62 @@ initGSAPQuarterlyRefresh();
     });
   }
 
+  // Hero Avatar Scrolling Animation
+  function initHeroAvatarScrolling() {
+    // Avatar images - same as comparison section
+    const avatarUrls = [
+      'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=60&h=60&fit=crop&crop=faces',
+      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=faces',
+      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=60&h=60&fit=crop&crop=faces',
+      'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=60&h=60&fit=crop&crop=faces',
+      'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=60&h=60&fit=crop&crop=faces',
+      'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=60&h=60&fit=crop&crop=faces',
+      'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=60&h=60&fit=crop&crop=faces',
+      'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=60&h=60&fit=crop&crop=faces',
+      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=60&h=60&fit=crop&crop=faces',
+      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=60&h=60&fit=crop&crop=faces',
+      'https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=60&h=60&fit=crop&crop=faces',
+      'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=60&h=60&fit=crop&crop=faces',
+      'https://images.unsplash.com/photo-1521119989659-a83eee488004?w=60&h=60&fit=crop&crop=faces',
+      'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=60&h=60&fit=crop&crop=faces',
+      'https://images.unsplash.com/photo-1463453091185-61582044d556?w=60&h=60&fit=crop&crop=faces'
+    ];
+    
+    const row1Track = document.getElementById('hero-avatars-row-1');
+    const row1Clone = document.getElementById('hero-avatars-row-1-clone');
+    const row2Track = document.getElementById('hero-avatars-row-2');
+    const row2Clone = document.getElementById('hero-avatars-row-2-clone');
+    
+    if (!row1Track || !row1Clone || !row2Track || !row2Clone) return;
+    
+    const avatarCount = 15;
+    
+    // Create avatars for Row 1 and its clone
+    for (let i = 0; i < avatarCount; i++) {
+      const img1 = document.createElement('img');
+      img1.src = avatarUrls[i % avatarUrls.length];
+      img1.alt = 'Community member';
+      row1Track.appendChild(img1);
+      
+      const img1Clone = document.createElement('img');
+      img1Clone.src = avatarUrls[i % avatarUrls.length];
+      img1Clone.alt = 'Community member';
+      row1Clone.appendChild(img1Clone);
+    }
+    
+    // Create avatars for Row 2 and its clone
+    for (let i = 0; i < avatarCount; i++) {
+      const img2 = document.createElement('img');
+      img2.src = avatarUrls[(i + 7) % avatarUrls.length]; // Offset for variety
+      img2.alt = 'Community member';
+      row2Track.appendChild(img2);
+      
+      const img2Clone = document.createElement('img');
+      img2Clone.src = avatarUrls[(i + 7) % avatarUrls.length];
+      img2Clone.alt = 'Community member';
+      row2Clone.appendChild(img2Clone);
+    }
+  }
 
   window.addEventListener("load", () => {
     // wait one frame so CSS and SVG layout settle
