@@ -492,7 +492,7 @@ margin: 0rem !important;
 .w--open .hamburger_12_line:last-child {
 	transform: translateY(calc(var(--thickness) * -1 + var(--gap) * -1)) rotate(calc(var(--rotate) * 1deg));
 }
-</style></div><div class="hamburger_12_line"></div><div class="hamburger_12_line"></div></div></div><a id="nav-download" cta="" cta_location="navbar" cta_type="apply" href="apply.html" class="nav_big-button button w-node-c3e00823-9abf-42db-4599-adf2322aefc8-63dfdea9 w-inline-block"><div>Apply to Join Collective</div></a></div></div></div><div class="main-wrapper"><div class="section_careers-hero"><img src="assets/Untitled design (3).png" loading="eager" alt="" class="about_hero-bg"/><div class="careers-hero_overlay" style="background: rgba(0, 0, 0, 0.3);"></div><div class="icp_hero-svg-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 3182 934" fill="none" preserveAspectRatio="none" class="icp_hero-svg"><path d="M 6.5 363 C 297.7 -416.6 549.5 265 769.5 668 C 1109 1201 1428 778.5 1637 596 C 2569.5 -238 3057.5 911 3176 121" stroke="#FF6C4C" stroke-width="12" id="icp-hero-svg"></path></svg></div><div class="padding-global"><div class="z-index-4"><div class="container-small"><div class="text-align-center"><h1>Join the Catalyst Cohort</h1><div class="spacer-medium"></div><div class="spacer-xsmall hide-mobile-landscape"></div><div class="text-wrap-balance"><p class="text-size-large">Be among the first mission-driven organizations to launch on Collective.<br/>Get dedicated support, zero cost, and direct access to your community.</p></div><div class="spacer-medium"></div><div class="button-group"><a cta_type="apply_now" cta="" cta_location="apply_hero_section" href="#application-form" class="button w-button">Apply Now</a></div></div></div></div></div></div></div><div class="section_about-wispr"><div class="padding-global"><div class="spacer-xhuge"></div><div class="spacer-medium"></div><div class="z-index-3"><div class="container-large"><div class="max-width-large-plus"><p class="font-primary heading-style-h4">We're building Collective to help mission-driven organizations reach their supporters without relying on social media algorithms. We know that getting started with a new platform takes time and support. That's why we're offering the Catalyst Cohort—free onboarding, dedicated technical support, and direct access to our team as you build your community.<br/><br/>We believe nonprofits shouldn't have to compete with ads and algorithms to reach the people who care most about their work.</p><div class="spacer-large"></div><div class="spacer-xsmall hide-mobile-landscape"></div><a cta_type="learn_about_collective" cta="" cta_location="apply_about_section" href="about.html" class="button w-button">Learn About Collective</a></div><div class="spacer-xhuge"></div></div></div></div><div class="z-index-3"><div class="hide w-embed"><style>
+</style></div><div class="hamburger_12_line"></div><div class="hamburger_12_line"></div></div></div><a id="nav-download" cta="" cta_location="navbar" cta_type="apply" href="apply.html" class="nav_big-button button w-node-c3e00823-9abf-42db-4599-adf2322aefc8-63dfdea9 w-inline-block"><div>Apply to Join Collective</div></a></div></div></div><div class="main-wrapper"><div class="section_careers-hero"><img src="assets/Untitled design (3).png" loading="eager" alt="" class="about_hero-bg"/><div class="careers-hero_overlay" style="background: rgba(0, 0, 0, 0.3);"></div><div class="icp_hero-svg-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 3182 934" fill="none" class="icp_hero-svg"><path d="M 6.5 363 C 297.7 -416.6 549.5 265 769.5 668 C 1109 1201 1428 778.5 1637 596 C 2569.5 -238 3057.5 911 3176 121" stroke="#FF6C4C" stroke-width="12" id="icp-hero-svg"></path></svg></div><div class="padding-global"><div class="z-index-4"><div class="container-small"><div class="text-align-center"><h1>Join the Catalyst Cohort</h1><div class="spacer-medium"></div><div class="spacer-xsmall hide-mobile-landscape"></div><div class="text-wrap-balance"><p class="text-size-large">Be among the first mission-driven organizations to launch on Collective.<br/>Get dedicated support, zero cost, and direct access to your community.</p></div><div class="spacer-medium"></div><div class="button-group"><a cta_type="apply_now" cta="" cta_location="apply_hero_section" href="#application-form" class="button w-button">Apply Now</a></div></div></div></div></div></div></div><div class="section_about-wispr"><div class="padding-global"><div class="spacer-xhuge"></div><div class="spacer-medium"></div><div class="z-index-3"><div class="container-large"><div class="max-width-large-plus"><p class="font-primary heading-style-h4">We're building Collective to help mission-driven organizations reach their supporters without relying on social media algorithms. We know that getting started with a new platform takes time and support. That's why we're offering the Catalyst Cohort—free onboarding, dedicated technical support, and direct access to our team as you build your community.<br/><br/>We believe nonprofits shouldn't have to compete with ads and algorithms to reach the people who care most about their work.</p><div class="spacer-large"></div><div class="spacer-xsmall hide-mobile-landscape"></div><a cta_type="learn_about_collective" cta="" cta_location="apply_about_section" href="about.html" class="button w-button">Learn About Collective</a></div><div class="spacer-xhuge"></div></div></div></div><div class="z-index-3"><div class="hide w-embed"><style>
 .team-images-wrapper{
     animation: logoTicker 60s linear infinite;
   }
@@ -1131,14 +1131,54 @@ window.addEventListener("load", () => {
 <!--Orange curved line animation for hero-->
 <script>
   gsap.registerPlugin(DrawSVGPlugin);
-  // hide the path completely
-  gsap.set("#icp-hero-svg", { drawSVG: "0%", opacity: 1 });
-
-  // animate from 0% → 100% (left-to-right)
-  gsap.to("#icp-hero-svg", {
-    duration: 2,
-    drawSVG: "100%",
-    ease: "power1.inOut"
-  });
+  
+  console.log('🔍 SVG Debug: Looking for #icp-hero-svg');
+  const svgPath = document.querySelector("#icp-hero-svg");
+  const svgWrapper = document.querySelector(".icp_hero-svg-wrapper");
+  const svg = document.querySelector(".icp_hero-svg");
+  
+  console.log('SVG Path element:', svgPath);
+  console.log('SVG Wrapper element:', svgWrapper);
+  console.log('SVG element:', svg);
+  
+  if (svgWrapper) {
+    console.log('Wrapper computed style:', window.getComputedStyle(svgWrapper));
+    console.log('Wrapper dimensions:', {
+      width: svgWrapper.offsetWidth,
+      height: svgWrapper.offsetHeight,
+      display: window.getComputedStyle(svgWrapper).display,
+      visibility: window.getComputedStyle(svgWrapper).visibility,
+      zIndex: window.getComputedStyle(svgWrapper).zIndex
+    });
+  }
+  
+  if (svg) {
+    console.log('SVG dimensions:', {
+      width: svg.offsetWidth,
+      height: svg.offsetHeight,
+      display: window.getComputedStyle(svg).display,
+      visibility: window.getComputedStyle(svg).visibility
+    });
+  }
+  
+  if (svgPath) {
+    console.log('Path stroke:', window.getComputedStyle(svgPath).stroke);
+    console.log('Path opacity:', window.getComputedStyle(svgPath).opacity);
+    
+    // hide the path completely
+    gsap.set("#icp-hero-svg", { drawSVG: "0%", opacity: 1 });
+    
+    // animate from 0% → 100% (left-to-right)
+    gsap.to("#icp-hero-svg", {
+      duration: 2,
+      drawSVG: "100%",
+      ease: "power1.inOut",
+      onComplete: () => console.log('✅ SVG animation complete')
+    });
+    
+    console.log('✅ Animation started');
+  } else {
+    console.error('❌ #icp-hero-svg path not found!');
+  }
 </script>
 </body></html>
