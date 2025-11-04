@@ -497,13 +497,6 @@ margin: 0rem !important;
   right: 8%;
 }
 
-.star-3 {
-  width: 75px;
-  height: 75px;
-  top: 50%;
-  right: 2%;
-}
-
 .star-4 {
   width: 60px;
   height: 60px;
@@ -526,13 +519,6 @@ margin: 0rem !important;
   transform: translateX(-50%);
 }
 
-.star-7 {
-  width: 58px;
-  height: 58px;
-  top: 35%;
-  left: 4%;
-}
-
 .star-8 {
   width: 52px;
   height: 52px;
@@ -541,9 +527,47 @@ margin: 0rem !important;
   transform: translateX(-50%);
 }
 
+/* Twinkling animation - subtle rotation back and forth */
+@keyframes twinkle1 {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(8deg); }
+}
+
+@keyframes twinkle2 {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-10deg); }
+}
+
+@keyframes twinkle3 {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(6deg); }
+}
+
+@keyframes twinkle4 {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-7deg); }
+}
+
+@keyframes twinkle5 {
+  0%, 100% { transform: translateX(-50%) rotate(0deg); }
+  50% { transform: translateX(-50%) rotate(9deg); }
+}
+
+@keyframes twinkle6 {
+  0%, 100% { transform: translateX(-50%) rotate(0deg); }
+  50% { transform: translateX(-50%) rotate(-8deg); }
+}
+
+.star-1 { animation: twinkle1 4s ease-in-out infinite; }
+.star-2 { animation: twinkle2 3.5s ease-in-out infinite; }
+.star-4 { animation: twinkle3 4.2s ease-in-out infinite; }
+.star-5 { animation: twinkle4 3.8s ease-in-out infinite; }
+.star-6 { animation: twinkle5 4.5s ease-in-out infinite; }
+.star-8 { animation: twinkle6 3.6s ease-in-out infinite; }
+
 /* Responsive sizing for mobile */
 @media (max-width: 991px) {
-  .star-1, .star-2, .star-3, .star-4, .star-5, .star-6, .star-7, .star-8 {
+  .star-1, .star-2, .star-4, .star-5, .star-6, .star-8 {
     width: 45px;
     height: 45px;
   }
@@ -622,11 +646,6 @@ margin: 0rem !important;
     <path d="M338 35L367 53M360 33C353.73 40.26 347.46 47.52 342.91 53.24C338.36 58.96 335.72 62.92 333 66M329 45C329.33 45 329.66 45 336.265 44.505C342.87 44.01 355.74 43.02 363.855 42.015C371.97 41.01 374.94 40.02 380 39M348 26C348 27.32 348 28.64 349.98 34.765C351.96 40.89 355.92 51.7799 360 62.9999" stroke="#F0D7FF" stroke-width="4" stroke-linecap="round" transform="translate(-330, -20)"/>
   </svg>
   
-  <!-- Middle right star -->
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70" fill="none" class="magical-star star-3">
-    <path d="M209 10C214.61 14.29 220.22 18.58 226.74 23.595C233.26 28.61 240.52 34.22 249 41M222 31C222 30.34 222 29.68 225.3 25.71C228.6 21.74 235.2 14.48 242 7.00006M234 2C234 3.98 234 5.96 233.175 13.58C232.35 21.2 230.7 34.4 229 48M214 26.9983C222.58 24.3583 229.31 22.3383 236.11 21.3383C240.6 20.9983 247.2 20.9983 252.58 21.3283C257.96 21.6583 261.92 22.3183 266 22.9983" stroke="#F0D7FF" stroke-width="4" stroke-linecap="round" transform="translate(-205, -5)"/>
-  </svg>
-  
   <!-- Bottom left star -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="none" class="magical-star star-4">
     <path d="M2 118C2.32726 118.262 2.65452 118.524 7.63385 121.898C12.6132 125.273 22.2347 131.753 32.3461 138.429M28.381 120.18C27.9883 120.441 27.5956 120.703 24.5134 123.816C21.4312 126.929 15.6714 132.885 12.7369 136.117C9.8025 139.349 9.86795 139.677 10.1337 140.212M24.6098 145.174C22.7117 140.657 20.8136 136.141 19.6721 133.422C18.5307 130.703 18.2034 129.917 17.773 128.498C16.2795 122.632 16.214 121.771 16.1149 121.31C16.0812 121.045 16.0812 120.718 15.8828 119.984M3.39062 132.678L35.1251 130.496" stroke="#F0D7FF" stroke-width="4" stroke-linecap="round" transform="translate(0, -115)"/>
@@ -642,11 +661,6 @@ margin: 0rem !important;
     <path d="M295.727 135.129C302.534 128.125 309.341 121.122 312.88 117.416C316.419 113.71 316.485 113.513 316.551 113.216C316.618 112.918 316.683 112.526 316.751 112.121M288.984 112.121C289.377 112.317 289.77 112.514 293.016 114.382C296.261 116.251 302.349 119.785 307.186 123.667C312.024 127.55 315.427 131.673 317.573 134.125C320.505 137.231 321.641 138.102 322.301 138.465C322.633 138.631 322.96 138.762 323.297 138.897M323.497 125.606C320.814 125.475 318.13 125.344 311.446 125.081C304.762 124.817 294.159 124.424 283.234 124.02M303.266 111.523C305.753 118.658 308.24 125.792 309.521 129.86C310.803 133.928 310.803 134.713 310.933 136.165C311.064 137.617 311.326 139.712 311.461 140.921C311.596 142.131 311.596 142.393 311.596 142.663" stroke="#F0D7FF" stroke-width="4" stroke-linecap="round" transform="translate(-285, -108)"/>
   </svg>
   
-  <!-- Middle left star -->
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58 58" fill="none" class="magical-star star-7">
-    <path d="M23 6C23.33 6 23.66 6 27.46 8.475C31.26 10.95 38.52 15.9 42.755 18.615C46.99 21.33 47.98 21.66 50 22M41 4C40.34 5.32 38.35 8.31 35.355 12.305C33.02 14.98 30.68 16.99 27.36 19.81C25.36 21.64 22.72 24.28 19 27M37 3C37 6.3 37 8.99 37.495 11.48C38.98 14.96 39.67 17.99 39.005 19.985C38.67 20.99 38.34 21.98 38 24M21 12H26.285C30.91 12 39.82 12 45.73 11.34C51.64 10.68 54.28 9.36 59 8" stroke="#F0D7FF" stroke-width="4" stroke-linecap="round"/>
-  </svg>
-  
   <!-- Bottom center star -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52" fill="none" class="magical-star star-8">
     <path d="M209 10C214.61 14.29 220.22 18.58 226.74 23.595C233.26 28.61 240.52 34.22 249 41M222 31C222 30.34 222 29.68 225.3 25.71C228.6 21.74 235.2 14.48 242 7.00006M234 2C234 3.98 234 5.96 233.175 13.58C232.35 21.2 230.7 34.4 229 48M214 26.9983C222.58 24.3583 229.31 22.3383 236.11 21.3383C240.6 20.9983 247.2 20.9983 252.58 21.3283C257.96 21.6583 261.92 22.3183 266 22.9983" stroke="#F0D7FF" stroke-width="4" stroke-linecap="round" transform="translate(-205, -5)"/>
@@ -657,7 +671,7 @@ margin: 0rem !important;
 <style>
 .catalyst-form {
   max-width: 600px;
-  margin: 0 auto;
+  margin: 16px auto 0 auto;
 }
 
 .form-field {
@@ -698,8 +712,6 @@ margin: 0rem !important;
   text-align: center;
 }
 </style>
-
-<div class="spacer-xsmall"></div>
 
 <form class="catalyst-form" id="catalyst-application-form">
   <div class="form-field">
