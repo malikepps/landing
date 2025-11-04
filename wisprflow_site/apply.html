@@ -456,7 +456,7 @@ margin: 0rem !important;
 }
 
 /* Magical stars decoration for form section */
-.careers_wrapper {
+.section_careers-list {
   position: relative;
 }
 
@@ -467,55 +467,62 @@ margin: 0rem !important;
   top: 0;
   left: 0;
   pointer-events: none;
-  z-index: -1;
+  z-index: 1;
 }
 
 .magical-star {
   position: absolute;
-  opacity: 0.9;
+  opacity: 1;
+  fill: none;
 }
 
-/* Individual star positions */
+.magical-star path {
+  fill: none !important;
+  stroke: #F0D7FF !important;
+  stroke-width: 4 !important;
+}
+
+/* Individual star positions - positioned around the periphery */
 .star-1 {
-  width: 60px;
-  height: 60px;
-  top: 5%;
-  left: 8%;
-}
-
-.star-2 {
-  width: 80px;
-  height: 80px;
-  top: 3%;
-  right: 5%;
-}
-
-.star-3 {
   width: 70px;
   height: 70px;
-  top: 45%;
-  right: 3%;
-}
-
-.star-4 {
-  width: 50px;
-  height: 50px;
-  bottom: 15%;
+  top: 10%;
   left: 5%;
 }
 
-.star-5 {
-  width: 65px;
-  height: 65px;
-  bottom: 10%;
+.star-2 {
+  width: 90px;
+  height: 90px;
+  top: 8%;
   right: 8%;
+}
+
+.star-3 {
+  width: 75px;
+  height: 75px;
+  top: 50%;
+  right: 2%;
+}
+
+.star-4 {
+  width: 60px;
+  height: 60px;
+  bottom: 20%;
+  left: 3%;
+}
+
+.star-5 {
+  width: 70px;
+  height: 70px;
+  bottom: 15%;
+  right: 10%;
 }
 
 /* Responsive sizing for mobile */
 @media (max-width: 991px) {
   .star-1, .star-2, .star-3, .star-4, .star-5 {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
   }
 }
 
@@ -1201,25 +1208,27 @@ window.addEventListener("load", () => {
 
 
   // 3) Application form section magical stars
+  // Temporarily disabled for positioning
   function initFormStarsDraw() {
-    gsap.from(".form-stars-decoration .magical-star path", {
-      drawSVG: "0%",
-      ease: "none",
-      stagger: 0.15,
-      scrollTrigger: {
-        trigger: ".careers_wrapper",
-        start: "top 80%",
-        end: "top 30%",
-        scrub: 1.2,
-      },
-    });
+    // Animation disabled for now - just showing static stars
+    // gsap.from(".form-stars-decoration .magical-star path", {
+    //   drawSVG: "0%",
+    //   ease: "none",
+    //   stagger: 0.15,
+    //   scrollTrigger: {
+    //     trigger: ".careers_wrapper",
+    //     start: "top 80%",
+    //     end: "top 30%",
+    //     scrub: 1.2,
+    //   },
+    // });
   }
 
   // Initialize everything once DOM is ready
   document.addEventListener("DOMContentLoaded", () => {
     initFeaturesDrawHeart();
     initFeaturesDrawMagical();
-    initFormStarsDraw();
+    // initFormStarsDraw(); // Commented out for now
   });
 </script>
 
