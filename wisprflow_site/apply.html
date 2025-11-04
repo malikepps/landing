@@ -458,6 +458,8 @@ margin: 0rem !important;
 /* Form section SVG background */
 .section_careers-list {
   position: relative;
+  overflow: visible;
+  background: transparent !important;
 }
 
 .form-svg-wrapper {
@@ -465,14 +467,43 @@ margin: 0rem !important;
   top: 0;
   left: 0;
   width: 100%;
+  min-height: 600px;
   height: 100%;
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
+  overflow: visible;
+}
+
+.form-svg {
+  width: 100%;
+  height: 600px;
+  display: block;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+#form-svg-path {
+  stroke: #9B5094 !important;
+  stroke-width: 16 !important;
+  fill: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .section_careers-list .our-values_inner-section {
   position: relative;
-  z-index: 1;
+  z-index: 10;
+  background: transparent !important;
+}
+
+.section_careers-list .padding-global {
+  position: relative;
+  z-index: 11;
+}
+
+.careers_wrapper {
+  position: relative;
+  z-index: 12;
 }
 </style></div><div class="nav_fixed"><div data-wf--navbar--variant="base" data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="nav_component w-nav"><div class="nav_container-v2"><a href="index.html" id="w-node-_7957dad2-de7a-14a6-130e-6e11898d1050-63dfdea9" class="nav_brand w-nav-brand"><img src="collective_logo_black_svg_transparent.svg" loading="eager" alt="Collective Logo" class="nav_logo"/></a><nav role="navigation" id="w-node-_7957dad2-de7a-14a6-130e-6e11898d1052-63dfdea9" class="nav_menu v2 w-nav-menu">
 <div class="nav_menu-wrapper grid v2">
@@ -534,7 +565,7 @@ margin: 0rem !important;
   <source src="assets/apply_carousel/AQPueeiex8NlIkt4HjzF1T0cVBwDXVzCtdZaFePCKkzR7AWZ1MdGSiesCz9CImoUyiQcXE8mA_lgpHTDLlvSrTJqueOV7QKQAeOlovI.mp4" type="video/mp4"/>
 </video></div></div><img src="assets/apply_carousel/537627903_1078174117859739_2749416902969619600_n.jpg" alt="" class="team-image marquee-item"/><img src="assets/apply_carousel/538639838_18527793253011880_8313289101457247873_n.jpg" alt="" class="team-image marquee-item"/><div class="team-image marquee-item"><div class="team-meetup-video w-embed"><video style="width: 100%; height: 100%; object-fit: cover;" playsinline autoplay muted loop>
   <source src="assets/apply_carousel/AQOD1Ro9j0QaWw0cBDfo84SPdT6JPi1_tqs3Bt7C_chp4TQbfHYYtbbjkWhN_UbgRRPJ9QM3nRdcH-dQ2qOMfCqpZxbKJnt17j0_OPE.mp4" type="video/mp4"/>
-</video></div></div></div></div></div></div><div class="spacer-xhuge"></div></div><div class="section_careers-list"><div class="form-svg-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 3182 934" fill="none" class="form-svg"><path d="M 3176 363 C 2884.3 -416.6 2632.5 265 2412.5 668 C 2073 1201 1754 778.5 1545 596 C 612.5 -238 124.5 911 6 121" stroke="#9B5094" stroke-width="12" id="form-svg-path"></path></svg></div><div class="our-values_inner-section"><div class="padding-global"><div class="spacer-large"></div><div class="container-small-plus"><div class="careers_wrapper" id="application-form"><h2 class="heading-style-h1">Apply to Get Started on Collective</h2><p class="text-size-large">Tell us about your organization and we'll reach out within 24 hours to explore how Collective can help you connect with your community.</p>
+</video></div></div></div></div></div></div><div class="spacer-xhuge"></div></div><div class="section_careers-list"><div class="form-svg-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 3182 1200" fill="none" class="form-svg" preserveAspectRatio="none"><path d="M 6.5 200 C 297.7 600 549.5 400 769.5 300 C 1109 100 1428 500 1637 650 C 2569.5 900 3057.5 300 3176 800" stroke="#9B5094" stroke-width="12" id="form-svg-path"></path></svg></div><div class="our-values_inner-section"><div class="padding-global"><div class="spacer-large"></div><div class="container-small-plus"><div class="careers_wrapper" id="application-form"><h2 class="heading-style-h1">Apply to Get Started on Collective</h2><p class="text-size-large">Tell us about your organization and we'll reach out within 24 hours to explore how Collective can help you connect with your community.</p>
 <style>
 .catalyst-form {
   max-width: 600px;
@@ -1212,12 +1243,49 @@ window.addEventListener("load", () => {
 <script>
   gsap.registerPlugin(DrawSVGPlugin, ScrollTrigger);
   
+  console.log('🔍 Form SVG Debug: Starting initialization');
+  
   window.addEventListener("load", () => {
+    console.log('📍 Page loaded, looking for form SVG elements...');
+    
     const formSvgPath = document.querySelector("#form-svg-path");
+    const formSvgWrapper = document.querySelector(".form-svg-wrapper");
+    const formSvg = document.querySelector(".form-svg");
+    const formSection = document.querySelector(".section_careers-list");
+    
+    console.log('Form SVG Path element:', formSvgPath);
+    console.log('Form SVG Wrapper element:', formSvgWrapper);
+    console.log('Form SVG element:', formSvg);
+    console.log('Form Section element:', formSection);
+    
+    if (formSvgWrapper) {
+      console.log('Wrapper dimensions:', {
+        width: formSvgWrapper.offsetWidth,
+        height: formSvgWrapper.offsetHeight,
+        display: window.getComputedStyle(formSvgWrapper).display,
+        zIndex: window.getComputedStyle(formSvgWrapper).zIndex
+      });
+    }
+    
+    if (formSvg) {
+      console.log('SVG dimensions:', {
+        width: formSvg.offsetWidth,
+        height: formSvg.offsetHeight,
+        display: window.getComputedStyle(formSvg).display,
+        opacity: window.getComputedStyle(formSvg).opacity
+      });
+    }
     
     if (formSvgPath) {
+      console.log('Path computed styles:', {
+        stroke: window.getComputedStyle(formSvgPath).stroke,
+        strokeWidth: window.getComputedStyle(formSvgPath).strokeWidth,
+        opacity: window.getComputedStyle(formSvgPath).opacity,
+        visibility: window.getComputedStyle(formSvgPath).visibility
+      });
+      
       // hide the path completely
-      gsap.set("#form-svg-path", { drawSVG: "0%", opacity: 1 });
+      gsap.set("#form-svg-path", { drawSVG: "0%" });
       
       // animate from 0% → 100% when scrolled into view
       gsap.to("#form-svg-path", {
@@ -1227,8 +1295,11 @@ window.addEventListener("load", () => {
         scrollTrigger: {
           trigger: ".section_careers-list",
           start: "top 80%",
-          toggleActions: "play none none none"
-        }
+          toggleActions: "play none none none",
+          onEnter: () => console.log('🎬 Form SVG animation triggered!'),
+          markers: false
+        },
+        onComplete: () => console.log('✅ Form SVG animation complete')
       });
       
       console.log('✅ Form SVG animation initialized');
