@@ -1239,73 +1239,19 @@ window.addEventListener("load", () => {
   }
 </script>
 
-<!--Form section curved line animation (triggered on scroll)-->
-<script>
-  gsap.registerPlugin(DrawSVGPlugin, ScrollTrigger);
-  
-  console.log('🔍 Form SVG Debug: Starting initialization');
-  
-  window.addEventListener("load", () => {
-    console.log('📍 Page loaded, looking for form SVG elements...');
-    
-    const formSvgPath = document.querySelector("#form-svg-path");
-    const formSvgWrapper = document.querySelector(".form-svg-wrapper");
-    const formSvg = document.querySelector(".form-svg");
-    const formSection = document.querySelector(".section_careers-list");
-    
-    console.log('Form SVG Path element:', formSvgPath);
-    console.log('Form SVG Wrapper element:', formSvgWrapper);
-    console.log('Form SVG element:', formSvg);
-    console.log('Form Section element:', formSection);
-    
-    if (formSvgWrapper) {
-      console.log('Wrapper dimensions:', {
-        width: formSvgWrapper.offsetWidth,
-        height: formSvgWrapper.offsetHeight,
-        display: window.getComputedStyle(formSvgWrapper).display,
-        zIndex: window.getComputedStyle(formSvgWrapper).zIndex
-      });
-    }
-    
-    if (formSvg) {
-      console.log('SVG dimensions:', {
-        width: formSvg.offsetWidth,
-        height: formSvg.offsetHeight,
-        display: window.getComputedStyle(formSvg).display,
-        opacity: window.getComputedStyle(formSvg).opacity
-      });
-    }
-    
-    if (formSvgPath) {
-      console.log('Path computed styles:', {
-        stroke: window.getComputedStyle(formSvgPath).stroke,
-        strokeWidth: window.getComputedStyle(formSvgPath).strokeWidth,
-        opacity: window.getComputedStyle(formSvgPath).opacity,
-        visibility: window.getComputedStyle(formSvgPath).visibility
-      });
-      
-      // hide the path completely
-      gsap.set("#form-svg-path", { drawSVG: "0%" });
-      
-      // animate from 0% → 100% when scrolled into view
-      gsap.to("#form-svg-path", {
-        drawSVG: "100%",
-        ease: "power1.inOut",
-        duration: 2,
-        scrollTrigger: {
-          trigger: ".section_careers-list",
-          start: "top 80%",
-          toggleActions: "play none none none",
-          onEnter: () => console.log('🎬 Form SVG animation triggered!'),
-          markers: false
-        },
-        onComplete: () => console.log('✅ Form SVG animation complete')
-      });
-      
-      console.log('✅ Form SVG animation initialized');
-    } else {
-      console.error('❌ #form-svg-path not found!');
-    }
-  });
+<!--Form section curved line - SIMPLIFIED for debugging-->
+<script type="text/javascript">
+// Simple test to verify SVG renders
+document.addEventListener("DOMContentLoaded", function() {
+  console.log('✅ DOM Content Loaded - checking for form SVG');
+  const formSvg = document.querySelector("#form-svg-path");
+  if (formSvg) {
+    console.log('✅ Found form SVG path!', formSvg);
+    console.log('SVG stroke:', window.getComputedStyle(formSvg).stroke);
+    console.log('SVG parent:', formSvg.parentElement);
+  } else {
+    console.error('❌ Could not find #form-svg-path');
+  }
+});
 </script>
 </body></html>
