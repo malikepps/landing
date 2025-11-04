@@ -511,63 +511,51 @@ margin: 0rem !important;
   right: 10%;
 }
 
-.star-6 {
-  width: 55px;
-  height: 55px;
-  top: 5%;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.star-8 {
-  width: 52px;
-  height: 52px;
-  bottom: 25%;
-  left: 48%;
-  transform: translateX(-50%);
-}
-
-/* Twinkling animation - subtle rotation back and forth */
+/* Faster twinkling animations with different delays */
 @keyframes twinkle1 {
   0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(8deg); }
+  50% { transform: rotate(12deg); }
 }
 
 @keyframes twinkle2 {
   0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(-10deg); }
+  50% { transform: rotate(-15deg); }
 }
 
 @keyframes twinkle3 {
   0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(6deg); }
+  50% { transform: rotate(10deg); }
 }
 
 @keyframes twinkle4 {
   0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(-7deg); }
+  50% { transform: rotate(-12deg); }
 }
 
-@keyframes twinkle5 {
-  0%, 100% { transform: translateX(-50%) rotate(0deg); }
-  50% { transform: translateX(-50%) rotate(9deg); }
+/* Apply animations with different speeds and delays */
+.star-1 { 
+  animation: twinkle1 2s ease-in-out infinite;
+  animation-delay: 0s;
 }
 
-@keyframes twinkle6 {
-  0%, 100% { transform: translateX(-50%) rotate(0deg); }
-  50% { transform: translateX(-50%) rotate(-8deg); }
+.star-2 { 
+  animation: twinkle2 1.8s ease-in-out infinite;
+  animation-delay: 0.4s;
 }
 
-.star-1 { animation: twinkle1 4s ease-in-out infinite; }
-.star-2 { animation: twinkle2 3.5s ease-in-out infinite; }
-.star-4 { animation: twinkle3 4.2s ease-in-out infinite; }
-.star-5 { animation: twinkle4 3.8s ease-in-out infinite; }
-.star-6 { animation: twinkle5 4.5s ease-in-out infinite; }
-.star-8 { animation: twinkle6 3.6s ease-in-out infinite; }
+.star-4 { 
+  animation: twinkle3 2.2s ease-in-out infinite;
+  animation-delay: 0.8s;
+}
+
+.star-5 { 
+  animation: twinkle4 1.9s ease-in-out infinite;
+  animation-delay: 1.2s;
+}
 
 /* Responsive sizing for mobile */
 @media (max-width: 991px) {
-  .star-1, .star-2, .star-4, .star-5, .star-6, .star-8 {
+  .star-1, .star-2, .star-4, .star-5 {
     width: 45px;
     height: 45px;
   }
@@ -656,15 +644,6 @@ margin: 0rem !important;
     <path d="M114 35C114.327 35.2618 114.655 35.5236 119.634 38.8984C124.613 42.2731 134.235 48.7529 144.346 55.429M140.381 37.1797C139.988 37.4415 139.596 37.7033 136.513 40.8163C133.431 43.9292 127.671 49.8854 124.737 53.1173C121.802 56.3493 121.868 56.6765 122.134 57.2121M136.61 62.1736C134.712 57.6574 132.814 53.1412 131.672 50.4219C130.531 47.7027 130.203 46.9173 129.773 45.4981C128.279 39.6322 128.214 38.7714 128.115 38.3103C128.081 38.0455 128.081 37.7182 127.883 36.9844M115.391 49.6778L147.125 47.4961" stroke="#F0D7FF" stroke-width="4" stroke-linecap="round" transform="translate(-110, -30)"/>
   </svg>
   
-  <!-- Additional top center star -->
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 55" fill="none" class="magical-star star-6">
-    <path d="M295.727 135.129C302.534 128.125 309.341 121.122 312.88 117.416C316.419 113.71 316.485 113.513 316.551 113.216C316.618 112.918 316.683 112.526 316.751 112.121M288.984 112.121C289.377 112.317 289.77 112.514 293.016 114.382C296.261 116.251 302.349 119.785 307.186 123.667C312.024 127.55 315.427 131.673 317.573 134.125C320.505 137.231 321.641 138.102 322.301 138.465C322.633 138.631 322.96 138.762 323.297 138.897M323.497 125.606C320.814 125.475 318.13 125.344 311.446 125.081C304.762 124.817 294.159 124.424 283.234 124.02M303.266 111.523C305.753 118.658 308.24 125.792 309.521 129.86C310.803 133.928 310.803 134.713 310.933 136.165C311.064 137.617 311.326 139.712 311.461 140.921C311.596 142.131 311.596 142.393 311.596 142.663" stroke="#F0D7FF" stroke-width="4" stroke-linecap="round" transform="translate(-285, -108)"/>
-  </svg>
-  
-  <!-- Bottom center star -->
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52" fill="none" class="magical-star star-8">
-    <path d="M209 10C214.61 14.29 220.22 18.58 226.74 23.595C233.26 28.61 240.52 34.22 249 41M222 31C222 30.34 222 29.68 225.3 25.71C228.6 21.74 235.2 14.48 242 7.00006M234 2C234 3.98 234 5.96 233.175 13.58C232.35 21.2 230.7 34.4 229 48M214 26.9983C222.58 24.3583 229.31 22.3383 236.11 21.3383C240.6 20.9983 247.2 20.9983 252.58 21.3283C257.96 21.6583 261.92 22.3183 266 22.9983" stroke="#F0D7FF" stroke-width="4" stroke-linecap="round" transform="translate(-205, -5)"/>
-  </svg>
 </div>
 
 <h2 class="heading-style-h1">Apply to Get Started on Collective</h2><p class="text-size-large">Tell us about your organization and we'll reach out within 24 hours to explore how Collective can help you connect with your community.</p>
