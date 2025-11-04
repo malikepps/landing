@@ -1275,9 +1275,30 @@ margin: 0rem !important;
   transform-origin: center;
   margin-top: 20px;
   margin-left: 40px;
-  text-align: center;
+  text-align: left;
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.hero-avatar-speech-bubble.slide-up {
+  animation: slideUpNotification 0.5s ease-out forwards;
+}
+
+.hero-avatar-speech-bubble.slide-down {
+  animation: slideDownNotification 0.5s ease-out forwards;
+}
+
+.hero-notification-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 20%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 3px solid #F0D7FF;
 }
 
 .hero-avatar-speech-bubble p {
@@ -1286,17 +1307,29 @@ margin: 0rem !important;
   font-weight: 600;
   color: #F0D7FF;
   line-height: 1.4;
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  flex: 1;
 }
 
-.hero-avatar-speech-bubble p.fade-out {
-  opacity: 0;
-  transform: translateY(-10px);
+@keyframes slideUpNotification {
+  from {
+    opacity: 0;
+    transform: skewY(-4deg) translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: skewY(-4deg) translateY(0);
+  }
 }
 
-.hero-avatar-speech-bubble p.fade-in {
-  opacity: 1;
-  transform: translateY(0);
+@keyframes slideDownNotification {
+  from {
+    opacity: 1;
+    transform: skewY(-4deg) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: skewY(-4deg) translateY(-100px);
+  }
 }
 
 .hero-avatar-row {
@@ -1395,8 +1428,15 @@ margin: 0rem !important;
   .hero-avatar-speech-bubble {
     width: 110%;
     max-width: 400px;
-    padding: 18px 28px;
+    padding: 18px 24px;
     margin-right: -40px;
+    gap: 12px;
+  }
+  
+  .hero-notification-avatar {
+    width: 44px;
+    height: 44px;
+    border: 2px solid #F0D7FF;
     margin-left: auto;
   }
   
@@ -1431,7 +1471,8 @@ margin: 0rem !important;
   
   <!-- Speech Bubble -->
   <div class="hero-avatar-speech-bubble">
-    <p id="hero-speech-text">Antonio set up a recurring gift</p>
+    <img id="hero-notification-avatar" src="" alt="User avatar" class="hero-notification-avatar">
+    <p id="hero-speech-text">Antonio set up a recurring gift 💝</p>
   </div>
 </div></div></div></div></section>
 
@@ -2797,35 +2838,70 @@ initGSAPQuarterlyRefresh();
 
   // Hero Speech Bubble Text Rotation
   function initHeroSpeechBubbleRotation() {
-    const messages = [
-      'Antonio set up a recurring gift',
-      'Lisa joined your community',
-      'Alexander opened your message',
-      'Kate saw your video'
+    // Avatar images - same pool as hero avatar scrolling
+    const avatarUrls = [
+      'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=60&h=60&fit=crop&crop=faces',
+      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=faces',
+      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=60&h=60&fit=crop&crop=faces',
+      'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=60&h=60&fit=crop&crop=faces',
+      'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=60&h=60&fit=crop&crop=faces',
+      'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=60&h=60&fit=crop&crop=faces',
+      'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=60&h=60&fit=crop&crop=faces',
+      'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=60&h=60&fit=crop&crop=faces',
+      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=60&h=60&fit=crop&crop=faces'
+    ];
+    
+    const notifications = [
+      { 
+        message: 'Antonio set up a recurring gift 💝', 
+        avatarIndex: 0
+      },
+      { 
+        message: 'Lisa joined your community 🎉', 
+        avatarIndex: 2
+      },
+      { 
+        message: 'Alexander opened your message 💬', 
+        avatarIndex: 1
+      },
+      { 
+        message: 'Kate saw your video 👀', 
+        avatarIndex: 8
+      }
     ];
     
     const textElement = document.getElementById('hero-speech-text');
-    if (!textElement) return;
+    const avatarElement = document.getElementById('hero-notification-avatar');
+    const bubbleElement = document.querySelector('.hero-avatar-speech-bubble');
     
+    if (!textElement || !avatarElement || !bubbleElement) return;
+    
+    // Set initial notification
     let currentIndex = 0;
+    avatarElement.src = avatarUrls[notifications[currentIndex].avatarIndex];
+    textElement.textContent = notifications[currentIndex].message;
+    
+    // Show initial notification with slide-up animation
+    setTimeout(() => {
+      bubbleElement.classList.add('slide-up');
+    }, 500);
     
     function rotateMessage() {
-      // Fade out
-      textElement.classList.add('fade-out');
+      // Slide down (exit)
+      bubbleElement.classList.remove('slide-up');
+      bubbleElement.classList.add('slide-down');
       
       setTimeout(() => {
-        // Change text
-        currentIndex = (currentIndex + 1) % messages.length;
-        textElement.textContent = messages[currentIndex];
+        // Change content while hidden
+        currentIndex = (currentIndex + 1) % notifications.length;
+        const notification = notifications[currentIndex];
+        textElement.textContent = notification.message;
+        avatarElement.src = avatarUrls[notification.avatarIndex];
         
-        // Fade in
-        textElement.classList.remove('fade-out');
-        textElement.classList.add('fade-in');
-        
-        setTimeout(() => {
-          textElement.classList.remove('fade-in');
-        }, 300);
-      }, 300);
+        // Slide up (enter)
+        bubbleElement.classList.remove('slide-down');
+        bubbleElement.classList.add('slide-up');
+      }, 500); // Wait for slide-down animation
     }
     
     // Rotate message every 4 seconds
