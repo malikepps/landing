@@ -881,7 +881,62 @@ fs-list
       }
     }
   });
-</script><script src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db%2F6544eda5f000985a163a8687%2F68c93c62c7911406d96f138f%2Ffinsweetcomponentsconfig-1.0.0.js" type="module" async="" siteId="682f84b3838c89f8ff7667db" finsweet="components"></script></head><body><div class="page-wrapper"><div class="global-styles w-embed"><style>
+</script><script src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db%2F6544eda5f000985a163a8687%2F68c93c62c7911406d96f138f%2Ffinsweetcomponentsconfig-1.0.0.js" type="module" async="" siteId="682f84b3838c89f8ff7667db" finsweet="components"></script></head><body>
+<!-- Sticky Navbar - MUST be direct child of body for sticky positioning to work -->
+<div class="new-sticky-navbar">
+  <div data-wf--navbar--variant="base" data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="nav_component w-nav">
+    <div class="nav_container-v2">
+      <a href="index.html" id="w-node-_7957dad2-de7a-14a6-130e-6e11898d1050-63dfdea9" aria-current="page" class="nav_brand w-nav-brand w--current">
+        <img src="Collective corwn black transparent.png" loading="eager" alt="Collective Logo" class="nav_logo"/>
+      </a>
+      <nav role="navigation" id="w-node-_7957dad2-de7a-14a6-130e-6e11898d1052-63dfdea9" class="nav_menu v2 w-nav-menu">
+        <div class="nav_menu-wrapper grid v2">
+          <div class="nav-link-wrap"><a href="index.html" aria-current="page" class="nav_menu-link w-inline-block w--current"><div>Home</div></a></div>
+          <div class="nav-link-wrap"><a href="apply.html" class="nav_menu-link w-inline-block"><div>Apply</div></a></div>
+          <div class="nav-link-wrap"><a href="about.html" class="nav_menu-link w-inline-block"><div>About</div></a></div>
+        </div>
+      </nav>
+      <div class="nav_mobile-cta"><a id="nav-mobile-download" cta="" cta_location="nav_mobile" cta_type="apply" href="apply.html" class="nav_mobile-btn w-button">Apply to Join Collective</a></div>
+      <div class="nav_button w-nav-button">
+        <div class="hamburger_12_wrap">
+          <div class="hamburger_12_line"></div>
+          <div class="hamburger_embed w-embed"><style>
+.hamburger_12_wrap {
+	--thickness: 0.125rem;
+	--gap: 0.375rem;
+	--rotate: 45;
+  --width: 100%;
+}
+.hamburger_12_wrap:hover .hamburger_12_line {
+	width: 65%;
+}
+.hamburger_12_wrap:hover .hamburger_12_line:first-child {
+	width: 85%;
+}
+.hamburger_12_wrap:hover .hamburger_12_line:last-child {
+	width: 100%;
+}
+.w--open .hamburger_12_line {
+	width: 100% !important;
+	transform: scaleX(0);
+}
+.w--open .hamburger_12_line:first-child {
+	transform: translateY(calc(var(--thickness) + var(--gap))) rotate(calc(var(--rotate) * 3 * 1deg));
+}
+.w--open .hamburger_12_line:last-child {
+	transform: translateY(calc(var(--thickness) * -1 + var(--gap) * -1)) rotate(calc(var(--rotate) * 1deg));
+}
+</style></div>
+          <div class="hamburger_12_line"></div>
+          <div class="hamburger_12_line"></div>
+        </div>
+      </div>
+      <a id="nav-download" cta="" cta_location="navbar" cta_type="apply" href="apply.html" class="nav_big-button button w-node-c3e00823-9abf-42db-4599-adf2322aefc8-63dfdea9 w-inline-block"><div>Apply to Join Collective</div></a>
+    </div>
+  </div>
+</div>
+<!-- End Sticky Navbar -->
+<div class="page-wrapper"><div class="global-styles w-embed"><style>
 
 /* Make text look crisper and more legible in all browsers */
 body {
@@ -1111,15 +1166,6 @@ margin: 0rem !important;
 }
 
 @media (min-width:992px) and (max-width:1281px) {
-	.banner {
-  	padding-top: 1rem;
-    padding-bottom: 1rem;
-  }
-  
-  .nav_spacer {
-  	height: 3.5rem;
-  }
-  
   .spacer-custom {
   	padding-top: 15vw;
   }
@@ -1138,18 +1184,84 @@ margin: 0rem !important;
 
 /* Larger logo */
 .nav_logo {
-  height: 60px !important;
+  height: 80px !important;
   width: auto !important;
   max-height: none !important;
 }
 
-/* Center navigation menu on desktop */
+/* Desktop spacing for avatar marquee */
+@media (min-width: 992px) {
+  .icon-list {
+    gap: 3rem !important;
+  }
+  
+  .icon-item {
+    margin-right: 3rem !important;
+  }
+  
+  .icon-item:last-child {
+    margin-right: 0 !important;
+  }
+}
+
+/* Section startflowing styling */
+.section_startflowing {
+	border-top-left-radius: 0rem;
+	border-top-right-radius: 0rem;
+}
+
+@media (min-width: 768px) {
+	.section_startflowing {
+		margin-top: -5rem;
+	  padding-top: 5rem;
+	}
+}
+
+@media (max-width: 767px) {
+	.section_startflowing {
+		margin-top: -2.5rem;
+	  padding-top: 2.5rem;
+	}
+}
+
+/* Team carousel styling */
+.about-wispr_slider-wrap {
+  overflow: hidden;
+  width: 100%;
+  margin-top: 5rem;
+}
+
+.team-images-list-wrapper {
+  display: flex;
+  gap: 1rem;
+}
+
+.team-image {
+  flex-shrink: 0;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+@media (min-width: 992px) {
+  .team-images-list-wrapper {
+    gap: 2rem;
+  }
+  
+  .about-wispr_slider-wrap {
+    margin-top: 6rem;
+  }
+}
+
+/* Navigation menu on left side next to logo on desktop */
 @media (min-width: 992px) {
   .nav_menu.v2 {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative;
+    left: auto;
+    transform: none;
     z-index: 1;
+    margin-left: 2rem;
   }
   
   .nav_big-button {
@@ -1165,41 +1277,252 @@ margin: 0rem !important;
     justify-content: space-between;
   }
 }
-</style></div><div class="banner"><div class="text-wrap-balance">Next cohort applications close on 11/30</div><a href="apply.html" class="banner_text-link w-inline-block"><div>Apply Now</div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 17 16" fill="none" class="banner_link-arrow"><path d="M7.16675 10.6665L9.59768 8.23557C9.72788 8.10537 9.72788 7.8943 9.59768 7.7641L7.16675 5.33317" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></div><div class="nav_fixed"><div class="nav_spacer"></div><div data-wf--navbar--variant="base" data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="nav_component w-nav"><div class="nav_container-v2"><a href="index.html" id="w-node-_7957dad2-de7a-14a6-130e-6e11898d1050-63dfdea9" aria-current="page" class="nav_brand w-nav-brand w--current"><img src="collective_logo_black_svg_transparent.svg" loading="eager" alt="Collective Logo" class="nav_logo"/></a><nav role="navigation" id="w-node-_7957dad2-de7a-14a6-130e-6e11898d1052-63dfdea9" class="nav_menu v2 w-nav-menu">
-<div class="nav_menu-wrapper grid v2">
-<div class="nav-link-wrap"><a href="index.html" aria-current="page" class="nav_menu-link w-inline-block w--current"><div>Home</div></a></div>
-<div class="nav-link-wrap"><a href="apply.html" class="nav_menu-link w-inline-block"><div>Apply</div></a></div>
-<div class="nav-link-wrap"><a href="about.html" class="nav_menu-link w-inline-block"><div>About</div></a></div>
-</div>
-</nav><div class="nav_mobile-cta"><a id="nav-mobile-download" cta="" cta_location="nav_mobile" cta_type="apply" href="apply.html" class="nav_mobile-btn w-button">Apply to Join Collective</a></div><div class="nav_button w-nav-button"><div class="hamburger_12_wrap"><div class="hamburger_12_line"></div><div class="hamburger_embed w-embed"><style>
-.hamburger_12_wrap {
-	--thickness: 0.125rem;
-	--gap: 0.375rem;
-	--rotate: 45;
-  --width: 100%;
+
+/* FIXED NAVBAR - Using position: fixed instead of sticky */
+.new-sticky-navbar {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 9999 !important;
+  background-color: #FFFFF5 !important;
+  color: #034F46 !important;
+  width: 100% !important;
+  padding: 0.25rem 1.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(3, 79, 70, 0.1) !important;
 }
-.hamburger_12_wrap:hover .hamburger_12_line {
-	width: 65%;
+
+@media (max-width: 991px) {
+  .new-sticky-navbar {
+    padding: 0.25rem 1rem;
+  }
 }
-.hamburger_12_wrap:hover .hamburger_12_line:first-child {
-	width: 85%;
+
+/* Add padding to page-wrapper to account for fixed navbar */
+.page-wrapper {
+  padding-top: 70px !important;
 }
-.hamburger_12_wrap:hover .hamburger_12_line:last-child {
-	width: 100%;
+
+@media (max-width: 991px) {
+  .page-wrapper {
+    padding-top: 65px !important;
+  }
 }
-.w--open .hamburger_12_line {
-	width: 100% !important;
-	transform: scaleX(0);
+
+/* Override nav component background - REMOVE ALL BACKGROUNDS AND BORDERS */
+.new-sticky-navbar .nav_component,
+.new-sticky-navbar .nav_container-v2,
+.new-sticky-navbar .w-nav,
+.new-sticky-navbar .w-nav-brand,
+.new-sticky-navbar > * {
+  background-color: transparent !important;
+  background: none !important;
+  background-image: none !important;
+  position: relative !important;
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
 }
-.w--open .hamburger_12_line:first-child {
-	transform: translateY(calc(var(--thickness) + var(--gap))) rotate(calc(var(--rotate) * 3 * 1deg));
+
+/* Reset nav_component specific padding/margins */
+.new-sticky-navbar .nav_component {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  max-width: none !important;
+  width: 100% !important;
+  position: relative !important;
+  inset: auto !important;
 }
-.w--open .hamburger_12_line:last-child {
-	transform: translateY(calc(var(--thickness) * -1 + var(--gap) * -1)) rotate(calc(var(--rotate) * 1deg));
+
+/* Reduce logo size to make navbar more compact */
+.new-sticky-navbar .nav_logo {
+  height: 60px !important;
+  width: auto !important;
+  max-height: 60px !important;
 }
-</style></div><div class="hamburger_12_line"></div><div class="hamburger_12_line"></div></div></div><a id="nav-download" cta="" cta_location="navbar" cta_type="apply" href="apply.html" class="nav_big-button button w-node-c3e00823-9abf-42db-4599-adf2322aefc8-63dfdea9 w-inline-block"><div>Apply to Join Collective</div></a></div></div></div><main class="main-wrapper"><section class="section_icpv2-hero"><style>
+
+@media (max-width: 991px) {
+  .new-sticky-navbar .nav_logo {
+    height: 50px !important;
+    max-height: 50px !important;
+  }
+}
+
+/* Update text colors - dark green on page background */
+.new-sticky-navbar .nav_menu-link,
+.new-sticky-navbar .nav_menu-link div {
+  color: #034F46 !important;
+  transition: all 0.3s ease;
+  display: inline-block !important;
+  visibility: visible !important;
+  writing-mode: horizontal-tb !important;
+  text-orientation: mixed !important;
+  white-space: nowrap !important;
+}
+
+.new-sticky-navbar .nav_menu-link:hover,
+.new-sticky-navbar .nav_menu-link:hover div {
+  opacity: 0.6 !important;
+  transform: translateY(-1px);
+}
+
+/* Ensure mobile menu links are visible and horizontal */
+@media (max-width: 991px) {
+  .new-sticky-navbar .nav_menu-link,
+  .new-sticky-navbar .nav_menu-link div {
+    color: #034F46 !important;
+    display: block !important;
+    visibility: visible !important;
+    writing-mode: horizontal-tb !important;
+    text-orientation: mixed !important;
+  }
+}
+
+/* Fix any grid/flex issues causing vertical text - DESKTOP ONLY */
+@media (min-width: 992px) {
+  .new-sticky-navbar .nav_menu-wrapper,
+  .new-sticky-navbar .nav-link-wrap {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+  }
+}
+
+/* Hamburger lines color - dark green */
+.new-sticky-navbar .hamburger_12_line {
+  background-color: #034F46 !important;
+}
+
+/* Mobile menu - Keep it functional without dark overlay */
+.new-sticky-navbar .w-nav-overlay {
+  background-color: transparent !important;
+}
+
+.new-sticky-navbar .nav_menu {
+  background-color: #FFFFF5 !important;
+}
+
+@media (max-width: 991px) {
+  /* Mobile menu ONLY visible when open */
+  .new-sticky-navbar .nav_menu {
+    background-color: #FFFFF5 !important;
+  }
+  
+  .new-sticky-navbar .nav_menu.w--nav-menu-open {
+    display: block !important;
+    box-shadow: 0 8px 20px rgba(3, 79, 70, 0.18) !important;
+    border-radius: 20px !important;
+    padding: 1.25rem 1.5rem !important;
+    width: auto !important;
+    position: absolute !important;
+    top: calc(100% + 0.75rem) !important;
+    right: 1rem !important;
+    left: 1rem !important;
+    margin: 0 auto !important;
+  }
+  
+  /* Make sure menu wrapper and links are visible when menu is open */
+  .new-sticky-navbar .nav_menu.w--nav-menu-open .nav_menu-wrapper {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+    width: 100% !important;
+  }
+  
+  .new-sticky-navbar .nav_menu.w--nav-menu-open .nav-link-wrap {
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+  
+  .new-sticky-navbar .nav_menu.w--nav-menu-open .nav_menu-link {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    padding: 0.5rem 0 !important;
+  }
+
+  .new-sticky-navbar .nav_menu.w--nav-menu-open .nav_menu-link div {
+    white-space: nowrap !important;
+  }
+}
+
+/* Apply button styling - dark green solid */
+.new-sticky-navbar .nav_big-button {
+  background-color: #034F46 !important;
+  color: #FFFFF5 !important;
+  border: 2px solid #034F46 !important;
+  transition: all 0.3s ease;
+  writing-mode: horizontal-tb !important;
+  text-orientation: mixed !important;
+}
+
+.new-sticky-navbar .nav_big-button div {
+  writing-mode: horizontal-tb !important;
+  text-orientation: mixed !important;
+  white-space: nowrap !important;
+}
+
+.new-sticky-navbar .nav_big-button:hover {
+  background-color: #FFFADD !important;
+  color: #034F46 !important;
+  border-color: #034F46 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(3, 79, 70, 0.2) !important;
+}
+
+/* Mobile button - dark green solid */
+.new-sticky-navbar .nav_mobile-btn {
+  background-color: #034F46 !important;
+  color: #FFFFF5 !important;
+  border: 2px solid #034F46 !important;
+  transition: all 0.3s ease;
+  writing-mode: horizontal-tb !important;
+  text-orientation: mixed !important;
+}
+
+.new-sticky-navbar .nav_mobile-btn:hover {
+  background-color: #FFFADD !important;
+  color: #034F46 !important;
+  border-color: #034F46 !important;
+  transform: translateY(-1px);
+}
+</style></div><main class="main-wrapper"><section class="section_icpv2-hero"><style>
+.section_icpv2-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.section_icpv2-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60%;
+  height: 100%;
+  background-image: url('Rectangle.png');
+  background-size: 105%;
+  background-position: center right;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+  z-index: 0;
+  pointer-events: none;
+  mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0) 100%);
+}
+
 .section_icpv2-hero .container-large {
   max-width: 90rem !important;
+  position: relative;
+  z-index: 1;
 }
 
 .icpv2-hero_grid {
@@ -1208,15 +1531,42 @@ margin: 0rem !important;
   gap: 3rem;
   align-items: center;
   min-height: 600px;
+  position: relative;
+  z-index: 1;
 }
 
 .section_icpv2-hero h1 {
-  font-size: 8rem !important;
+  font-size: 6rem !important;
 }
 
 @media (min-width: 992px) {
   .section_icpv2-hero h1 {
-    font-size: 8rem !important;
+    font-size: 6rem !important;
+  }
+  
+  .section_icpv2-hero {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+  
+  .section_icpv2-hero .padding-global {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+  
+  .section_icpv2-hero .container-large {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+  
+  .section_icpv2-hero .promo-wrap {
+    margin-top: 0 !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .section_icpv2-hero .icpv2-hero_grid {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
   }
 }
 
@@ -1232,21 +1582,31 @@ margin: 0rem !important;
   }
   
   .section_icpv2-hero h1 {
-    font-size: 7rem !important;
+    font-size: 5.25rem !important;
   }
   
   .section_icpv2-hero {
-    padding-top: 8rem;
+    padding-top: 3rem;
+  }
+  
+  .section_icpv2-hero::before {
+    width: 80%;
+    height: 100%;
+    opacity: 0.4;
+    background-size: auto 100%;
+    background-position: center right;
+    mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0) 100%);
+    -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0) 100%);
   }
 }
 
 @media (max-width: 479px) {
   .section_icpv2-hero h1 {
-    font-size: 5rem !important;
+    font-size: 3.75rem !important;
   }
   
   .section_icpv2-hero {
-    padding-top: 10rem;
+    padding-top: 4rem;
   }
 }
 
@@ -1410,6 +1770,22 @@ margin: 0rem !important;
   
   .community-section-padding {
     padding-top: 3rem !important;
+    padding-bottom: 0 !important;
+  }
+  
+  .section_app-integrations {
+    padding-bottom: 0 !important;
+  }
+  
+  /* Drastically reduce padding on community section */
+  .section_app-integrations .padding-global.padding-section-xlarge {
+    padding-bottom: 0 !important;
+  }
+  
+  /* Reduce min-height on mobile */
+  .integrations_grid {
+    min-height: auto !important;
+    max-height: none !important;
   }
 }
 
@@ -1476,7 +1852,7 @@ margin: 0rem !important;
   </div>
 </div></div></div></div></section>
 
-<div data-w-id="9ebabd72-f963-4b5b-90e4-ce5c0c1355ea" class="section_integrations-clients community-section-overlap" style="background-color: #034F46;"><section ab-test-variant="control" data-w-id="1ec5bcfa-2dd7-75a6-30f7-be48ce0ca1df" class="section_app-integrations" style="background-color: #034F46;"><div class="padding-global padding-section-xlarge community-section-padding"><div class="container-large"><div class="integrations_grid" style="min-height: 600px; max-height: 800px;"><div id="w-node-_98716837-3cd9-581b-b37b-7806f8b862df-59ff8fc2" class="integrations_left"><div data-wf--integrations-light-color--variant="base" class="home_integrations_chips-div" style="justify-content: center;"><div class="home_integrations_chip"><div class="text-color-alternate text-weight-bold">🌐 100% web based — works on any device</div></div></div><div class="spacer-large"></div><h2 class="text-color-secondary">Built for community, not algorithms</h2><div class="spacer-large"></div><div class="max-width-small align-center"><p class="text-size-large">Bring your people together in a space designed for connection, not clicks. No algorithms deciding who sees what—just direct communication with your community.</p></div><div class="spacer-medium"></div><a href="about.html" class="w-inline-block"><div cta_type="learn_more" cta="" cta_location="community_section" class="button is-secondary"><div>Learn More</div></div><script type="application/json" class="w-json">{
+<div data-w-id="9ebabd72-f963-4b5b-90e4-ce5c0c1355ea" class="section_integrations-clients community-section-overlap" style="background-color: #FFFFF5; border-top-left-radius: 0; border-top-right-radius: 0;"><section ab-test-variant="control" data-w-id="1ec5bcfa-2dd7-75a6-30f7-be48ce0ca1df" class="section_app-integrations" style="background-color: #FFFFF5; border-top-left-radius: 0; border-top-right-radius: 0;"><div class="padding-global padding-section-xlarge community-section-padding"><div class="container-large"><div class="integrations_grid" style="min-height: 600px; max-height: 800px;"><div id="w-node-_98716837-3cd9-581b-b37b-7806f8b862e0-59ff8fc2" data-w-id="community-dashboard-mockup" class="integrations_left" style="position: absolute; top: 0; left: 0; width: 50%; z-index: 10;"><div class="community-video-container" style="width: 100%; max-width: 700px; border: 3px solid #034F46; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); margin: 0 auto;"><img src="example_profile_1.png" alt="Profile interface screenshot" style="width: 100%; height: auto; display: block;" loading="lazy"/></div></div><div id="w-node-_98716837-3cd9-581b-b37b-7806f8b862df-59ff8fc2" class="integrations_right" style="position: absolute; bottom: 0; right: 0; width: 50%; z-index: 10; text-align: center;"><div data-wf--integrations-light-color--variant="base" class="home_integrations_chips-div" style="justify-content: center;"><div class="home_integrations_chip"><div class="text-color-alternate text-weight-bold" style="color: #000;">🌐 100% web based — works on any device</div></div></div><div class="spacer-large"></div><h2 class="text-color-secondary" style="color: #000;">Built for community, not algorithms</h2><div class="spacer-large"></div><div class="max-width-small align-center"><p class="text-size-large" style="color: #000;">Bring your people together in a space designed for connection, not clicks. No algorithms deciding who sees what—just direct communication with your community.</p></div><div class="spacer-medium"></div><a href="about.html" class="w-inline-block"><div cta_type="learn_more" cta="" cta_location="community_section" class="button connection-button is-secondary" style="background-color: #F0D7FF; color: #1A1A1A;"><div>Learn More</div></div><script type="application/json" class="w-json">{
   "items": [
     {
       "url": "https://www.youtube.com/watch?v=x6XJIbRksgI",
@@ -1489,56 +1865,136 @@ margin: 0rem !important;
     }
   ],
   "group": ""
-}</script></a></div><div id="w-node-_98716837-3cd9-581b-b37b-7806f8b862e0-59ff8fc2" data-w-id="community-dashboard-mockup" class="integrations_right" style="opacity: 0; transform: translateY(80px); position: absolute; bottom: 0; right: 0; width: 50%; z-index: 10;"><div class="community-video-container" style="width: 100%; max-width: 350px; border: 4px solid #FFFADD; border-radius: 54px; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); margin: 0 auto;"><video autoplay loop muted playsinline style="width: 100%; height: auto; display: block;"><source src="assets/mobile hero demo (2).mp4" type="video/mp4"/>Your browser does not support the video tag.</video></div></div><style>
-/* Mobile: Make section taller and position video at very bottom, cut off */
+}</script></a></div><style>
+/* Mobile: Adjust layout for smaller screens */
 @media (max-width: 991px) {
   .section_integrations-clients {
-    min-height: 120vh !important;
-    overflow: hidden !important;
+    min-height: 150vh !important;
+    overflow: visible !important;
   }
   
   .integrations_grid {
-    min-height: 120vh !important;
-  }
-  
-  #w-node-_98716837-3cd9-581b-b37b-7806f8b862e0-59ff8fc2 {
-    position: absolute !important;
-    bottom: -150px !important;
-    top: auto !important;
-    right: auto !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 85% !important;
-    max-width: 400px !important;
-    opacity: 1 !important;
-    z-index: 5 !important;
-  }
-  
-  .integrations_left {
+    min-height: 150vh !important;
     position: relative !important;
+    padding-bottom: 4rem !important;
+  }
+  
+  /* Video at top */
+  #w-node-_98716837-3cd9-581b-b37b-7806f8b862e0-59ff8fc2 {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 120% !important;
+    max-width: 600px !important;
     z-index: 10 !important;
+    opacity: 1 !important;
+    transform: none !important;
+    margin: 0 -100px 2rem auto !important;
+  }
+  
+  /* Icon animation - positioned absolutely above connection section */
+  .icon_svg-wrapper {
+    position: absolute !important;
+    top: 5rem !important;
+    left: 0 !important;
+    width: 100% !important;
+    z-index: 1 !important;
+    height: auto !important;
+  }
+  
+  /* Text positioned on top of animation */
+  #w-node-_98716837-3cd9-581b-b37b-7806f8b862df-59ff8fc2 {
+    position: relative !important;
+    top: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    width: 100% !important;
+    z-index: 5 !important;
+    text-align: center !important;
+    margin-top: 4rem !important;
+    padding: 0 1rem !important;
+  }
+  
+  /* Badge border black on mobile only */
+  #w-node-_98716837-3cd9-581b-b37b-7806f8b862df-59ff8fc2 .home_integrations_chips-div .home_integrations_chip {
+    border: 1px solid #000 !important;
   }
   
   .community-video-container {
-    max-width: 100% !important;
+    max-width: 600px !important;
   }
 }
 
-/* Desktop: Push video down significantly */
+/* Desktop: Video above animation with slight overlap, text below wave */
 @media (min-width: 992px) {
+  .section_integrations-clients,
+  .section_app-integrations,
+  .section_app-integrations .padding-global,
+  .section_app-integrations .container-large,
+  .section_app-integrations .container-large > * {
+    overflow: visible !important;
+  }
+  
+  .integrations_grid {
+    overflow: visible !important;
+  }
+  
+  /* Video on left, above animation with slight overlap */
   #w-node-_98716837-3cd9-581b-b37b-7806f8b862e0-59ff8fc2 {
-    bottom: -350px !important;
+    top: 80px !important;
+    left: -200px !important;
+    transform: translateY(0) !important;
+    width: 60% !important;
   }
   
   .community-video-container {
-    transform: scale(1.3);
-    transform-origin: center bottom;
-    max-width: 300px;
+    transform: scale(1.5);
+    transform-origin: center top;
+    max-width: 700px !important;
+    border-radius: 12px !important;
+  }
+  
+  /* Text on right, moved significantly higher up and further right */
+  #w-node-_98716837-3cd9-581b-b37b-7806f8b862df-59ff8fc2 {
+    bottom: auto !important;
+    top: 10% !important;
+    right: -1.5rem !important;
+    left: auto !important;
+    padding-top: 0 !important;
+    padding-right: 0 !important;
+    transform: translateY(0) !important;
+    width: 40% !important;
+  }
+  
+  /* Override container padding to allow text to extend further right */
+  .section_app-integrations .container-large {
+    padding-right: 0 !important;
+  }
+  
+  /* Badge border green on desktop */
+  #w-node-_98716837-3cd9-581b-b37b-7806f8b862df-59ff8fc2 .home_integrations_chips-div .home_integrations_chip {
+    border: 1px solid #034F46 !important;
+  }
+  
+  /* Ensure icon animation wrapper is visible and properly positioned */
+  .icon_svg-wrapper {
+    position: relative !important;
+    width: 100% !important;
+    z-index: 5 !important;
+    visibility: visible !important;
   }
 }
 
 .integrations_grid {
   position: relative;
+}
+
+/* Ensure icon animation stays full width and in middle layer */
+.icon_svg-wrapper {
+  position: relative;
+  z-index: 5;
+  width: 100%;
 }
 </style><div class="icon_svg-wrapper"><div class="w-dyn-list"><div role="list" class="icon-list w-dyn-items"><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1521119989659-a83eee488004?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1522556189639-b150ed9c4330?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1463453091185-61582044d556?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div></div></div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 3570 1125" fill="none" class="icon_svg hide-mobile-landscape"><path d="M0.629639 1.15771C82.9263 189.969 357.34 608.012 796.621 769.692C1235.9 931.372 1567.15 773.202 1711.79 678.175C1891.9 559.839 2155.65 289.609 2443.93 327.36C2732.2 365.111 3187.5 563.779 3568.82 1124.32" id="icon-path-web"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 3572 438" fill="none" class="icon_svg show-mobile-landscape"><path d="M0.411621 1.27466H1191.81C1219.24 74.606 1310.71 236.967 1457.14 299.761C1603.56 362.555 1713.98 301.125 1762.19 264.217C1822.23 218.258 1910.15 113.305 2006.24 127.967C2102.33 142.628 2254.1 219.788 2381.2 437.493H3571.73" id="icon-path-mobile"></path></svg></div><div class="integration-mobile_wrapper no-max-width"><div class="rive-wrapper"><div class="mobile-rive" data-rive-url="assets/682f84b3838c89f8ff7667db/686eb838dbbd35b6fc976700_Wispr%20-%20Chat%20v3.riv" data-rive-autoplay="true" data-rive-is-touch-scroll-enabled="false" data-rive-automatically-handle-events="false" data-rive-fit="contain" data-rive-alignment="center" data-animation-type="rive"><canvas style="height:100%;width:100%"></canvas></div></div></div></div></div></div></section><section ab-test-variant="test" data-w-id="3a5a83b3-fb0d-199d-a219-4df33a91fade" class="section_app-integrations"><div class="padding-global padding-section-xlarge"><div class="container-large"><div class="integrations_grid _2nd-col-wider"><div id="w-node-_3a5a83b3-fb0d-199d-a219-4df33a91fae2-59ff8fc2"><div data-wf--integrations-light-color--variant="left-align" class="home_integrations_chips-div w-variant-42389bcc-99c2-f571-cae7-5c8fffc26c50"><div class="home_integrations_chip"><img src="assets/682f84b3838c89f8ff7667db/6832323f127062351dc681c7_apple_symobl.svg" loading="lazy" alt="" class="home_integrations_chip-logo apple"/><div class="text-color-alternate text-weight-bold">iOS</div></div><div class="home_integrations_chip"><img src="assets/682f84b3838c89f8ff7667db/6832323f127062351dc681c7_apple_symobl.svg" loading="lazy" alt="" class="home_integrations_chip-logo apple"/><div class="text-color-alternate text-weight-bold">Mac</div></div><div class="home_integrations_chip"><img src="assets/682f84b3838c89f8ff7667db/6832323fbe339316d0a134c8_windows_symbol.svg.svg" loading="lazy" alt="" class="home_integrations_chip-logo"/><div class="text-color-alternate text-weight-bold">Windows</div></div></div><div class="spacer-large"></div><h2 class="text-color-secondary">Built for community, not algorithms</h2><div class="spacer-large"></div><div class="max-width-small"><p class="text-size-large text-wrap-balance">Seamless speech-to-text in every application on your iPhone or computer.</p></div><div class="spacer-medium"></div><a cta="" cta_location="home_video_section" cta_type="apply" href="apply.html" class="button w-inline-block"><div>Apply to Join Collective</div></a></div><div id="w-node-_3a5a83b3-fb0d-199d-a219-4df33a91faef-59ff8fc2" class="integrations_video-wrap"><div class="w-embed w-iframe"><div class="yt-wrap">
   <iframe
@@ -1564,15 +2020,325 @@ margin: 0rem !important;
     border: 0;
     display: block;
   }
-</style></div></div></div></div></div></section></div><div class="ribbon_wrapper"><section class="section_faster"><div class="padding-global"><div class="padding-section-large"><div class="container-large"><div><div class="text-align-center"><h2 class="heading-style-h1">Reach your audience <div class="heading_text-wrapper"><div>directly</div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 387 16" fill="none" height="auto" class="heading_border"><path d="M4.23059 11.782C50.3846 10.1795 96.5723 10.4079 142.653 7.76456C202.017 4.3592 322.467 1.92554 382.231 11.7818" stroke="#F0D7FF" stroke-width="8" stroke-linecap="round" id="heading-underline" preserveAspectRatio="none"></path></svg></div></h2><div class="spacer-xlarge"></div><div class="spacer-xsmall hide-mobile-landscape"></div><div class="max-width-large align-center"><p class="text-size-large">On Instagram, your posts get lost in the algorithm—reaching only 5% of your followers. With Collective, every post flows directly from your account into your supporters' inboxes. No algorithms, no boosted posts—just direct, meaningful connection with 100% of your community.</p></div><div class="spacer-xlarge"></div><div class="spacer-xsmall hide-mobile-landscape"></div><div id="hero-button-group" hero-button-group="" class="button-group"><div><a cta="" cta_location="reach_section" cta_type="see_action" href="about.html" class="button is-secondary w-inline-block"><div>See it in action</div></a></div><a cta="" cta_location="reach_section" cta_type="apply" href="apply.html" class="button w-inline-block"><div>Apply to join Collective</div></a></div></div><div class="spacer-xlarge"></div><div class="faster_grid"><div id="w-node-_1ca9eff4-2ea1-8588-e3ca-3ff1aecd62b5-aecd62a0" class="faster_grid-left"><div class="faster_content left"><div class="text-size-large">Instagram</div><h3>5% reach</h3></div><div class="faster_straight-marquee" style="position: relative; width: 110%; height: 100px; overflow: visible;"><svg id="svg-straight" width="100%" height="2" viewBox="0 0 350 2" fill="none" xmlns="http://www.w3.org/2000/svg" style="position: absolute; top: 30%; transform: translateY(-50%);">
+</style></div></div></div></div></div></section></div><section class="section_connection" style="background-color: #FFFFF5;"><style>
+@media (min-width: 992px) {
+  .section_connection {
+    margin-top: -6rem !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .section_connection {
+    margin-top: -45rem !important;
+    padding-top: 45rem !important;
+    transform: translateY(-15rem) !important;
+  }
+  
+  /* Remove all top padding from connection section */
+  .section_connection .padding-global.padding-section-large {
+    padding-top: 0 !important;
+  }
+  
+  /* Pull connection section content up */
+  .section_connection .container-large {
+    margin-top: -15rem !important;
+  }
+}
+</style><div class="padding-global padding-section-large"><div class="container-large"><div class="connection_grid"><div class="connection_content"><h2 class="text-color-secondary" style="color: #000;">A more direct, meaningful connection</h2><div class="spacer-large"></div><p class="text-size-large">Chat offers a private space for deeper discussions between your organization and your community, fostering more authentic connection and conversation with contacts that you already have.</p><div class="spacer-medium"></div><p class="text-size-large">We deliver all of your content directly from social media to your supporters' inboxes, no more relying on algorithms for visibility.</p><div class="spacer-large"></div><a cta="" cta_location="connection_section" cta_type="get_started" href="apply.html" class="button connection-button w-inline-block"><div>Get Started on Collective</div></a></div><div class="connection_images"><div class="phone-container phone-chat"><img src="example_chat_1.png" alt="Chat interface screenshot" class="phone-screenshot" loading="lazy"/></div><div class="phone-container phone-post"><img src="example_post_1.png" alt="Post interface screenshot" class="phone-screenshot" loading="lazy"/></div></div></div></div></div><style>
+.connection_grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 6rem;
+  align-items: center;
+  min-height: 600px;
+}
+
+.connection_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.connection-button {
+  align-self: flex-start;
+  font-size: 0.9rem;
+  padding: 0.75rem 1.5rem;
+}
+
+/* Community section button alignment */
+#w-node-_98716837-3cd9-581b-b37b-7806f8b862df-59ff8fc2 .connection-button {
+  align-self: center;
+}
+
+@media (min-width: 992px) {
+  #w-node-_98716837-3cd9-581b-b37b-7806f8b862df-59ff8fc2 .connection-button {
+    align-self: center;
+  }
+}
+
+.connection_images {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1.5rem;
+  position: relative;
+  padding: 2rem 0;
+  min-height: 500px;
+}
+
+.phone-container {
+  position: relative;
+  width: 100%;
+  max-width: 345px;
+  border-radius: 50px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  border: 4px solid #034F46;
+  background: #000;
+  flex-shrink: 0;
+}
+
+.phone-chat {
+  transform: none;
+  z-index: 2;
+  margin-top: 0;
+}
+
+.phone-post {
+  transform: none;
+  z-index: 1;
+  margin-top: 3rem;
+}
+
+.phone-screenshot {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 991px) {
+  .connection_grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    min-height: auto;
+  }
+  
+  .connection_grid > *:first-child {
+    order: 2;
+  }
+  
+  .connection_grid > *:last-child {
+    order: 1;
+  }
+  
+  .connection_images {
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+    padding: 1rem 0;
+    align-items: flex-start;
+  }
+  
+  .phone-chat {
+    transform: none;
+    margin-top: 0;
+    max-width: 240px;
+  }
+  
+  .phone-post {
+    transform: none;
+    margin-top: 2rem;
+    max-width: 240px;
+  }
+  
+  .connection_content {
+    text-align: center;
+  }
+}
+
+@media (max-width: 479px) {
+  .phone-container {
+    max-width: 200px;
+    border-width: 4px;
+    border-radius: 35px;
+  }
+  
+  .connection_images {
+    gap: 0.75rem;
+  }
+  
+  .phone-chat,
+  .phone-post {
+    max-width: 200px;
+  }
+  
+  .phone-post {
+    margin-top: 1.5rem;
+  }
+  
+  .connection-button {
+    align-self: center;
+  }
+}
+</style></section><section class="section_contacts-reach" style="background-color: #FFFFF5;"><style>
+@media (min-width: 992px) {
+  .section_contacts-reach {
+    margin-top: -6rem !important;
+  }
+  
+  .section_contacts-reach .container-large {
+    overflow: visible !important;
+  }
+  
+  .contacts-reach_grid {
+    overflow: visible !important;
+  }
+  
+  /* Screenshot on left, positioned like community section */
+  .contacts-reach_image {
+    position: absolute;
+    top: 80px;
+    left: -200px;
+    width: 60%;
+    z-index: 10;
+    transform: translateY(0);
+  }
+  
+  .contacts-screenshot-container {
+    transform: scale(1.5);
+    transform-origin: center top;
+    max-width: 700px !important;
+    border-radius: 12px !important;
+    margin: 0 auto;
+  }
+  
+  /* Text on right */
+  .contacts-reach_content {
+    position: absolute;
+    top: 10%;
+    right: -1.5rem;
+    left: auto;
+    width: 40%;
+    z-index: 10;
+    padding-top: 0;
+    padding-right: 0;
+    transform: translateY(0);
+  }
+  
+  /* Override container padding to allow text to extend further right */
+  .section_contacts-reach .container-large {
+    padding-right: 0 !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .section_contacts-reach {
+    margin-top: 0;
+    min-height: auto;
+  }
+  
+  .contacts-reach_grid {
+    min-height: auto;
+    position: relative;
+    padding-bottom: 4rem;
+  }
+  
+  .contacts-reach_image {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 120% !important;
+    max-width: 600px !important;
+    z-index: 10 !important;
+    transform: none !important;
+    margin: 0 -100px 2rem auto !important;
+  }
+  
+  .contacts-screenshot-container {
+    transform: none !important;
+    max-width: 600px !important;
+  }
+  
+  .contacts-reach_content {
+    position: relative !important;
+    top: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    width: 100% !important;
+    z-index: 5 !important;
+    text-align: center !important;
+    margin-top: 2rem !important;
+    padding: 0 1rem !important;
+  }
+}
+</style><div class="padding-global padding-section-large"><div class="container-large"><div class="contacts-reach_grid" style="min-height: 600px; max-height: 800px; position: relative;"><div class="contacts-reach_image"><div class="contacts-screenshot-container" style="width: 100%; max-width: 700px; border: 3px solid #034F46; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); margin: 0 auto;"><img src="example_contacts_1.png" alt="Contacts interface screenshot" style="width: 100%; height: auto; display: block;" loading="lazy"/></div></div><div class="contacts-reach_content"><h2 class="text-color-secondary" style="color: #000;">Where <div class="heading_text-wrapper" style="display: inline-block; position: relative;"><div>100%</div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 387 16" fill="none" height="auto" class="heading_border" style="position: absolute; bottom: 0; left: 0;"><path d="M4.23059 11.782C50.3846 10.1795 96.5723 10.4079 142.653 7.76456C202.017 4.3592 322.467 1.92554 382.231 11.7818" stroke="#F0D7FF" stroke-width="8" stroke-linecap="round" id="heading-underline-contacts" preserveAspectRatio="none"></path></svg></div> of your supporters see your stories. Not just 5%.</h2><div class="spacer-large"></div><p class="text-size-large">On Collective, you control who sees what content. Every update reaches every supporter in your contact list, whether or not they have joined your community on Collective—no algorithms, no hidden feeds, no missed connections.</p><div class="spacer-large"></div><a cta="" cta_location="contacts_reach_section" cta_type="get_started" href="apply.html" class="button connection-button w-inline-block"><div>Get Started on Collective</div></a></div></div></div></div><style>
+.contacts-reach_grid {
+  position: relative;
+}
+
+.contacts-reach_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contacts-reach_content .heading_text-wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.contacts-reach_content .heading_border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+}
+
+#heading-underline-contacts {
+  stroke-width: 8 !important;
+}
+
+@media (max-width: 1024px) {
+  #heading-underline-contacts {
+    stroke-width: 12 !important;
+  }
+}
+
+@media (max-width: 479px) {
+  #heading-underline-contacts {
+    stroke-width: 12 !important;
+  }
+}
+
+.connection-button {
+  align-self: flex-start;
+  font-size: 0.9rem;
+  padding: 0.75rem 1.5rem;
+}
+
+@media (max-width: 991px) {
+  .connection-button {
+    align-self: center;
+  }
+}
+
+@media (max-width: 479px) {
+  .contacts-screenshot-container {
+    border-width: 3px;
+    border-radius: 8px;
+  }
+}
+</style></section><div class="ribbon_wrapper"><section class="section_faster"><div class="padding-global"><div class="padding-section-large"><div class="container-large"><div><div class="text-align-center"><h2 class="heading-style-h1">Reach your audience <div class="heading_text-wrapper"><div>directly</div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 387 16" fill="none" height="auto" class="heading_border"><path d="M4.23059 11.782C50.3846 10.1795 96.5723 10.4079 142.653 7.76456C202.017 4.3592 322.467 1.92554 382.231 11.7818" stroke="#F0D7FF" stroke-width="8" stroke-linecap="round" id="heading-underline" preserveAspectRatio="none"></path></svg></div></h2><div class="spacer-xlarge"></div><div class="spacer-xsmall hide-mobile-landscape"></div><div class="max-width-large align-center"><p class="text-size-large">On Instagram, your posts get lost in the algorithm—reaching only 5% of your followers. With Collective, every post flows directly from your account into your supporters' inboxes. No algorithms, no boosted posts—just direct, meaningful connection with 100% of your community.</p></div><div class="spacer-xlarge"></div><div class="spacer-xsmall hide-mobile-landscape"></div><div id="hero-button-group" hero-button-group="" class="button-group"><div><a cta="" cta_location="reach_section" cta_type="see_action" href="about.html" class="button is-secondary w-inline-block"><div>See it in action</div></a></div><a cta="" cta_location="reach_section" cta_type="apply" href="apply.html" class="button w-inline-block"><div>Apply to join Collective</div></a></div></div><div class="spacer-xlarge"></div><div class="faster_grid"><div id="w-node-_1ca9eff4-2ea1-8588-e3ca-3ff1aecd62b5-aecd62a0" class="faster_grid-left"><div class="faster_content left"><div class="text-size-large">Instagram</div><h3>5% reach</h3></div><div class="faster_straight-marquee" style="position: relative; width: 110%; height: 100px; overflow: visible;"><svg id="svg-straight" width="100%" height="2" viewBox="0 0 350 2" fill="none" xmlns="http://www.w3.org/2000/svg" style="position: absolute; top: 30%; transform: translateY(-50%);">
   <path id="curve-straight" d="M0.726196 0.594727H764.221" stroke="transparent" stroke-width="2">
   </path>
 </svg><div id="keyboard-avatars-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div></div></div><div class="faster_grid-right"><img src="assets/Untitled design (2).png" loading="lazy" alt="" class="faster_flow-image"/><div class="faster_content"><div class="text-size-large">Collective</div><h3>100% reach</h3></div><div class="faster_flow-marquee" style="position: relative; width: 100%; height: 100px; overflow: visible;"><svg id="svg-curve" width="100%" height="76" viewBox="0 0 928 76" xmlns="http://www.w3.org/2000/svg" style="position: absolute; top: 0; left: 0;">
   <path id="curve" d="M0.535156 74.7977C216.035 74.7977 283.147 0.534007 467.535 0.797575C650.383 1.05894 649.035 74.7977 927.535 74.7977" stroke="transparent" stroke-width="2" fill="none">
   </path>
 </svg><div id="flow-avatars-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div></div><div class="faster_flow-lottie" data-w-id="1ca9eff4-2ea1-8588-e3ca-3ff1aecd62c4" data-animation-type="lottie" data-src="assets/682f84b3838c89f8ff7667db/683a874f2714dc8d38242818_Flow%20-%204x%20faster.lottie" data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0" data-renderer="svg" data-default-duration="8" data-duration="0"></div></div></div></div></div></div></div></div></section><div class="spacer-huge"></div><section class="section_use-cases min-height-desktop-50rem" style="background-color: #034F46;"><div class="padding-global"><div class="padding-section-large"><div class="container-large"><div class="max-width-medium-plus"><h2 class="heading-style-h1" style="color: #FFFFEB;">Home for <span class="text-color-tertiary">any organization</span></h2></div><div class="spacer-xxlarge"></div><div fs-list-element="tabs" data-current="Tab 1" data-easing="ease" data-duration-in="300" data-duration-out="100" class="use-cases_tab w-tabs"><div class="use-cases_tab-menu w-tab-menu"><a data-w-tab="Tab 1" class="use-cases_tab-link w-inline-block w-tab-link w--current"><div>Tab Active</div></a><a data-w-tab="Tab 2" class="use-cases_tab-link w-inline-block w-tab-link"><div>Tab Inactive</div></a></div><div class="use-cases_tab-content w-tab-content"><div data-w-tab="Tab 1" class="use-cases_tab-pane w-tab-pane w--tab-active"></div><div data-w-tab="Tab 2" class="use-cases_tab-pane w-tab-pane"></div></div></div><div class="use-cases_cms hide"><div fs-list-element="list" class="w-dyn-list"><div role="list" class="w-dyn-items"><div role="listitem" class="use-cases_tab-cms-content w-dyn-item"><div class="hide"><div fs-list-element="tab-link" class="use-cases_fs-tablink">Social Justice</div></div><img src="assets/682fa12727f78b943ed45584/68485a9b3f5985030355f9d8_acessibility.avif" loading="lazy" alt="" class="use-cases_image"/><div class="usercase-rtf w-richtext"><h3>Collective for <em>Social Justice</em></h3></div><p class="text-size-large">Build movements, not just followings. Collective helps social justice organizations mobilize supporters, share urgent updates, and coordinate action—without algorithms deciding who sees your message.</p><div><a href="apply.html" cta="" cta_location="home_tab_section" cta_type="get_started" class="button w-button">Apply to Join</a></div></div><div role="listitem" class="use-cases_tab-cms-content w-dyn-item"><div class="hide"><div fs-list-element="tab-link" class="use-cases_fs-tablink">Environmental</div></div><img src="assets/682fa12727f78b943ed45584/68485a9b3f5985030355f9d8_acessibility.avif" loading="lazy" alt="" class="use-cases_image"/><div class="usercase-rtf w-richtext"><h3>Collective for <em>Environmental</em></h3></div><p class="text-size-large">Every voice matters for climate action. Share conservation updates, rally volunteers for clean-up events, and build a community committed to protecting our planet.</p><div><a href="apply.html" cta="" cta_location="home_tab_section" cta_type="get_started" class="button w-button">Apply to Join</a></div></div><div role="listitem" class="use-cases_tab-cms-content w-dyn-item"><div class="hide"><div fs-list-element="tab-link" class="use-cases_fs-tablink">Education</div></div><img src="assets/682fa12727f78b943ed45584/68485a9b3f5985030355f9d8_acessibility.avif" loading="lazy" alt="" class="use-cases_image"/><div class="usercase-rtf w-richtext"><h3>Collective for <em>Education</em></h3></div><p class="text-size-large">Connect with students, parents, and supporters directly. Share program updates, celebrate student achievements, and build a thriving educational community that stays engaged.</p><div><a href="apply.html" cta="" cta_location="home_tab_section" cta_type="get_started" class="button w-button">Apply to Join</a></div></div><div role="listitem" class="use-cases_tab-cms-content w-dyn-item"><div class="hide"><div fs-list-element="tab-link" class="use-cases_fs-tablink">Healthcare</div></div><img src="assets/682fa12727f78b943ed45584/68485a9b3f5985030355f9d8_acessibility.avif" loading="lazy" alt="" class="use-cases_image"/><div class="usercase-rtf w-richtext"><h3>Collective for <em>Healthcare</em></h3></div><p class="text-size-large">Keep patients, families, and donors informed. Share health resources, announce wellness programs, and build a supportive community around your healthcare mission.</p><div><a href="apply.html" cta="" cta_location="home_tab_section" cta_type="get_started" class="button w-button">Apply to Join</a></div></div><div role="listitem" class="use-cases_tab-cms-content w-dyn-item"><div class="hide"><div fs-list-element="tab-link" class="use-cases_fs-tablink">Arts & Culture</div></div><img src="assets/682fa12727f78b943ed45584/68485a9b3f5985030355f9d8_acessibility.avif" loading="lazy" alt="" class="use-cases_image"/><div class="usercase-rtf w-richtext"><h3>Collective for <em>Arts & Culture</em></h3></div><p class="text-size-large">Engage your audience beyond event night. Share artist spotlights, behind-the-scenes content, and build a dedicated community that shows up for every performance.</p><div><a href="apply.html" cta="" cta_location="home_tab_section" cta_type="get_started" class="button w-button">Apply to Join</a></div></div><div role="listitem" class="use-cases_tab-cms-content w-dyn-item"><div class="hide"><div fs-list-element="tab-link" class="use-cases_fs-tablink">Animal Welfare</div></div><img src="assets/682fa12727f78b943ed45584/68485a9b3f5985030355f9d8_acessibility.avif" loading="lazy" alt="" class="use-cases_image"/><div class="usercase-rtf w-richtext"><h3>Collective for <em>Animal Welfare</em></h3></div><p class="text-size-large">Every rescue story deserves to be heard. Share adoption success stories, urgent needs, and rally your community of animal lovers to support your mission.</p><div><a href="apply.html" cta="" cta_location="home_tab_section" cta_type="get_started" class="button w-button">Apply to Join</a></div></div><div role="listitem" class="use-cases_tab-cms-content w-dyn-item"><div class="hide"><div fs-list-element="tab-link" class="use-cases_fs-tablink">Community Development</div></div><img src="assets/682fa12727f78b943ed45584/68485a9b3f5985030355f9d8_acessibility.avif" loading="lazy" alt="" class="use-cases_image"/><div class="usercase-rtf w-richtext"><h3>Collective for <em>Community Development</em></h3></div><p class="text-size-large">Strengthen neighborhoods, one connection at a time. Share local initiatives, coordinate volunteer efforts, and build the engaged community your area deserves.</p><div><a href="apply.html" cta="" cta_location="home_tab_section" cta_type="get_started" class="button w-button">Apply to Join</a></div></div><div role="listitem" class="use-cases_tab-cms-content w-dyn-item"><div class="hide"><div fs-list-element="tab-link" class="use-cases_fs-tablink">Youth Programs</div></div><img src="assets/682fa12727f78b943ed45584/68485a9b3f5985030355f9d8_acessibility.avif" loading="lazy" alt="" class="use-cases_image"/><div class="usercase-rtf w-richtext"><h3>Collective for <em>Youth Programs</em></h3></div><p class="text-size-large">Empower the next generation. Connect with parents, share program updates and success stories, and build a community invested in young people's futures.</p><div><a href="apply.html" cta="" cta_location="home_tab_section" cta_type="get_started" class="button w-button">Apply to Join</a></div></div><div role="listitem" class="use-cases_tab-cms-content w-dyn-item"><div class="hide"><div fs-list-element="tab-link" class="use-cases_fs-tablink">Human Rights</div></div><img src="assets/682fa12727f78b943ed45584/68485a9b3f5985030355f9d8_acessibility.avif" loading="lazy" alt="" class="use-cases_image"/><div class="usercase-rtf w-richtext"><h3>Collective for <em>Human Rights</em></h3></div><p class="text-size-large">Amplify voices that need to be heard. Share critical updates, mobilize advocates, and build a community committed to dignity and justice for all.</p><div><a href="apply.html" cta="" cta_location="home_tab_section" cta_type="get_started" class="button w-button">Apply to Join</a></div></div><div role="listitem" class="use-cases_tab-cms-content w-dyn-item"><div class="hide"><div fs-list-element="tab-link" class="use-cases_fs-tablink">Food Security</div></div><img src="assets/682fa12727f78b943ed45584/68485a9b3f5985030355f9d8_acessibility.avif" loading="lazy" alt="" class="use-cases_image"/><div class="usercase-rtf w-richtext"><h3>Collective for <em>Food Security</em></h3></div><p class="text-size-large">Fight hunger with community power. Coordinate food drives, share distribution schedules, and rally volunteers to ensure no one in your community goes without.</p><div><a href="apply.html" cta="" cta_location="home_tab_section" cta_type="get_started" class="button w-button">Apply to Join</a></div></div><div role="listitem" class="use-cases_tab-cms-content w-dyn-item"><div class="hide"><div fs-list-element="tab-link" class="use-cases_fs-tablink">Housing & Homelessness</div></div><img src="assets/682fa12727f78b943ed45584/68485a9b3f5985030355f9d8_acessibility.avif" loading="lazy" alt="" class="use-cases_image"/><div class="usercase-rtf w-richtext"><h3>Collective for <em>Housing & Homelessness</em></h3></div><p class="text-size-large">Everyone deserves a home. Share housing resources, coordinate outreach efforts, and build a community dedicated to ending homelessness in your area.</p><div><a href="apply.html" cta="" cta_location="home_tab_section" cta_type="get_started" class="button w-button">Apply to Join</a></div></div><div role="listitem" class="use-cases_tab-cms-content w-dyn-item"><div class="hide"><div fs-list-element="tab-link" class="use-cases_fs-tablink">Mental Health</div></div><img src="assets/682fa12727f78b943ed45584/68485a9b3f5985030355f9d8_acessibility.avif" loading="lazy" alt="" class="use-cases_image"/><div class="usercase-rtf w-richtext"><h3>Collective for <em>Mental Health</em></h3></div><p class="text-size-large">Break the stigma, build the support. Share resources, wellness tips, and create a safe community space where mental health conversations happen openly.</p><div><a href="apply.html" cta="" cta_location="home_tab_section" cta_type="get_started" class="button w-button">Apply to Join</a></div></div></div></div></div></div></div></div></section><section class="section_features"><div class="padding-global"><div class="padding-section-large"><div class="spacer-large"></div><div class="container-large"><div data-w-id="00b13108-5923-428d-cb56-0f8bf509b42e" class="features_grid-top"><div class="features_content-left is-relative" style="min-height: 800px; max-height: 800px; height: 800px; overflow: hidden; position: relative;"><img src="assets/Untitled design (1).png" alt="" class="features_content-bg-image is-home" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;"/><div id="root" class="features_content-overlay" style="display: flex; align-items: center; justify-content: center; pointer-events: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div></div><div id="w-node-e76aff3c-0f3d-329d-a32f-2461a06b2cc1-59ff8fc2" class="features_content-right"><div class="position-relative"><h2 class="features_heading">Where recurring donations are the default</h2></div><div class="spacer-large"></div><p class="text-size-large">Every supporter chooses an impact tier that matches their capacity. Recurring giving is the norm—creating sustainable funding and deeper community bonds.</p><div class="spacer-large"></div><div id="hero-button-group" hero-button-group="" class="button-group"><div><a cta="" cta_location="recurring_donations_section" cta_type="learn_more" href="about.html" class="button is-icon is-secondary w-inline-block"><img src="assets/682f84b3838c89f8ff7667db/68335d5ca4a30e3a678bf92d_mic-icon.svg" loading="lazy" alt="" class="icon-1x1-small"/><div>Learn More</div></a></div><a cta="" cta_location="recurring_donations_section" cta_type="apply" href="apply.html" class="button w-inline-block"><div>Apply to Join Collective</div></a></div></div></div></div></div></div></section><section class="section_features"><div class="padding-global"><div class="padding-section-medium"><div class="container-large"><div class="fatures_grid-mid"><div id="trigger-messages" data-gsap-trigger="messages" class="features_grid-mid-comp is-1st w-node-d1122902-e1b7-1ba8-437e-358419202124-59ff8fc2"><h3>Community messaging</h3><p class="text-size-regular">Send instant messages to your community, and they will be notified via email. Customize groups and watch your engagement increase.</p><div class="features_grid-card is-dictionary"><div class="features_dict-header"><div class="text-size-xlarge text-weight-bold">Your Supporters</div></div><div class="features_message-thread"><div data-gsap-target="message-chip" data-message-side="right" class="message-bubble org-message"><div class="text-size-regular text-weight-semibold">Hey everyone! Join us for our virtual event tonight at 7pm! 🎉</div></div><div data-gsap-target="message-chip" data-message-side="left" class="message-bubble user-message"><div class="text-size-regular text-weight-semibold">Count me in!</div></div><div data-gsap-target="message-chip" data-message-side="left" class="message-bubble user-message"><div class="text-size-regular text-weight-semibold">Can't wait! 🙌</div></div><div data-gsap-target="message-chip" data-message-side="left" class="message-bubble user-message"><div class="text-size-regular text-weight-semibold">Will there be a recording?</div></div><div data-gsap-target="message-chip" data-message-side="left" class="message-bubble user-message"><div class="text-size-regular text-weight-semibold">See you there!</div></div></div></div></div><div data-gsap-trigger="contact-import" id="w-node-_8b14419b-a8a7-f177-3755-f5ef6dd37e73-59ff8fc2" class="features_grid-mid-comp gap-big"><div><h3 class="text-wrap-balance">Import your audience</h3></div><p class="text-size-regular text-wrap-balance">Bring your existing email list from platforms like MailChimp or your CRM. Your contacts become engaged community members in Collective.</p><div class="features_grid-card is-dictionary"><div class="features_dict-header"><div class="text-size-xlarge text-weight-bold">Importing Contacts</div></div><div class="contact-import-container"><div class="contact-import-item" data-contact-email="sarah.miller@email.com" data-contact-name="Sarah Miller" data-contact-role="Community Member"></div><div class="contact-import-item" data-contact-email="michael.chen@email.com" data-contact-name="Michael Chen" data-contact-role="Supporter"></div><div class="contact-import-item" data-contact-email="jessica.park@email.com" data-contact-name="Jessica Park" data-contact-role="Advocate"></div><div class="contact-import-item" data-contact-email="david.lopez@email.com" data-contact-name="David Lopez" data-contact-role="Champion"></div><div class="contact-import-item" data-contact-email="emma.wilson@email.com" data-contact-name="Emma Wilson" data-contact-role="Partner"></div></div></div></div><div id="w-node-d1122902-e1b7-1ba8-437e-35841920213d-59ff8fc2" class="features_grid-mid-comp" data-gsap-trigger="collections"><div class="max-width-small align-center"><h3 class="text-wrap-balance">Collections that tell your story</h3></div><p class="text-size-regular">Organize your Instagram content by theme to create story collections that give context to your work. Group photos, videos, and stories together—whether it's campaign highlights, impact moments, or events—so supporters see the full picture, not just scattered posts.</p><div data-w-id="d1122902-e1b7-1ba8-437e-358419202143" class="features_grid-card is-tone" id="collections-branch-animation"><div data-is-ix2-target="1" class="features_content-bg-image" data-w-id="d1122902-e1b7-1ba8-437e-358419202144"><div class="collections-branch-container"><div class="collections-branch-top"><div class="branch-icon-wrapper branch-icon-instagram"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.23 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" fill="currentColor"/></svg></div></div><div class="collections-branch-lines"><svg width="100%" height="100%" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" class="branch-svg" preserveAspectRatio="xMidYMid meet"><path class="branch-line branch-line-1" d="M200,50 Q150,120 60,185" stroke="#FFFFEB" stroke-width="3.5" fill="none" opacity="0" stroke-linecap="round"/><path class="branch-line branch-line-2" d="M200,50 Q200,135 200,185" stroke="#FFFFEB" stroke-width="3.5" fill="none" opacity="0" stroke-linecap="round"/><path class="branch-line branch-line-3" d="M200,50 Q250,120 340,185" stroke="#FFFFEB" stroke-width="3.5" fill="none" opacity="0" stroke-linecap="round"/></svg></div><div class="collections-branch-bottom"><div class="branch-icon-wrapper branch-icon-collection" data-collection="1"><div class="collection-icon-box"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.16-1.46-3.27-3.4h1.96c.1 1.05.82 1.87 2.65 1.87 1.96 0 2.4-.98 2.4-1.59 0-.83-.44-1.61-2.67-2.14-2.48-.6-4.18-1.62-4.18-3.67 0-1.72 1.39-2.84 3.11-3.21V4h2.67v1.95c1.86.45 2.79 1.86 2.85 3.39H14.3c-.05-1.11-.64-1.87-2.22-1.87-1.5 0-2.4.68-2.4 1.64 0 .84.65 1.39 2.67 1.91s4.18 1.39 4.18 3.91c-.01 1.83-1.38 2.83-3.12 3.16z" fill="#34C759"/></svg></div><div class="collection-icon-label">Campaign</div></div><div class="branch-icon-wrapper branch-icon-collection" data-collection="2"><div class="collection-icon-box"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#F0D7FF"/></svg></div><div class="collection-icon-label">Impact</div></div><div class="branch-icon-wrapper branch-icon-collection" data-collection="3"><div class="collection-icon-box"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" fill="#FF9500"/></svg></div><div class="collection-icon-label">Events</div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></section><section class="section_features"><div class="padding-global"><div class="padding-section-large"><div class="container-large"><div class="features_grid-bottom"><div id="w-node-_052f7d2b-e7ec-555f-f754-113f32b51459-32b51458" class="features_grid-bottom-left"><div class="home_integrations_chips-div"><div class="home_integrations_chip is-dark"><img src="assets/682f84b3838c89f8ff7667db/683292faea21a80a4ec2ab80_apple_symbol-dark.svg" alt="" class="home_integrations_chip-logo"/><div>IOS</div></div><div class="home_integrations_chip is-dark"><img src="assets/682f84b3838c89f8ff7667db/683292faea21a80a4ec2ab80_apple_symbol-dark.svg" alt="" class="home_integrations_chip-logo"/><div>Mac</div></div><div class="home_integrations_chip is-dark"><img src="assets/682f84b3838c89f8ff7667db/6832323fbe339316d0a134c8_windows_symbol.svg.svg" alt="" class="home_integrations_chip-logo"/><div>Windows</div></div></div><div class="spacer-large"></div><h2>On-the-go or at your desk</h2><div class="spacer-medium"></div><p class="text-size-large">With apps for Desktop and iPhone, flow freely from wherever you are. Your personal dictionary and notes sync seamlessly between all devices.</p><div class="spacer-large"></div><a cta="" cta_location="on_the_go_section" cta_type="apply" href="apply.html" class="button w-button">Download for free</a></div><div id="w-node-_052f7d2b-e7ec-555f-f754-113f32b5146f-32b51458" data-w-id="052f7d2b-e7ec-555f-f754-113f32b5146f" class="features_grid-bottom-right"><img src="assets/682f84b3838c89f8ff7667db/683c97e9250a60766fe58275_Frame%20480.avif" alt="" class="features_grid-bottom-bg"/><img src="assets/682f84b3838c89f8ff7667db/68359c7eced9028aa72378c0_flowin-worksapce.avif" alt="" class="features_grid-bottom-dashboard"/><div class="features_grid-bottom-mobile"><img src="assets/682f84b3838c89f8ff7667db/6834fa9b0bf28f079fcd6657_Frame%2048096378.avif" alt="" class="mobile-screen_top"/><div class="mobile-screen_bottom"><img src="assets/682f84b3838c89f8ff7667db/684a1a8bb2e8d8efc7773ad4_Frame%2048096378.svg" loading="lazy" alt="" class="mobile-screen_bottom-img"/><div class="mobile-screen_bottom-wave" data-w-id="3180e3c7-018a-654e-3711-134583464f43" data-animation-type="lottie" data-src="assets/682f84b3838c89f8ff7667db/683a875074894e1be0d6250c_Flow%20-%20Write%20faster.lottie" data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0" data-renderer="svg" data-duration="0"></div></div></div></div></div></div><div class="spacer-huge"></div></div></div></section></div><section class="section_testimonials"><div class="padding-global"><div class="padding-top padding-section-medium"><div class="container-small"><div class="testimonials_header"><h2 class="testimonials_heading">Stories from <br/>our community</h2><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 785 525" fill="none" class="testimonials_svg"><path d="M383 2V102" stroke="#034F46" stroke-width="4" stroke-linecap="round"></path><path d="M546 101C546 75.8565 559.025 53.3813 563 29" stroke="#034F46" stroke-width="4" stroke-linecap="round"></path><path d="M634 138C644.156 128.056 655.728 119.802 666.185 110.183C669.924 106.743 675.729 103.675 678 99" stroke="#034F46" stroke-width="4" stroke-linecap="round"></path><path d="M706 253C716.647 253 728.358 246.026 737.807 242C748.683 237.366 759.454 233.08 770.029 227.877C773.23 226.301 781.482 222.987 783 220" stroke="#034F46" stroke-width="4" stroke-linecap="round"></path><path d="M722 381C742.831 381.982 794.123 420.282 779.376 405.688" stroke="#034F46" stroke-width="4" stroke-linecap="round"></path><path d="M583 401V458" stroke="#034F46" stroke-width="4" stroke-linecap="round"></path><path d="M411 418C411 449.023 410.603 479.983 410 511" stroke="#034F46" stroke-width="4" stroke-linecap="round"></path><path d="M250 438C229.974 458.141 212.54 480.596 192.138 500.5C186.12 506.371 173.245 523 163 523" stroke="#034F46" stroke-width="4" stroke-linecap="round"></path><path d="M77 386C52.0274 393.096 27.0333 400.106 2 407" stroke="#034F46" stroke-width="4" stroke-linecap="round"></path><path d="M113 273C88.7129 260.066 68.3931 241.333 45.9359 225.722C35.4663 218.445 24.885 211.318 14.2052 204.344C11.5236 202.594 8.69889 201.52 7 199" stroke="#034F46" stroke-width="4" stroke-linecap="round"></path><path d="M226 128C219.65 120.591 213.451 109.47 210.933 99.8586C210.17 96.9432 210.384 87.264 208 86" stroke="#034F46" stroke-width="4" stroke-linecap="round"></path></svg></div></div></div></div><div class="hide w-embed"><style>
-.testimonials_list-wrapper{
-    animation: logoTicker 80s linear infinite;
+.team-images-wrapper{
+    animation: logoTicker 60s linear infinite;
   }
   @keyframes logoTicker {
     from {
@@ -1582,7 +2348,23 @@ margin: 0rem !important;
       transform: translateX(-100%);
     }
   }
-</style></div><div class="testimonials_cards-wrap"><div class="testimonials_list-wrapper marquee-scroll w-dyn-list"><div role="list" class="testimonials_list marquee-track w-dyn-items"><div role="listitem" class="testimonials_list-item marquee-item w-dyn-item"><img src="assets/682fa12727f78b943ed45584/682fa36950b4ca6070d31f51_66fa5330efc2ea9ee13c9ce3_tara.avif" loading="lazy" alt="" class="testimonials_dp"/><div class="text-size-large">You&#x27;re making texting actually delightful right now! Can see it becoming a can&#x27;t live without product fast.</div><div class="w-embed"><div class="text-size-small">Tara Tan, Founding Partner at Strange Ventures</div></div></div><div role="listitem" class="testimonials_list-item marquee-item w-dyn-item"><img src="assets/682fa12727f78b943ed45584/682fa3689e1efd79fa200095_66fa520f120581ef1e6b05a1_rahul.avif" loading="lazy" alt="" class="testimonials_dp"/><div class="text-size-large">This is the best AI product I&#x27;ve used since ChatGPT.</div><div class="w-embed"><div class="text-size-small">Rahul Vohra, CEO, Superhuman</div></div></div><div role="listitem" class="testimonials_list-item marquee-item w-dyn-item"><img src="assets/682fa12727f78b943ed45584/682fa3682b39359a238dfae7_66eef816b8a0f75d7670806e_client%2520logo.avif" loading="lazy" alt="" class="testimonials_dp"/><div class="text-size-large">I&#x27;ve been using Wispr almost every day since I downloaded it. It&#x27;s probably my favorite part of the day, especially at the end when I go through my inbox with Wispr.</div><div class="w-embed"><div class="text-size-small">Suzanne Xie, Partner, Neo</div></div></div><div role="listitem" class="testimonials_list-item marquee-item w-dyn-item"><img src="assets/682fa12727f78b943ed45584/682fa36878c9fbbe68dfbf3a_66fa540322a2f95a79c42e48_shashank.avif" loading="lazy" alt="" class="testimonials_dp"/><div class="text-size-large">I can make quick edits while speaking to it because flow really understands me perfectly and can make the necessary changes. Flow&#x27;s accuracy and speed make it a real game changer.</div><div class="w-embed"><div class="text-size-small">Shashank Vemuri, Scout at Soma Capital</div></div></div><div role="listitem" class="testimonials_list-item marquee-item w-dyn-item"><img src="assets/682fa12727f78b943ed45584/682fa36889069f243f61febe_66fa53159cf55f631403262a_rich.avif" loading="lazy" alt="" class="testimonials_dp"/><div class="text-size-large">I have Parkinson&#x27;s, and this app has just made my life so much easier using my Mac. I can&#x27;t even explain the change that it has provided for me.</div><div class="w-embed"><div class="text-size-small">Rich Pankey, Indirect Sourcing Manager</div></div></div><div role="listitem" class="testimonials_list-item marquee-item w-dyn-item"><img src="assets/682fa12727f78b943ed45584/682fa36703611d7319748463_66fa535beb505d82c9bfa277_hargun.avif" loading="lazy" alt="" class="testimonials_dp"/><div class="text-size-large">Hey! Flow is currently blowing my mind with how fast and useful it is!</div><div class="w-embed"><div class="text-size-small">Hargun Mujral, MLÂ Platforms at X</div></div></div><div role="listitem" class="testimonials_list-item marquee-item w-dyn-item"><img src="assets/682fa12727f78b943ed45584/682fa3672deb88ce9ddffafe_66fa52e0db906988c9eedd33_jeff.avif" loading="lazy" alt="" class="testimonials_dp"/><div class="text-size-large">I was able to dictate ~70% of our Q2 board doc with Wispr, it was a massive time saver!</div><div class="w-embed"><div class="text-size-small">Jeff Seibert, CEO, Digits AI</div></div></div><div role="listitem" class="testimonials_list-item marquee-item w-dyn-item"><img src="assets/682fa12727f78b943ed45584/682fa367db0aff0c4080a7cf_67bda4bfc854f09ba5207692_66fa537fefa64f6ca6073125_jeanette%2520copy.avif" loading="lazy" alt="" class="testimonials_dp"/><div class="text-size-large">Flow is that extra little part of your brain that helps you formulate full sentences when you might be stuck in thought and have a jittery response.</div><div class="w-embed"><div class="text-size-small">Jeannette Tan, Fiction Writer</div></div></div><div role="listitem" class="testimonials_list-item marquee-item w-dyn-item"><img src="assets/682fa12727f78b943ed45584/682fa367e3f5722fa3367953_66eef843aaa052b448b839b2_client%2520logo%2520(1).avif" loading="lazy" alt="" class="testimonials_dp"/><div class="text-size-large">Stuttering and it still works really well. I think it&#x27;s really quick, I love it.</div><div class="w-embed"><div class="text-size-small">Agam Walia, Student, UC Berkeley</div></div></div><div role="listitem" class="testimonials_list-item marquee-item w-dyn-item"><img src="assets/682fa12727f78b943ed45584/682fa36764062ea5ed7c1c01_67bda9d099c8a11af9e05938_greg-comp.avif" loading="lazy" alt="" class="testimonials_dp"/><div class="text-size-large">I&#x27;m afraid I&#x27;m getting addicted to this great platform. It allows me to get into a flow state and not have autocorrect or voice dictation stop and interrupt me while I&#x27;m attempting to articulate my ideas.</div><div class="w-embed"><div class="text-size-small">Greg Dickson, Bestselling Author and Business Coach</div></div></div></div></div><div class="testimonials_list-wrapper marquee-scroll w-dyn-list"><div role="list" class="testimonials_list marquee-track w-dyn-items"><div role="listitem" class="testimonials_list-item marquee-item w-dyn-item"><img src="assets/682fa12727f78b943ed45584/682fa36950b4ca6070d31f51_66fa5330efc2ea9ee13c9ce3_tara.avif" loading="lazy" alt="" class="testimonials_dp"/><div class="text-size-large">You&#x27;re making texting actually delightful right now! Can see it becoming a can&#x27;t live without product fast.</div><div class="w-embed"><div class="text-size-small">Tara Tan, Founding Partner at Strange Ventures</div></div></div><div role="listitem" class="testimonials_list-item marquee-item w-dyn-item"><img src="assets/682fa12727f78b943ed45584/682fa3689e1efd79fa200095_66fa520f120581ef1e6b05a1_rahul.avif" loading="lazy" alt="" class="testimonials_dp"/><div class="text-size-large">This is the best AI product I&#x27;ve used since ChatGPT.</div><div class="w-embed"><div class="text-size-small">Rahul Vohra, CEO, Superhuman</div></div></div><div role="listitem" class="testimonials_list-item marquee-item w-dyn-item"><img src="assets/682fa12727f78b943ed45584/682fa3682b39359a238dfae7_66eef816b8a0f75d7670806e_client%2520logo.avif" loading="lazy" alt="" class="testimonials_dp"/><div class="text-size-large">I&#x27;ve been using Wispr almost every day since I downloaded it. It&#x27;s probably my favorite part of the day, especially at the end when I go through my inbox with Wispr.</div><div class="w-embed"><div class="text-size-small">Suzanne Xie, Partner, Neo</div></div></div><div role="listitem" class="testimonials_list-item marquee-item w-dyn-item"><img src="assets/682fa12727f78b943ed45584/682fa36878c9fbbe68dfbf3a_66fa540322a2f95a79c42e48_shashank.avif" loading="lazy" alt="" class="testimonials_dp"/><div class="text-size-large">I can make quick edits while speaking to it because flow really understands me perfectly and can make the necessary changes. Flow&#x27;s accuracy and speed make it a real game changer.</div><div class="w-embed"><div class="text-size-small">Shashank Vemuri, Scout at Soma Capital</div></div></div><div role="listitem" class="testimonials_list-item marquee-item w-dyn-item"><img src="assets/682fa12727f78b943ed45584/682fa36889069f243f61febe_66fa53159cf55f631403262a_rich.avif" loading="lazy" alt="" class="testimonials_dp"/><div class="text-size-large">I have Parkinson&#x27;s, and this app has just made my life so much easier using my Mac. I can&#x27;t even explain the change that it has provided for me.</div><div class="w-embed"><div class="text-size-small">Rich Pankey, Indirect Sourcing Manager</div></div></div><div role="listitem" class="testimonials_list-item marquee-item w-dyn-item"><img src="assets/682fa12727f78b943ed45584/682fa36703611d7319748463_66fa535beb505d82c9bfa277_hargun.avif" loading="lazy" alt="" class="testimonials_dp"/><div class="text-size-large">Hey! Flow is currently blowing my mind with how fast and useful it is!</div><div class="w-embed"><div class="text-size-small">Hargun Mujral, MLÂ Platforms at X</div></div></div><div role="listitem" class="testimonials_list-item marquee-item w-dyn-item"><img src="assets/682fa12727f78b943ed45584/682fa3672deb88ce9ddffafe_66fa52e0db906988c9eedd33_jeff.avif" loading="lazy" alt="" class="testimonials_dp"/><div class="text-size-large">I was able to dictate ~70% of our Q2 board doc with Wispr, it was a massive time saver!</div><div class="w-embed"><div class="text-size-small">Jeff Seibert, CEO, Digits AI</div></div></div><div role="listitem" class="testimonials_list-item marquee-item w-dyn-item"><img src="assets/682fa12727f78b943ed45584/682fa367db0aff0c4080a7cf_67bda4bfc854f09ba5207692_66fa537fefa64f6ca6073125_jeanette%2520copy.avif" loading="lazy" alt="" class="testimonials_dp"/><div class="text-size-large">Flow is that extra little part of your brain that helps you formulate full sentences when you might be stuck in thought and have a jittery response.</div><div class="w-embed"><div class="text-size-small">Jeannette Tan, Fiction Writer</div></div></div><div role="listitem" class="testimonials_list-item marquee-item w-dyn-item"><img src="assets/682fa12727f78b943ed45584/682fa367e3f5722fa3367953_66eef843aaa052b448b839b2_client%2520logo%2520(1).avif" loading="lazy" alt="" class="testimonials_dp"/><div class="text-size-large">Stuttering and it still works really well. I think it&#x27;s really quick, I love it.</div><div class="w-embed"><div class="text-size-small">Agam Walia, Student, UC Berkeley</div></div></div><div role="listitem" class="testimonials_list-item marquee-item w-dyn-item"><img src="assets/682fa12727f78b943ed45584/682fa36764062ea5ed7c1c01_67bda9d099c8a11af9e05938_greg-comp.avif" loading="lazy" alt="" class="testimonials_dp"/><div class="text-size-large">I&#x27;m afraid I&#x27;m getting addicted to this great platform. It allows me to get into a flow state and not have autocorrect or voice dictation stop and interrupt me while I&#x27;m attempting to articulate my ideas.</div><div class="w-embed"><div class="text-size-small">Greg Dickson, Bestselling Author and Business Coach</div></div></div></div></div></div><div class="spacer-large"></div><div class="padding-global"><div class="container-large"><div class="use-cases_grid"><a cta_type="gaurav_cs" cta="" cta_location="homepage" href="index.html" class="use-cases_card w-inline-block"><div class="use-cases_header-wrapper"><div class="use-cases_header"><div class="heading-style-h3 text-color-tertiary">4x faster responses</div><img src="assets/682f84b3838c89f8ff7667db/6832f4c0f564096436858bdb_arrow-ne.svg" loading="lazy" alt="" class="use-cases_arrow-icon"/></div><div class="text-size-large">The &quot;surprisingly fast&quot; advisor.</div></div><div class="use-cases_author-wrap"><img src="assets/682f84b3838c89f8ff7667db/68adad7636f0ab1d3b12582e_gaurav-v2%20(1).png" alt="" class="use-cases_author-headshot"/><div><div>Gaurav Vohra</div><div class="spacer-xxsmall"></div><div class="text-style-muted">Startup Advisor &amp; Growth Leader</div></div></div></a><a cta_type="greg_cs" cta="" cta_location="homepage" href="index.html" class="use-cases_card w-inline-block"><div class="use-cases_header-wrapper"><div class="use-cases_header"><div class="heading-style-h3 text-color-tertiary">50+ hours saved</div><img src="assets/682f84b3838c89f8ff7667db/6832f4c0f564096436858bdb_arrow-ne.svg" loading="lazy" alt="" class="use-cases_arrow-icon"/></div><div class="text-size-large">Before Flow, writing was a battle. Now, itâs a conversation.</div></div><div class="use-cases_author-wrap"><img src="assets/682f84b3838c89f8ff7667db/68adad76cd1cce8916b80878_greg-vx.png" alt="" class="use-cases_author-headshot"/><div><div>Greg Dickson</div><div class="spacer-xxsmall"></div><div class="text-style-muted">Author</div></div></div></a></div></div><div class="padding-bottom padding-section-large"></div></div></section><section data-wf--pre-cta--variant="home" class="section_startflowing w-variant-e6b68f58-d27c-d53d-2623-e79f70a1fa20"><img src="assets/682f84b3838c89f8ff7667db/684a1953b2e8d8efc7769c8e_d11bc5e1021589f0030c972b07779ca99a1837fa.jpg" alt="" class="cta_bg"/><div class="padding-global padding-section-large"><div class="cta_content-wrap"><div class="cta_content"><div class="text-wrapper"><div class="cta_dot hide"></div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 524 615" fill="none" preserveAspectRatio="none" class="cta_svg"><path d="M0.391602 319.953C359.892 319.953 412.294 -6.54721 244.392 1.45428C95.409 8.55414 -47.1084 513.452 522.892 612.952C646.17 634.931 943.303 651.895 1145.61 543.915" id="curve-cta"></path></svg><h2 class="heading-style-h1">Start flowing</h2></div><div class="spacer-xlarge"></div><div class="spacer-xlarge"></div><div class="cta_content-wrap-inside"><p class="text-size-large text-weight-semibold text-wrap-balance">Effortless voice dictation in every application: 4x faster than typing, AI commands and auto-edits.</p><div class="spacer-medium"></div><div class="button-group"><a web-demo-open="" cta="" cta_location="bottom_cta_section" cta_type="try_flow" href="/demo" class="button is-icon is-secondary w-inline-block"><img src="assets/682f84b3838c89f8ff7667db/68335d5ca4a30e3a678bf92d_mic-icon.svg" loading="lazy" alt="" class="icon-1x1-small"/><div>Learn More</div></a><a app-download="" cta="" cta_location="bottom_cta_section" cta_type="download" href="https://wisprflow.onelink.me/PguH/lw5h199m" class="button w-button">Download for free</a></div><div><div class="spacer-medium"></div><div class="text-size-small">Join the collective movement</div></div></div></div></div></div></section></main><div data-wf--footer-combined--variant="base" class="section_footer-wrapper"><footer class="section_footer"><div class="padding-global"><div class="container-large"><div class="footer_flex-links"><div class="footer_flex_inner"><h3 class="heading-style-h4 text-color-black50">Company</h3><div class="footer_nav-links-wrap"><a href="index.html" class="footer_link-block w-inline-block"><div>About</div><div class="icon-embed-xxsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 9" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
+</style></div><div class="about-wispr_slider-wrap"><div class="team-images-wrapper marquee-scroll"><div class="team-images-list-wrapper marquee-track"><img src="assets/apply_carousel/461468603_394699943685907_848855320363566441_n.jpg" alt="" class="team-image marquee-item"/><img src="assets/apply_carousel/486725933_18077032606665699_1569229122537932549_n.jpg" alt="" class="team-image marquee-item"/><div class="team-image marquee-item"><div class="team-meetup-video w-embed"><video style="width: 100%; height: 100%; object-fit: cover;" playsinline autoplay muted loop>
+  <source src="assets/apply_carousel/AQMh5XqyMotQJusijZuBiLsXnrxkZuxqeUD4iW1vfCkyNySSNIhIytG82RiEPeykEa5-uZRHoOqPBwlkftcSyNVNBr3uWdUOekIiJTc.mp4" type="video/mp4"/>
+</video></div></div><img src="assets/apply_carousel/508393227_18102892864557651_4292952896411845549_n.jpg" alt="" class="team-image marquee-item"/><img src="assets/apply_carousel/508399810_18102892837557651_6390114185013613646_n.jpg" alt="" class="team-image marquee-item"/><div class="team-image marquee-item"><div class="team-meetup-video w-embed"><video style="width: 100%; height: 100%; object-fit: cover;" playsinline autoplay muted loop>
+  <source src="assets/apply_carousel/AQPhJAcEdPGVULGk5pBdTcgABaXKV6XRZG7UFo3XJGoOgZCnvE2S5EX8O6BSTxK0x1WN_XhZ67JtoMP6Uhnn3R5AdyM0dhVGQ030eq4.mp4" type="video/mp4"/>
+</video></div></div><img src="assets/apply_carousel/519003731_18006550085784226_1504443511306118693_n.jpg" alt="" class="team-image marquee-item"/><img src="assets/apply_carousel/535406661_1078174157859735_244248233595416988_n.jpg" alt="" class="team-image marquee-item"/><div class="team-image marquee-item"><div class="team-meetup-video w-embed"><video style="width: 100%; height: 100%; object-fit: cover;" playsinline autoplay muted loop>
+  <source src="assets/apply_carousel/AQPueeiex8NlIkt4HjzF1T0cVBwDXVzCtdZaFePCKkzR7AWZ1MdGSiesCz9CImoUyiQcXE8mA_lgpHTDLlvSrTJqueOV7QKQAeOlovI.mp4" type="video/mp4"/>
+</video></div></div><img src="assets/apply_carousel/537627903_1078174117859739_2749416902969619600_n.jpg" alt="" class="team-image marquee-item"/><img src="assets/apply_carousel/538639838_18527793253011880_8313289101457247873_n.jpg" alt="" class="team-image marquee-item"/><div class="team-image marquee-item"><div class="team-meetup-video w-embed"><video style="width: 100%; height: 100%; object-fit: cover;" playsinline autoplay muted loop>
+  <source src="assets/apply_carousel/AQOD1Ro9j0QaWw0cBDfo84SPdT6JPi1_tqs3Bt7C_chp4TQbfHYYtbbjkWhN_UbgRRPJ9QM3nRdcH-dQ2qOMfCqpZxbKJnt17j0_OPE.mp4" type="video/mp4"/>
+</video></div></div></div></div><div class="team-images-wrapper marquee-scroll"><div class="team-images-list-wrapper marquee-track"><img src="assets/apply_carousel/461468603_394699943685907_848855320363566441_n.jpg" alt="" class="team-image marquee-item"/><img src="assets/apply_carousel/486725933_18077032606665699_1569229122537932549_n.jpg" alt="" class="team-image marquee-item"/><div class="team-image marquee-item"><div class="team-meetup-video w-embed"><video style="width: 100%; height: 100%; object-fit: cover;" playsinline autoplay muted loop>
+  <source src="assets/apply_carousel/AQMh5XqyMotQJusijZuBiLsXnrxkZuxqeUD4iW1vfCkyNySSNIhIytG82RiEPeykEa5-uZRHoOqPBwlkftcSyNVNBr3uWdUOekIiJTc.mp4" type="video/mp4"/>
+</video></div></div><img src="assets/apply_carousel/508393227_18102892864557651_4292952896411845549_n.jpg" alt="" class="team-image marquee-item"/><img src="assets/apply_carousel/508399810_18102892837557651_6390114185013613646_n.jpg" alt="" class="team-image marquee-item"/><div class="team-image marquee-item"><div class="team-meetup-video w-embed"><video style="width: 100%; height: 100%; object-fit: cover;" playsinline autoplay muted loop>
+  <source src="assets/apply_carousel/AQPhJAcEdPGVULGk5pBdTcgABaXKV6XRZG7UFo3XJGoOgZCnvE2S5EX8O6BSTxK0x1WN_XhZ67JtoMP6Uhnn3R5AdyM0dhVGQ030eq4.mp4" type="video/mp4"/>
+</video></div></div><img src="assets/apply_carousel/519003731_18006550085784226_1504443511306118693_n.jpg" alt="" class="team-image marquee-item"/><img src="assets/apply_carousel/535406661_1078174157859735_244248233595416988_n.jpg" alt="" class="team-image marquee-item"/><div class="team-image marquee-item"><div class="team-meetup-video w-embed"><video style="width: 100%; height: 100%; object-fit: cover;" playsinline autoplay muted loop>
+  <source src="assets/apply_carousel/AQPueeiex8NlIkt4HjzF1T0cVBwDXVzCtdZaFePCKkzR7AWZ1MdGSiesCz9CImoUyiQcXE8mA_lgpHTDLlvSrTJqueOV7QKQAeOlovI.mp4" type="video/mp4"/>
+</video></div></div><img src="assets/apply_carousel/537627903_1078174117859739_2749416902969619600_n.jpg" alt="" class="team-image marquee-item"/><img src="assets/apply_carousel/538639838_18527793253011880_8313289101457247873_n.jpg" alt="" class="team-image marquee-item"/><div class="team-image marquee-item"><div class="team-meetup-video w-embed"><video style="width: 100%; height: 100%; object-fit: cover;" playsinline autoplay muted loop>
+  <source src="assets/apply_carousel/AQOD1Ro9j0QaWw0cBDfo84SPdT6JPi1_tqs3Bt7C_chp4TQbfHYYtbbjkWhN_UbgRRPJ9QM3nRdcH-dQ2qOMfCqpZxbKJnt17j0_OPE.mp4" type="video/mp4"/>
+</video></div></div></div></div></div><div class="spacer-large"></div><div class="padding-global"><div class="container-large"><div class="use-cases_grid" style="display: none;"><a cta_type="gaurav_cs" cta="" cta_location="homepage" href="index.html" class="use-cases_card w-inline-block"><div class="use-cases_header-wrapper"><div class="use-cases_header"><div class="heading-style-h3 text-color-tertiary">4x faster responses</div><img src="assets/682f84b3838c89f8ff7667db/6832f4c0f564096436858bdb_arrow-ne.svg" loading="lazy" alt="" class="use-cases_arrow-icon"/></div><div class="text-size-large">The &quot;surprisingly fast&quot; advisor.</div></div><div class="use-cases_author-wrap"><img src="assets/682f84b3838c89f8ff7667db/68adad7636f0ab1d3b12582e_gaurav-v2%20(1).png" alt="" class="use-cases_author-headshot"/><div><div>Gaurav Vohra</div><div class="spacer-xxsmall"></div><div class="text-style-muted">Startup Advisor &amp; Growth Leader</div></div></div></a><a cta_type="greg_cs" cta="" cta_location="homepage" href="index.html" class="use-cases_card w-inline-block"><div class="use-cases_header-wrapper"><div class="use-cases_header"><div class="heading-style-h3 text-color-tertiary">50+ hours saved</div><img src="assets/682f84b3838c89f8ff7667db/6832f4c0f564096436858bdb_arrow-ne.svg" loading="lazy" alt="" class="use-cases_arrow-icon"/></div><div class="text-size-large">Before Flow, writing was a battle. Now, itâs a conversation.</div></div><div class="use-cases_author-wrap"><img src="assets/682f84b3838c89f8ff7667db/68adad76cd1cce8916b80878_greg-vx.png" alt="" class="use-cases_author-headshot"/><div><div>Greg Dickson</div><div class="spacer-xxsmall"></div><div class="text-style-muted">Author</div></div></div></a></div></div><div class="padding-bottom padding-section-large"></div></div></section><section id="signup" class="section_startflowing"><img src="Untitled design (5).png" alt="" class="cta_bg"/><div class="padding-global padding-section-large"><div class="cta_content-wrap wider-content"><div class="cta_content"><div class="text-wrapper"><h2 class="heading-style-h1">We'd love to work with you</h2></div><div class="spacer-xlarge"></div><div class="cta_content-wrap-inside wider-content-wrap-12"><p class="text-size-large text-weight-semibold">Ready to build a direct connection with your community? Learn more about how Collective helps mission-driven organizations thrive.</p><div class="spacer-medium"></div><div class="button-group"><a cta_type="learn_more" cta="" cta_location="bottom_cta_section" href="apply.html" class="button is-icon w-inline-block"><div>Apply to Join Collective</div></a></div></div></div></div></div></section></main><div data-wf--footer-combined--variant="base" class="section_footer-wrapper"><footer class="section_footer"><div class="padding-global"><div class="container-large"><div class="footer_flex-links" style="display: none;"><div class="footer_flex_inner"><h3 class="heading-style-h4 text-color-black50">Company</h3><div class="footer_nav-links-wrap"><a href="index.html" class="footer_link-block w-inline-block"><div>About</div><div class="icon-embed-xxsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 9" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
 <path d="M7.30209 4.39387C5.58154 4.37997 3.86103 4.36522 2.14057 4.34963C1.79759 4.34582 1.45417 4.31894 1.11266 4.28535C1.05617 4.27926 1.00284 4.25627 0.959627 4.21939C0.916414 4.18251 0.88533 4.13345 0.870437 4.07863C0.842351 3.99082 0.939919 3.86619 1.05679 3.84791C1.16971 3.83011 1.2821 3.80265 1.39573 3.79577C2.12069 3.75198 2.84552 3.68968 3.57115 3.67664C5.06198 3.65002 6.55317 3.64309 8.04409 3.64158C9.45874 3.63994 10.8733 3.65774 12.2882 3.66093C12.5152 3.66146 12.7424 3.63267 12.9693 3.61257C12.9844 3.60886 12.9982 3.60144 13.0097 3.59097C13.0211 3.5805 13.0297 3.56733 13.0347 3.55267C13.0388 3.51762 13.0288 3.45878 13.0052 3.44595C12.5704 3.2096 12.1412 2.96113 11.694 2.75006C10.6541 2.2595 9.67872 1.65767 8.70364 1.05423C8.54347 0.955023 8.37557 0.854219 8.31084 0.65726C8.29908 0.621454 8.28076 0.560097 8.29575 0.548117C8.34922 0.498263 8.4142 0.462417 8.4849 0.443795C8.5602 0.434903 8.6365 0.447087 8.70529 0.478984C8.94883 0.589421 9.19069 0.70447 9.42749 0.828484C11.1214 1.71282 12.8125 2.60248 14.5075 3.48451C15.147 3.8172 15.4508 4.13955 14.6833 4.87064C14.4621 5.08139 14.2384 5.29192 13.998 5.47948C12.8828 6.34954 11.7636 7.21439 10.6403 8.07401C10.4859 8.18478 10.323 8.28331 10.1532 8.36871C10.0424 8.42883 9.93159 8.39317 9.83597 8.32107C9.73072 8.24173 9.66536 8.01096 9.7017 7.90948C9.78232 7.68422 9.94289 7.51894 10.1154 7.36928C10.7796 6.79313 11.449 6.22298 12.1186 5.65327C12.555 5.28207 12.9957 4.91656 13.4313 4.54474C13.4528 4.52633 13.4537 4.46908 13.4451 4.43514C13.4393 4.42033 13.4301 4.40713 13.4181 4.39669C13.4061 4.38625 13.3918 4.37888 13.3763 4.3752C13.1485 4.36038 12.9206 4.34125 12.6927 4.34245C10.8957 4.35189 9.09869 4.36372 7.30168 4.37795L7.30209 4.39387Z" fill="currentColor"/>
 </svg></div></a><a href="index.html" class="footer_link-block w-inline-block"><div>Careers</div><div class="icon-embed-xxsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 9" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
 <path d="M7.30209 4.39387C5.58154 4.37997 3.86103 4.36522 2.14057 4.34963C1.79759 4.34582 1.45417 4.31894 1.11266 4.28535C1.05617 4.27926 1.00284 4.25627 0.959627 4.21939C0.916414 4.18251 0.88533 4.13345 0.870437 4.07863C0.842351 3.99082 0.939919 3.86619 1.05679 3.84791C1.16971 3.83011 1.2821 3.80265 1.39573 3.79577C2.12069 3.75198 2.84552 3.68968 3.57115 3.67664C5.06198 3.65002 6.55317 3.64309 8.04409 3.64158C9.45874 3.63994 10.8733 3.65774 12.2882 3.66093C12.5152 3.66146 12.7424 3.63267 12.9693 3.61257C12.9844 3.60886 12.9982 3.60144 13.0097 3.59097C13.0211 3.5805 13.0297 3.56733 13.0347 3.55267C13.0388 3.51762 13.0288 3.45878 13.0052 3.44595C12.5704 3.2096 12.1412 2.96113 11.694 2.75006C10.6541 2.2595 9.67872 1.65767 8.70364 1.05423C8.54347 0.955023 8.37557 0.854219 8.31084 0.65726C8.29908 0.621454 8.28076 0.560097 8.29575 0.548117C8.34922 0.498263 8.4142 0.462417 8.4849 0.443795C8.5602 0.434903 8.6365 0.447087 8.70529 0.478984C8.94883 0.589421 9.19069 0.70447 9.42749 0.828484C11.1214 1.71282 12.8125 2.60248 14.5075 3.48451C15.147 3.8172 15.4508 4.13955 14.6833 4.87064C14.4621 5.08139 14.2384 5.29192 13.998 5.47948C12.8828 6.34954 11.7636 7.21439 10.6403 8.07401C10.4859 8.18478 10.323 8.28331 10.1532 8.36871C10.0424 8.42883 9.93159 8.39317 9.83597 8.32107C9.73072 8.24173 9.66536 8.01096 9.7017 7.90948C9.78232 7.68422 9.94289 7.51894 10.1154 7.36928C10.7796 6.79313 11.449 6.22298 12.1186 5.65327C12.555 5.28207 12.9957 4.91656 13.4313 4.54474C13.4528 4.52633 13.4537 4.46908 13.4451 4.43514C13.4393 4.42033 13.4301 4.40713 13.4181 4.39669C13.4061 4.38625 13.3918 4.37888 13.3763 4.3752C13.1485 4.36038 12.9206 4.34125 12.6927 4.34245C10.8957 4.35189 9.09869 4.36372 7.30168 4.37795L7.30209 4.39387Z" fill="currentColor"/>
@@ -1608,7 +2390,7 @@ margin: 0rem !important;
 <path d="M7.30209 4.39387C5.58154 4.37997 3.86103 4.36522 2.14057 4.34963C1.79759 4.34582 1.45417 4.31894 1.11266 4.28535C1.05617 4.27926 1.00284 4.25627 0.959627 4.21939C0.916414 4.18251 0.88533 4.13345 0.870437 4.07863C0.842351 3.99082 0.939919 3.86619 1.05679 3.84791C1.16971 3.83011 1.2821 3.80265 1.39573 3.79577C2.12069 3.75198 2.84552 3.68968 3.57115 3.67664C5.06198 3.65002 6.55317 3.64309 8.04409 3.64158C9.45874 3.63994 10.8733 3.65774 12.2882 3.66093C12.5152 3.66146 12.7424 3.63267 12.9693 3.61257C12.9844 3.60886 12.9982 3.60144 13.0097 3.59097C13.0211 3.5805 13.0297 3.56733 13.0347 3.55267C13.0388 3.51762 13.0288 3.45878 13.0052 3.44595C12.5704 3.2096 12.1412 2.96113 11.694 2.75006C10.6541 2.2595 9.67872 1.65767 8.70364 1.05423C8.54347 0.955023 8.37557 0.854219 8.31084 0.65726C8.29908 0.621454 8.28076 0.560097 8.29575 0.548117C8.34922 0.498263 8.4142 0.462417 8.4849 0.443795C8.5602 0.434903 8.6365 0.447087 8.70529 0.478984C8.94883 0.589421 9.19069 0.70447 9.42749 0.828484C11.1214 1.71282 12.8125 2.60248 14.5075 3.48451C15.147 3.8172 15.4508 4.13955 14.6833 4.87064C14.4621 5.08139 14.2384 5.29192 13.998 5.47948C12.8828 6.34954 11.7636 7.21439 10.6403 8.07401C10.4859 8.18478 10.323 8.28331 10.1532 8.36871C10.0424 8.42883 9.93159 8.39317 9.83597 8.32107C9.73072 8.24173 9.66536 8.01096 9.7017 7.90948C9.78232 7.68422 9.94289 7.51894 10.1154 7.36928C10.7796 6.79313 11.449 6.22298 12.1186 5.65327C12.555 5.28207 12.9957 4.91656 13.4313 4.54474C13.4528 4.52633 13.4537 4.46908 13.4451 4.43514C13.4393 4.42033 13.4301 4.40713 13.4181 4.39669C13.4061 4.38625 13.3918 4.37888 13.3763 4.3752C13.1485 4.36038 12.9206 4.34125 12.6927 4.34245C10.8957 4.35189 9.09869 4.36372 7.30168 4.37795L7.30209 4.39387Z" fill="currentColor"/>
 </svg></div></a><a rel="noopener noreferrer" href="https://docs.wisprflow.ai/" target="_blank" class="footer_link-block w-inline-block"><div>HelpÂ Center</div><div class="icon-embed-xxsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 9" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
 <path d="M7.30209 4.39387C5.58154 4.37997 3.86103 4.36522 2.14057 4.34963C1.79759 4.34582 1.45417 4.31894 1.11266 4.28535C1.05617 4.27926 1.00284 4.25627 0.959627 4.21939C0.916414 4.18251 0.88533 4.13345 0.870437 4.07863C0.842351 3.99082 0.939919 3.86619 1.05679 3.84791C1.16971 3.83011 1.2821 3.80265 1.39573 3.79577C2.12069 3.75198 2.84552 3.68968 3.57115 3.67664C5.06198 3.65002 6.55317 3.64309 8.04409 3.64158C9.45874 3.63994 10.8733 3.65774 12.2882 3.66093C12.5152 3.66146 12.7424 3.63267 12.9693 3.61257C12.9844 3.60886 12.9982 3.60144 13.0097 3.59097C13.0211 3.5805 13.0297 3.56733 13.0347 3.55267C13.0388 3.51762 13.0288 3.45878 13.0052 3.44595C12.5704 3.2096 12.1412 2.96113 11.694 2.75006C10.6541 2.2595 9.67872 1.65767 8.70364 1.05423C8.54347 0.955023 8.37557 0.854219 8.31084 0.65726C8.29908 0.621454 8.28076 0.560097 8.29575 0.548117C8.34922 0.498263 8.4142 0.462417 8.4849 0.443795C8.5602 0.434903 8.6365 0.447087 8.70529 0.478984C8.94883 0.589421 9.19069 0.70447 9.42749 0.828484C11.1214 1.71282 12.8125 2.60248 14.5075 3.48451C15.147 3.8172 15.4508 4.13955 14.6833 4.87064C14.4621 5.08139 14.2384 5.29192 13.998 5.47948C12.8828 6.34954 11.7636 7.21439 10.6403 8.07401C10.4859 8.18478 10.323 8.28331 10.1532 8.36871C10.0424 8.42883 9.93159 8.39317 9.83597 8.32107C9.73072 8.24173 9.66536 8.01096 9.7017 7.90948C9.78232 7.68422 9.94289 7.51894 10.1154 7.36928C10.7796 6.79313 11.449 6.22298 12.1186 5.65327C12.555 5.28207 12.9957 4.91656 13.4313 4.54474C13.4528 4.52633 13.4537 4.46908 13.4451 4.43514C13.4393 4.42033 13.4301 4.40713 13.4181 4.39669C13.4061 4.38625 13.3918 4.37888 13.3763 4.3752C13.1485 4.36038 12.9206 4.34125 12.6927 4.34245C10.8957 4.35189 9.09869 4.36372 7.30168 4.37795L7.30209 4.39387Z" fill="currentColor"/>
-</svg></div></a><div class="hide"><div class="w-embed w-script"><div data-tf-live="01JXE8C3H5DBPWEG1Y4WZE7FNZ"></div><script src="//embed.typeform.com/next/embed.js"></script></div></div></div></div></div><div data-w-id="a13f4943-95a2-60d3-e20e-e12854af9d42" class="footer_logo"><div><div id="w-node-_6ca0a8ce-bad4-f0ae-d8d7-e6c3a8dc1b2e-9cb12a35" data-is-ix2-target="1" class="footer_lottie" data-w-id="6ca0a8ce-bad4-f0ae-d8d7-e6c3a8dc1b2e" data-animation-type="lottie" data-src="assets/682f84b3838c89f8ff7667db/683a875030ccb710048ea251_Flow%20-%20Footer%20icon.lottie" data-loop="0" data-direction="1" data-autoplay="0" data-renderer="svg" data-duration="0" data-ix2-initial-state="0"></div></div><img src="assets/682f84b3838c89f8ff7667db/683b9b328bdb48594a3514e5_Flow%20New.svg" alt="" class="footer_logo-text"/></div><div class="footer_copyright-div"><div class="footer_copyright-content"><div class="text-block">Â© Collective <span year="">year</span></div><div class="footer_copyright-links-wrap"><a href="/terms-of-service" class="footer_link-block is-legal w-inline-block"><div>Terms</div></a><a href="/privacy-policy" class="footer_link-block is-legal w-inline-block"><div>Privacy</div></a><a href="/data-controls" class="footer_link-block is-legal w-inline-block"><div>Data Controls</div></a></div></div><div class="footer_socials-content"><a rel="noopener noreferrer" href="https://www.youtube.com/@wisprflowai" target="_blank" class="footer_social-link w-inline-block"><div class="footer_social-icons w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 25 24" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
+</svg></div></a><div class="hide"><div class="w-embed w-script"><div data-tf-live="01JXE8C3H5DBPWEG1Y4WZE7FNZ"></div><script src="//embed.typeform.com/next/embed.js"></script></div></div></div></div></div><div data-w-id="a13f4943-95a2-60d3-e20e-e12854af9d42" class="footer_logo" style="display: flex; justify-content: center; align-items: center; width: 100%;"><img src="Collective Logo HUGE.png" alt="Collective Logo" style="width: 90%; max-width: 900px; height: auto;"/></div><div class="footer_copyright-div"><div class="footer_copyright-content"><div class="text-block">Â© Collective <span year="">year</span></div><div class="footer_copyright-links-wrap"><a href="/terms-of-service" class="footer_link-block is-legal w-inline-block"><div>Terms</div></a><a href="/privacy-policy" class="footer_link-block is-legal w-inline-block"><div>Privacy</div></a><a href="/data-controls" class="footer_link-block is-legal w-inline-block"><div>Data Controls</div></a></div></div><div class="footer_socials-content" style="display: none;"><a rel="noopener noreferrer" href="https://www.youtube.com/@wisprflowai" target="_blank" class="footer_social-link w-inline-block"><div class="footer_social-icons w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 25 24" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M21.0657 4.77345C22.0134 5.02692 22.7526 5.76903 23.0089 6.71673C23.6792 9.42042 23.6356 14.5321 23.023 17.278C22.7695 18.2257 22.0274 18.965 21.0797 19.2213C18.4042 19.8831 6.42063 19.8015 3.90001 19.2213C2.95231 18.9678 2.21302 18.2257 1.95673 17.278C1.32446 14.7011 1.36811 9.25144 1.94265 6.73081C2.19612 5.78311 2.93823 5.04382 3.88593 4.78753C7.46268 4.0412 19.7927 4.282 21.0657 4.77345ZM10.3639 8.70227L16.1093 11.9974L10.3639 15.2925V8.70227Z" fill="currentColor"/>
 </svg></div></a><a rel="noopener noreferrer" href="https://www.crunchbase.com/organization/wispr-ai" target="_blank" class="footer_social-link w-inline-block"><div class="icon-embed-custom w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 25 25" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
 <g clip-path="url(#clip0_7503_2610)">
@@ -1634,7 +2416,7 @@ margin: 0rem !important;
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-const navbar = document.querySelector('.nav_fixed');
+const navbar = document.querySelector('.new-sticky-navbar');
 
 if (navbar && window.matchMedia('(max-width: 991px)').matches) {
   // Create the hide animation (from visible to hidden)
@@ -1793,7 +2575,7 @@ $('.nav_menu-dropdown-toggle-v2').on('mouseenter', function() {
 <!--Close nav dropdown when you scroll down and dropdown is open-->
 <script>
 $(window).scroll(function() {
-  const navbarStyle = $('.nav_fixed').attr('style');
+  const navbarStyle = $('.new-sticky-navbar').attr('style');
   
   if (navbarStyle && navbarStyle.includes('translate3d(0px, -')) {
     
@@ -2060,22 +2842,8 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>-->
 
-<!--Nav fixed top padding (announcement bar)-->
-<script>
-gsap.registerPlugin(ScrollTrigger);
+<!--Nav fixed top padding (announcement bar) - REMOVED: No longer needed with sticky navbar-->
 
-ScrollTrigger.create({
-  trigger: ".banner",
-  start: "bottom top",
-  end: "bottom top",
-  onEnter: () => {
-    document.querySelector(".nav_spacer").style.display = "none";
-  },
-  onLeaveBack: () => {
-    document.querySelector(".nav_spacer").style.display = "block";
-  }
-});
-</script>
 
 <!--Mobile Rive Animation-->
 <script src="https://unpkg.com/@rive-app/canvas@2.7.0"></script>
@@ -2567,6 +3335,27 @@ $(document).ready(function () {
     });
   }
 
+  // 5) Contacts section underline with scroll animation (locks at 100% once complete)
+  function initContactsUnderlineDraw() {
+    const drawAnim = gsap.from("#heading-underline-contacts", { drawSVG: "0%", paused: true });
+    let hasCompleted = false;
+
+    ScrollTrigger.create({
+      trigger: "#heading-underline-contacts",
+      start: "top bottom",
+      end: "top 30%",
+      scrub: false,
+      onUpdate: (self) => {
+        if (self.direction > 0) {
+          drawAnim.progress(self.progress);
+          if (self.progress >= 1) hasCompleted = true;
+        } else {
+          drawAnim.progress(hasCompleted ? 1 : self.progress);
+        }
+      },
+    });
+  }
+
 
 function initMarqueeText() {
   // 2) Split into chars as before
@@ -2675,8 +3464,9 @@ initGSAPQuarterlyRefresh();
     initFeaturesDraw();
     initTestimonialsDraw();
     initUnderlineDraw();
+    initContactsUnderlineDraw();
     initMarqueeText();
-    initIconPath(43, 48);
+    initIconPath(30, 48);
     initGSAPQuarterlyRefresh();
     initDashboardSlideIn();
     initAvatarMarquees();
@@ -2915,7 +3705,7 @@ initGSAPQuarterlyRefresh();
   
   window.addEventListener("resize", () => {
   if (window.innerWidth > 991) {
-   initIconPath(43, 48);
+   initIconPath(30, 48);
   }
 });
 </script>
@@ -2925,7 +3715,7 @@ initGSAPQuarterlyRefresh();
   html, body {
     overflow: visible !important;
     overflow-x: hidden !important;
-    background-color: #FFFFEB !important;
+    background-color: #FFFFF5 !important;
   }
   #root {
     overflow: visible !important;
