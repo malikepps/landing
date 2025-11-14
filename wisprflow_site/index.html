@@ -279,6 +279,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!--Download button text - OS code with promo support-->
 <script>
+// Detect platform immediately
+(function() {
+  const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  
+  if (/iPhone|iPad|iPod/.test(userAgent)) {
+    window.userPlatform = 'iOS';
+  } else if (/Mac/.test(userAgent)) {
+    window.userPlatform = 'mac_unknown';
+  } else if (/Win/.test(userAgent)) {
+    window.userPlatform = 'Windows';
+  } else {
+    window.userPlatform = 'unknown';
+  }
+})();
+
 const urlParams = new URLSearchParams(window.location.search);
 const promoCode = urlParams.get('promo_code');
 
@@ -1613,25 +1628,31 @@ margin: 0rem !important;
 /* Hero Avatar Scrolling Animation Styles */
 .hero-avatar-container {
   width: 480px;
-  height: 180px;
-  border: 4px solid #000000;
+  height: 270px;
+  border: 4px solid #034F46;
   border-radius: 30px;
   overflow: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 0;
-  background-color: #FFFFEB;
-  transform: skewY(-4deg);
+  background-color: #FFFFF5;
+  transform: none;
   transform-origin: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
+}
+
+.hero-avatar-container.loaded {
+  opacity: 1;
 }
 
 .hero-avatar-speech-bubble {
-  width: 480px;
-  padding: 24px 32px;
+  width: 400px;
+  padding: 18px 24px;
   background-color: #034F46;
   border-radius: 30px;
-  transform: skewY(-4deg);
+  transform: none;
   transform-origin: center;
   margin-top: 20px;
   margin-left: 40px;
@@ -1640,56 +1661,61 @@ margin: 0rem !important;
   overflow: hidden;
   display: flex;
   align-items: center;
-  gap: 16px;
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  justify-content: center;
+  gap: 12px;
+  opacity: 0;
+  transform: scale(0.8) translateY(20px);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
 }
 
-.hero-avatar-speech-bubble.slide-up {
-  animation: slideUpNotification 0.5s ease-out forwards;
-}
-
-.hero-avatar-speech-bubble.slide-down {
-  animation: slideDownNotification 0.5s ease-out forwards;
-}
-
-.hero-notification-avatar {
-  width: 56px;
-  height: 56px;
-  border-radius: 20%;
-  object-fit: cover;
-  flex-shrink: 0;
-  border: 3px solid #F0D7FF;
+.hero-avatar-speech-bubble.show {
+  opacity: 1;
+  transform: scale(1) translateY(0);
 }
 
 .hero-avatar-speech-bubble p {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.125rem;
   font-weight: 600;
   color: #F0D7FF;
   line-height: 1.4;
-  flex: 1;
+  text-align: center;
 }
 
-@keyframes slideUpNotification {
-  from {
-    opacity: 0;
-    transform: skewY(-4deg) translateY(100px);
+/* Shake and highlight animation for avatars */
+@keyframes shakeAvatar {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
   }
-  to {
-    opacity: 1;
-    transform: skewY(-4deg) translateY(0);
+  10% {
+    transform: scale(1.15) rotate(-8deg);
+  }
+  20% {
+    transform: scale(1.15) rotate(8deg);
+  }
+  30% {
+    transform: scale(1.15) rotate(-8deg);
+  }
+  40% {
+    transform: scale(1.15) rotate(8deg);
+  }
+  50% {
+    transform: scale(1.15) rotate(0deg);
   }
 }
 
-@keyframes slideDownNotification {
-  from {
-    opacity: 1;
-    transform: skewY(-4deg) translateY(0);
-  }
-  to {
-    opacity: 0;
-    transform: skewY(-4deg) translateY(-100px);
-  }
+.hero-avatar-track img.shake {
+  animation: shakeAvatar 0.8s ease-in-out;
+  border: 4px solid #FFD700 !important;
+  z-index: 10;
+  position: relative;
+}
+
+.hero-avatar-track img.highlighted {
+  border: 4px solid #FFD700 !important;
+  z-index: 10;
+  position: relative;
+  transition: all 0.3s ease;
 }
 
 .hero-avatar-row {
@@ -1719,6 +1745,14 @@ margin: 0rem !important;
   border-radius: 20%;
   object-fit: cover;
   flex-shrink: 0;
+}
+
+.hero-avatar-track .avatar-placeholder {
+  width: 60px;
+  height: 60px;
+  border-radius: 20%;
+  flex-shrink: 0;
+  border: 2px solid rgba(0, 0, 0, 0.1);
 }
 
 @keyframes scrollLeft {
@@ -1758,7 +1792,7 @@ margin: 0rem !important;
   
   .hero-avatar-speech-bubble {
     width: 110%;
-    max-width: 500px;
+    max-width: 420px;
     margin-left: auto;
     margin-right: -50px;
   }
@@ -1793,7 +1827,7 @@ margin: 0rem !important;
   .hero-avatar-container {
     width: 110%;
     max-width: 400px;
-    height: 140px;
+    height: 210px;
     margin-left: -40px;
   }
   
@@ -1803,21 +1837,13 @@ margin: 0rem !important;
   
   .hero-avatar-speech-bubble {
     width: 110%;
-    max-width: 400px;
-    padding: 18px 24px;
+    max-width: 340px;
+    padding: 14px 20px;
     margin-right: -40px;
-    gap: 12px;
-  }
-  
-  .hero-notification-avatar {
-    width: 44px;
-    height: 44px;
-    border: 2px solid #F0D7FF;
-    margin-left: auto;
   }
   
   .hero-avatar-speech-bubble p {
-    font-size: 1.125rem;
+    font-size: 1rem;
   }
   
   /* More spacing on small mobile to ensure no overlap */
@@ -1829,7 +1855,7 @@ margin: 0rem !important;
     padding-top: 2.5rem !important;
   }
 }
-</style><div class="padding-global"><div class="container-large"><div promo-wrap="" class="promo-wrap homepage"><div class="promo-div homepage"><div promo-text="">Promo</div></div></div><div class="icpv2-hero_grid"><div><h1 heading-element="" class="heading-style-h1 ab-v2"><span>Build community. Tell your story. </span><em>Get results.</em></h1><div class="hide"><div class="ab-v1"></div><div class="ab-v2"></div><div class="ab-v3"></div></div><div class="spacer-small hide-mobile-landscape"></div><div class="spacer-medium"></div><div><div class="max-width-large align-center"><p para-element="" class="text-size-large text-wrap-balance">Free spaces where mission-driven organizations manage audiences, publish content, and grow their base of recurring donors.</p></div><div class="spacer-medium"></div><div><div class="hide"><img apple-icon="" src="assets/6838259bd246e848c14f0840/683829796f346a9a6f931363_apple.png" alt="" class="download_button-icon homepage"/><img windows-icon="" src="assets/682f84b3838c89f8ff7667db/686d4881d944a4b80f7d047e_windows.svg" alt="" class="download_button-icon homepage"/></div><a app-download="" cta="" cta_location="leaders_hero_section" cta_type="download_for_free" href="index.html" class="button w-inline-block"><div>Download for free</div></a></div></div></div><div id="w-node-_7a9c4326-1dfa-b9ed-4848-c80c2baa4ea8-1e144653">
+</style><div class="padding-global"><div class="container-large"><div promo-wrap="" class="promo-wrap homepage"><div class="promo-div homepage"><div promo-text="">Promo</div></div></div><div class="icpv2-hero_grid"><div><h1 heading-element="" class="heading-style-h1 ab-v2"><span>Where storytelling meets </span><em style="color: #034F46;">growth.</em></h1><div class="hide"><div class="ab-v1"></div><div class="ab-v2"></div><div class="ab-v3"></div></div><div class="spacer-small hide-mobile-landscape"></div><div class="spacer-medium"></div><div><div class="max-width-large align-center"><p para-element="" class="text-size-large text-wrap-balance">Free spaces where mission-driven organizations manage audiences, publish content, and grow their base of recurring donors.</p></div><div class="spacer-medium"></div><div><div class="hide"><img apple-icon="" src="assets/6838259bd246e848c14f0840/683829796f346a9a6f931363_apple.png" alt="" class="download_button-icon homepage"/><img windows-icon="" src="assets/682f84b3838c89f8ff7667db/686d4881d944a4b80f7d047e_windows.svg" alt="" class="download_button-icon homepage"/></div><a app-download="" cta="" cta_location="leaders_hero_section" cta_type="download_for_free" href="index.html" class="button w-inline-block"><div>Download for free</div></a></div></div></div><div id="w-node-_7a9c4326-1dfa-b9ed-4848-c80c2baa4ea8-1e144653">
   <!-- Avatar Scrolling Animation Container -->
   <div id="hero-avatar-animation-container" class="hero-avatar-container">
     <!-- Row 1: Scrolling Left -->
@@ -1843,12 +1869,17 @@ margin: 0rem !important;
       <div class="hero-avatar-track hero-avatar-track-reverse" id="hero-avatars-row-2"></div>
       <div class="hero-avatar-track hero-avatar-track-reverse" id="hero-avatars-row-2-clone" aria-hidden="true"></div>
     </div>
+    
+    <!-- Row 3: Scrolling Left (same direction as Row 1) -->
+    <div class="hero-avatar-row" id="hero-avatar-row-3">
+      <div class="hero-avatar-track" id="hero-avatars-row-3"></div>
+      <div class="hero-avatar-track" id="hero-avatars-row-3-clone" aria-hidden="true"></div>
+    </div>
   </div>
   
   <!-- Speech Bubble -->
   <div class="hero-avatar-speech-bubble">
-    <img id="hero-notification-avatar" src="" alt="User avatar" class="hero-notification-avatar">
-    <p id="hero-speech-text">Antonio set up a recurring gift 💝</p>
+    <p id="hero-speech-text"></p>
   </div>
 </div></div></div></div></section>
 
@@ -1996,7 +2027,7 @@ margin: 0rem !important;
   z-index: 5;
   width: 100%;
 }
-</style><div class="icon_svg-wrapper"><div class="w-dyn-list"><div role="list" class="icon-list w-dyn-items"><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1521119989659-a83eee488004?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1522556189639-b150ed9c4330?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1463453091185-61582044d556?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&crop=faces" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div></div></div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 3570 1125" fill="none" class="icon_svg hide-mobile-landscape"><path d="M0.629639 1.15771C82.9263 189.969 357.34 608.012 796.621 769.692C1235.9 931.372 1567.15 773.202 1711.79 678.175C1891.9 559.839 2155.65 289.609 2443.93 327.36C2732.2 365.111 3187.5 563.779 3568.82 1124.32" id="icon-path-web"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 3572 438" fill="none" class="icon_svg show-mobile-landscape"><path d="M0.411621 1.27466H1191.81C1219.24 74.606 1310.71 236.967 1457.14 299.761C1603.56 362.555 1713.98 301.125 1762.19 264.217C1822.23 218.258 1910.15 113.305 2006.24 127.967C2102.33 142.628 2254.1 219.788 2381.2 437.493H3571.73" id="icon-path-mobile"></path></svg></div><div class="integration-mobile_wrapper no-max-width"><div class="rive-wrapper"><div class="mobile-rive" data-rive-url="assets/682f84b3838c89f8ff7667db/686eb838dbbd35b6fc976700_Wispr%20-%20Chat%20v3.riv" data-rive-autoplay="true" data-rive-is-touch-scroll-enabled="false" data-rive-automatically-handle-events="false" data-rive-fit="contain" data-rive-alignment="center" data-animation-type="rive"><canvas style="height:100%;width:100%"></canvas></div></div></div></div></div></div></section><section ab-test-variant="test" data-w-id="3a5a83b3-fb0d-199d-a219-4df33a91fade" class="section_app-integrations"><div class="padding-global padding-section-xlarge"><div class="container-large"><div class="integrations_grid _2nd-col-wider"><div id="w-node-_3a5a83b3-fb0d-199d-a219-4df33a91fae2-59ff8fc2"><div data-wf--integrations-light-color--variant="left-align" class="home_integrations_chips-div w-variant-42389bcc-99c2-f571-cae7-5c8fffc26c50"><div class="home_integrations_chip"><img src="assets/682f84b3838c89f8ff7667db/6832323f127062351dc681c7_apple_symobl.svg" loading="lazy" alt="" class="home_integrations_chip-logo apple"/><div class="text-color-alternate text-weight-bold">iOS</div></div><div class="home_integrations_chip"><img src="assets/682f84b3838c89f8ff7667db/6832323f127062351dc681c7_apple_symobl.svg" loading="lazy" alt="" class="home_integrations_chip-logo apple"/><div class="text-color-alternate text-weight-bold">Mac</div></div><div class="home_integrations_chip"><img src="assets/682f84b3838c89f8ff7667db/6832323fbe339316d0a134c8_windows_symbol.svg.svg" loading="lazy" alt="" class="home_integrations_chip-logo"/><div class="text-color-alternate text-weight-bold">Windows</div></div></div><div class="spacer-large"></div><h2 class="text-color-secondary">Built for community, not algorithms</h2><div class="spacer-large"></div><div class="max-width-small"><p class="text-size-large text-wrap-balance">Seamless speech-to-text in every application on your iPhone or computer.</p></div><div class="spacer-medium"></div><a cta="" cta_location="home_video_section" cta_type="apply" href="apply.html" class="button w-inline-block"><div>Apply to Join Collective</div></a></div><div id="w-node-_3a5a83b3-fb0d-199d-a219-4df33a91faef-59ff8fc2" class="integrations_video-wrap"><div class="w-embed w-iframe"><div class="yt-wrap">
+</style><div class="icon_svg-wrapper"><div class="w-dyn-list"><div role="list" class="icon-list w-dyn-items"><div role="listitem" class="icon-item w-dyn-item"><img src="community_icon_1.jpg" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="community_icon_2.jpg" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="community_icon_3.jpg" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="community_icon_4.jpg" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="community_icon_5.jpg" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="community_icon_6.jpg" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="community_icon_7.jpg" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="community_icon_8.jpg" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="community_icon_9.jpg" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="community_icon_10.jpg" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="community_icon_11.jpg" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="community_icon_12.jpg" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="community_icon_13.jpg" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="community_icon_14.jpg" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="community_icon_15.jpg" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="community_icon_16.jpg" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="community_icon_17.jpg" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="community_icon_18.jpg" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="community_icon_19.jpg" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div><div role="listitem" class="icon-item w-dyn-item"><img src="community_icon_20.jpg" alt="Community member" class="icon-image" style="border-radius: 20%; object-fit: cover;"/></div></div></div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 3570 1125" fill="none" class="icon_svg hide-mobile-landscape"><path d="M0.629639 1.15771C82.9263 189.969 357.34 608.012 796.621 769.692C1235.9 931.372 1567.15 773.202 1711.79 678.175C1891.9 559.839 2155.65 289.609 2443.93 327.36C2732.2 365.111 3187.5 563.779 3568.82 1124.32" id="icon-path-web"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 3572 438" fill="none" class="icon_svg show-mobile-landscape"><path d="M0.411621 1.27466H1191.81C1219.24 74.606 1310.71 236.967 1457.14 299.761C1603.56 362.555 1713.98 301.125 1762.19 264.217C1822.23 218.258 1910.15 113.305 2006.24 127.967C2102.33 142.628 2254.1 219.788 2381.2 437.493H3571.73" id="icon-path-mobile"></path></svg></div><div class="integration-mobile_wrapper no-max-width"><div class="rive-wrapper"><div class="mobile-rive" data-rive-url="assets/682f84b3838c89f8ff7667db/686eb838dbbd35b6fc976700_Wispr%20-%20Chat%20v3.riv" data-rive-autoplay="true" data-rive-is-touch-scroll-enabled="false" data-rive-automatically-handle-events="false" data-rive-fit="contain" data-rive-alignment="center" data-animation-type="rive"><canvas style="height:100%;width:100%"></canvas></div></div></div></div></div></div></section><section ab-test-variant="test" data-w-id="3a5a83b3-fb0d-199d-a219-4df33a91fade" class="section_app-integrations"><div class="padding-global padding-section-xlarge"><div class="container-large"><div class="integrations_grid _2nd-col-wider"><div id="w-node-_3a5a83b3-fb0d-199d-a219-4df33a91fae2-59ff8fc2"><div data-wf--integrations-light-color--variant="left-align" class="home_integrations_chips-div w-variant-42389bcc-99c2-f571-cae7-5c8fffc26c50"><div class="home_integrations_chip"><img src="assets/682f84b3838c89f8ff7667db/6832323f127062351dc681c7_apple_symobl.svg" loading="lazy" alt="" class="home_integrations_chip-logo apple"/><div class="text-color-alternate text-weight-bold">iOS</div></div><div class="home_integrations_chip"><img src="assets/682f84b3838c89f8ff7667db/6832323f127062351dc681c7_apple_symobl.svg" loading="lazy" alt="" class="home_integrations_chip-logo apple"/><div class="text-color-alternate text-weight-bold">Mac</div></div><div class="home_integrations_chip"><img src="assets/682f84b3838c89f8ff7667db/6832323fbe339316d0a134c8_windows_symbol.svg.svg" loading="lazy" alt="" class="home_integrations_chip-logo"/><div class="text-color-alternate text-weight-bold">Windows</div></div></div><div class="spacer-large"></div><h2 class="text-color-secondary">Built for community, not algorithms</h2><div class="spacer-large"></div><div class="max-width-small"><p class="text-size-large text-wrap-balance">Seamless speech-to-text in every application on your iPhone or computer.</p></div><div class="spacer-medium"></div><a cta="" cta_location="home_video_section" cta_type="apply" href="apply.html" class="button w-inline-block"><div>Apply to Join Collective</div></a></div><div id="w-node-_3a5a83b3-fb0d-199d-a219-4df33a91faef-59ff8fc2" class="integrations_video-wrap"><div class="w-embed w-iframe"><div class="yt-wrap">
   <iframe
     src="https://www.youtube-nocookie.com/embed/x6XJIbRksgI?rel=0&modestbranding=1&playsinline=1&enablejsapi=1"
     title="YouTube video player"
@@ -3505,11 +3536,11 @@ $(document).ready(function () {
       
       // Avatar photos for each contact
       const avatarPhotos = [
-        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=faces',
-        'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=faces',
-        'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&h=80&fit=crop&crop=faces',
-        'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&h=80&fit=crop&crop=faces',
-        'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=faces'
+        'avatar_3.jpg',
+        'avatar_2.jpg',
+        'avatar_18.jpg',
+        'avatar_4.jpg',
+        'avatar_9.jpg'
       ];
       
       // Get email addresses (for display in stream)
@@ -3918,16 +3949,16 @@ initGSAPQuarterlyRefresh();
   function initAvatarMarquees() {
     // Avatar images - diverse set to minimize repetition
     const avatarUrls = [
-      'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=60&h=60&fit=crop&crop=faces',
-      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=faces',
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=60&h=60&fit=crop&crop=faces',
-      'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=60&h=60&fit=crop&crop=faces',
-      'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=60&h=60&fit=crop&crop=faces',
-      'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=60&h=60&fit=crop&crop=faces',
-      'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=60&h=60&fit=crop&crop=faces',
-      'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=60&h=60&fit=crop&crop=faces',
-      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=60&h=60&fit=crop&crop=faces',
-      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=60&h=60&fit=crop&crop=faces'
+      'avatar_1.jpg',
+      'avatar_2.jpg',
+      'avatar_3.jpg',
+      'avatar_4.jpg',
+      'avatar_5.jpg',
+      'avatar_6.jpg',
+      'avatar_7.jpg',
+      'avatar_8.jpg',
+      'avatar_9.jpg',
+      'avatar_10.jpg'
     ];
     
     const isMobile = window.innerWidth <= 991;
@@ -4012,131 +4043,211 @@ initGSAPQuarterlyRefresh();
 
   // Hero Avatar Scrolling Animation
   function initHeroAvatarScrolling() {
-    // Avatar images - same as comparison section
+    // Local avatar images for fast loading
     const avatarUrls = [
-      'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=60&h=60&fit=crop&crop=faces',
-      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=faces',
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=60&h=60&fit=crop&crop=faces',
-      'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=60&h=60&fit=crop&crop=faces',
-      'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=60&h=60&fit=crop&crop=faces',
-      'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=60&h=60&fit=crop&crop=faces',
-      'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=60&h=60&fit=crop&crop=faces',
-      'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=60&h=60&fit=crop&crop=faces',
-      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=60&h=60&fit=crop&crop=faces',
-      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=60&h=60&fit=crop&crop=faces',
-      'https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=60&h=60&fit=crop&crop=faces',
-      'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=60&h=60&fit=crop&crop=faces',
-      'https://images.unsplash.com/photo-1521119989659-a83eee488004?w=60&h=60&fit=crop&crop=faces',
-      'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=60&h=60&fit=crop&crop=faces',
-      'https://images.unsplash.com/photo-1463453091185-61582044d556?w=60&h=60&fit=crop&crop=faces'
+      'avatar_1.jpg',
+      'avatar_2.jpg',
+      'avatar_3.jpg',
+      'avatar_4.jpg',
+      'avatar_5.jpg',
+      'avatar_6.jpg',
+      'avatar_7.jpg',
+      'avatar_8.jpg',
+      'avatar_9.jpg',
+      'avatar_10.jpg',
+      'avatar_11.jpg',
+      'avatar_12.jpg',
+      'avatar_13.jpg',
+      'avatar_14.jpg',
+      'avatar_15.jpg',
+      'avatar_16.jpg',
+      'avatar_17.jpg',
+      'avatar_18.jpg',
+      'avatar_19.jpg',
+      'avatar_20.jpg',
+      'avatar_21.jpg',
+      'avatar_22.jpg',
+      'avatar_23.jpg',
+      'avatar_24.jpg',
+      'avatar_25.jpg'
     ];
     
     const row1Track = document.getElementById('hero-avatars-row-1');
     const row1Clone = document.getElementById('hero-avatars-row-1-clone');
     const row2Track = document.getElementById('hero-avatars-row-2');
     const row2Clone = document.getElementById('hero-avatars-row-2-clone');
+    const row3Track = document.getElementById('hero-avatars-row-3');
+    const row3Clone = document.getElementById('hero-avatars-row-3-clone');
+    const container = document.getElementById('hero-avatar-animation-container');
     
-    if (!row1Track || !row1Clone || !row2Track || !row2Clone) return;
+    if (!row1Track || !row1Clone || !row2Track || !row2Clone || !row3Track || !row3Clone || !container) return;
     
     const avatarCount = 15;
+    let imagesLoaded = 0;
+    const totalImages = avatarCount * 6; // 15 avatars × 6 tracks (3 rows × 2 clones each)
+    
+    function onImageLoad() {
+      imagesLoaded++;
+      if (imagesLoaded === totalImages) {
+        // All images loaded, show the container
+        container.classList.add('loaded');
+      }
+    }
     
     // Create avatars for Row 1 and its clone
     for (let i = 0; i < avatarCount; i++) {
       const img1 = document.createElement('img');
       img1.src = avatarUrls[i % avatarUrls.length];
       img1.alt = 'Community member';
+      img1.loading = 'eager';
+      img1.addEventListener('load', onImageLoad);
+      img1.addEventListener('error', onImageLoad); // Count errors as loaded to prevent hanging
       row1Track.appendChild(img1);
       
       const img1Clone = document.createElement('img');
       img1Clone.src = avatarUrls[i % avatarUrls.length];
       img1Clone.alt = 'Community member';
+      img1Clone.loading = 'eager';
+      img1Clone.addEventListener('load', onImageLoad);
+      img1Clone.addEventListener('error', onImageLoad);
       row1Clone.appendChild(img1Clone);
     }
     
-    // Create avatars for Row 2 and its clone
+    // Create avatars for Row 2 and its clone - offset for variety
     for (let i = 0; i < avatarCount; i++) {
       const img2 = document.createElement('img');
-      img2.src = avatarUrls[(i + 7) % avatarUrls.length]; // Offset for variety
+      img2.src = avatarUrls[(i + 8) % avatarUrls.length];
       img2.alt = 'Community member';
+      img2.loading = 'eager';
+      img2.addEventListener('load', onImageLoad);
+      img2.addEventListener('error', onImageLoad);
       row2Track.appendChild(img2);
       
       const img2Clone = document.createElement('img');
-      img2Clone.src = avatarUrls[(i + 7) % avatarUrls.length];
+      img2Clone.src = avatarUrls[(i + 8) % avatarUrls.length];
       img2Clone.alt = 'Community member';
+      img2Clone.loading = 'eager';
+      img2Clone.addEventListener('load', onImageLoad);
+      img2Clone.addEventListener('error', onImageLoad);
       row2Clone.appendChild(img2Clone);
+    }
+    
+    // Create avatars for Row 3 and its clone - different offset
+    for (let i = 0; i < avatarCount; i++) {
+      const img3 = document.createElement('img');
+      img3.src = avatarUrls[(i + 17) % avatarUrls.length];
+      img3.alt = 'Community member';
+      img3.loading = 'eager';
+      img3.addEventListener('load', onImageLoad);
+      img3.addEventListener('error', onImageLoad);
+      row3Track.appendChild(img3);
+      
+      const img3Clone = document.createElement('img');
+      img3Clone.src = avatarUrls[(i + 17) % avatarUrls.length];
+      img3Clone.alt = 'Community member';
+      img3Clone.loading = 'eager';
+      img3Clone.addEventListener('load', onImageLoad);
+      img3Clone.addEventListener('error', onImageLoad);
+      row3Clone.appendChild(img3Clone);
     }
   }
 
-  // Hero Speech Bubble Text Rotation
+  // Hero Avatar Shake and Notification Animation
   function initHeroSpeechBubbleRotation() {
-    // Avatar images - same pool as hero avatar scrolling
-    const avatarUrls = [
-      'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=60&h=60&fit=crop&crop=faces',
-      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=faces',
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=60&h=60&fit=crop&crop=faces',
-      'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=60&h=60&fit=crop&crop=faces',
-      'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=60&h=60&fit=crop&crop=faces',
-      'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=60&h=60&fit=crop&crop=faces',
-      'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=60&h=60&fit=crop&crop=faces',
-      'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=60&h=60&fit=crop&crop=faces',
-      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=60&h=60&fit=crop&crop=faces'
-    ];
-    
     const notifications = [
-      { 
-        message: 'Antonio set up a recurring gift 💝', 
-        avatarIndex: 0
-      },
-      { 
-        message: 'Lisa joined your community 🎉', 
-        avatarIndex: 2
-      },
-      { 
-        message: 'Alexander opened your message 💬', 
-        avatarIndex: 1
-      },
-      { 
-        message: 'Kate saw your video 👀', 
-        avatarIndex: 8
-      }
+      'Someone set up a recurring gift 💝',
+      'A new member joined your community 🎉',
+      'Someone opened your message 💬',
+      'A community member saw your video 👀',
+      'Someone commented on your post 💬',
+      'A supporter became a recurring donor 💝',
+      'Someone shared your content 🔄',
+      'A member liked your update ❤️'
     ];
     
     const textElement = document.getElementById('hero-speech-text');
-    const avatarElement = document.getElementById('hero-notification-avatar');
     const bubbleElement = document.querySelector('.hero-avatar-speech-bubble');
+    const container = document.getElementById('hero-avatar-animation-container');
     
-    if (!textElement || !avatarElement || !bubbleElement) return;
+    if (!textElement || !bubbleElement || !container) return;
     
-    // Set initial notification
-    let currentIndex = 0;
-    avatarElement.src = avatarUrls[notifications[currentIndex].avatarIndex];
-    textElement.textContent = notifications[currentIndex].message;
+    let isAnimating = false;
     
-    // Show initial notification with slide-up animation
-    setTimeout(() => {
-      bubbleElement.classList.add('slide-up');
-    }, 500);
-    
-    function rotateMessage() {
-      // Slide down (exit)
-      bubbleElement.classList.remove('slide-up');
-      bubbleElement.classList.add('slide-down');
+    function isAvatarVisible(avatar) {
+      const containerRect = container.getBoundingClientRect();
+      const avatarRect = avatar.getBoundingClientRect();
       
-      setTimeout(() => {
-        // Change content while hidden
-        currentIndex = (currentIndex + 1) % notifications.length;
-        const notification = notifications[currentIndex];
-        textElement.textContent = notification.message;
-        avatarElement.src = avatarUrls[notification.avatarIndex];
-        
-        // Slide up (enter)
-        bubbleElement.classList.remove('slide-down');
-        bubbleElement.classList.add('slide-up');
-      }, 500); // Wait for slide-down animation
+      // Check if avatar is within the visible container bounds
+      // Add some margin to ensure it's fully visible (not at the edge)
+      const margin = 40; // pixels from edge
+      const isWithinLeftBound = avatarRect.left >= (containerRect.left + margin);
+      const isWithinRightBound = avatarRect.right <= (containerRect.right - margin);
+      const isWithinTopBound = avatarRect.top >= containerRect.top;
+      const isWithinBottomBound = avatarRect.bottom <= containerRect.bottom;
+      
+      return isWithinLeftBound && isWithinRightBound && isWithinTopBound && isWithinBottomBound;
     }
     
-    // Rotate message every 4 seconds
-    setInterval(rotateMessage, 4000);
+    function triggerAvatarNotification() {
+      if (isAnimating) return;
+      
+      // Get all avatar images from all three rows
+      const allAvatars = document.querySelectorAll('.hero-avatar-track img');
+      if (allAvatars.length === 0) return;
+      
+      // Filter to only visible avatars
+      const visibleAvatars = Array.from(allAvatars).filter(avatar => isAvatarVisible(avatar));
+      
+      if (visibleAvatars.length === 0) {
+        // If no avatars are visible (shouldn't happen), try again soon
+        setTimeout(triggerAvatarNotification, 500);
+        return;
+      }
+      
+      // Pick a random visible avatar
+      const randomIndex = Math.floor(Math.random() * visibleAvatars.length);
+      const selectedAvatar = visibleAvatars[randomIndex];
+      
+      // Pick a random notification message
+      const randomMessage = notifications[Math.floor(Math.random() * notifications.length)];
+      
+      isAnimating = true;
+      
+      // Add shake and highlighted classes to the selected avatar
+      selectedAvatar.classList.add('shake', 'highlighted');
+      
+      // After a short delay, show the notification bubble
+      setTimeout(() => {
+        textElement.textContent = randomMessage;
+        bubbleElement.classList.add('show');
+      }, 400);
+      
+      // Remove shake class after animation completes, but keep highlighted
+      setTimeout(() => {
+        selectedAvatar.classList.remove('shake');
+      }, 1000);
+      
+      // Hide the notification and remove highlight after 3.5 seconds total
+      setTimeout(() => {
+        bubbleElement.classList.remove('show');
+        selectedAvatar.classList.remove('highlighted');
+        isAnimating = false;
+      }, 3500);
+    }
+    
+    // Start the first notification after a short delay
+    setTimeout(triggerAvatarNotification, 2000);
+    
+    // Schedule random notifications at intervals between 5-8 seconds
+    function scheduleNextNotification() {
+      const delay = Math.random() * 3000 + 5000; // Random between 5000-8000ms
+      setTimeout(() => {
+        triggerAvatarNotification();
+        scheduleNextNotification();
+      }, delay);
+    }
+    
+    scheduleNextNotification();
   }
 
   window.addEventListener("load", () => {
