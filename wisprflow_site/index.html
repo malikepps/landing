@@ -4088,7 +4088,7 @@ initGSAPQuarterlyRefresh();
     const avatarCount = 10; // Reduced from 15 to 10 for faster loading
     let loadedImages = new Set();
     
-    function createAvatarImg(src, alt, delay = 0) {
+    function createAvatarImg(src, alt, isPriority = false) {
       const img = document.createElement('img');
       img.alt = alt;
       img.style.width = '60px';
@@ -4096,58 +4096,81 @@ initGSAPQuarterlyRefresh();
       img.style.borderRadius = '20%';
       img.style.objectFit = 'cover';
       img.style.flexShrink = '0';
-      img.style.opacity = '0';
-      img.style.transition = 'opacity 0.3s ease-in';
       
-      // Load image with delay for progressive loading
-      setTimeout(() => {
-        img.src = src;
-        img.loading = 'lazy';
+      // Set src immediately for all images
+      img.src = src;
+      
+      if (isPriority) {
+        // Priority images: load immediately and show right away
+        img.loading = 'eager';
+        img.style.opacity = '1';
         img.addEventListener('load', () => {
-          img.style.opacity = '1';
           loadedImages.add(src);
         });
         img.addEventListener('error', () => {
-          // On error, try to use a placeholder or hide
-          img.style.opacity = '0.3';
+          img.style.opacity = '0.5';
+          img.style.backgroundColor = '#ddd';
         });
-      }, delay);
+      } else {
+        // Non-priority: load with lazy attribute but still set src
+        // They'll load progressively as browser prioritizes
+        img.loading = 'lazy';
+        img.style.opacity = '0';
+        img.style.transition = 'opacity 0.3s ease-in';
+        img.style.backgroundColor = '#f0f0f0'; // Placeholder background
+        
+        // Force load after a short delay to ensure they load
+        setTimeout(() => {
+          if (img.complete && img.naturalHeight !== 0) {
+            img.style.opacity = '1';
+            loadedImages.add(src);
+          } else {
+            img.addEventListener('load', () => {
+              img.style.opacity = '1';
+              loadedImages.add(src);
+            }, { once: true });
+            img.addEventListener('error', () => {
+              img.style.opacity = '0.3';
+              img.style.backgroundColor = '#ddd';
+            }, { once: true });
+          }
+        }, 50);
+      }
       
       return img;
     }
     
-    // Load first batch immediately (first 2 avatars per track = 12 images)
-    // Then progressively load the rest
-    const batchSize = 2;
-    const batchDelay = 100; // 100ms between batches
+    // Load first batch immediately (first 3 avatars per track = 18 images)
+    // Rest will lazy load as they come into view
+    const priorityCount = 3;
     
     // Create avatars for Row 1 and its clone
     for (let i = 0; i < avatarCount; i++) {
-      const delay = i < batchSize ? 0 : (i - batchSize) * batchDelay;
-      const img1 = createAvatarImg(avatarUrls[i % avatarUrls.length], 'Community member', delay);
+      const isPriority = i < priorityCount;
+      const img1 = createAvatarImg(avatarUrls[i % avatarUrls.length], 'Community member', isPriority);
       row1Track.appendChild(img1);
       
-      const img1Clone = createAvatarImg(avatarUrls[i % avatarUrls.length], 'Community member', delay);
+      const img1Clone = createAvatarImg(avatarUrls[i % avatarUrls.length], 'Community member', isPriority);
       row1Clone.appendChild(img1Clone);
     }
     
     // Create avatars for Row 2 and its clone - offset for variety
     for (let i = 0; i < avatarCount; i++) {
-      const delay = i < batchSize ? 0 : (i - batchSize) * batchDelay;
-      const img2 = createAvatarImg(avatarUrls[(i + 8) % avatarUrls.length], 'Community member', delay);
+      const isPriority = i < priorityCount;
+      const img2 = createAvatarImg(avatarUrls[(i + 8) % avatarUrls.length], 'Community member', isPriority);
       row2Track.appendChild(img2);
       
-      const img2Clone = createAvatarImg(avatarUrls[(i + 8) % avatarUrls.length], 'Community member', delay);
+      const img2Clone = createAvatarImg(avatarUrls[(i + 8) % avatarUrls.length], 'Community member', isPriority);
       row2Clone.appendChild(img2Clone);
     }
     
     // Create avatars for Row 3 and its clone - different offset
     for (let i = 0; i < avatarCount; i++) {
-      const delay = i < batchSize ? 0 : (i - batchSize) * batchDelay;
-      const img3 = createAvatarImg(avatarUrls[(i + 17) % avatarUrls.length], 'Community member', delay);
+      const isPriority = i < priorityCount;
+      const img3 = createAvatarImg(avatarUrls[(i + 17) % avatarUrls.length], 'Community member', isPriority);
       row3Track.appendChild(img3);
       
-      const img3Clone = createAvatarImg(avatarUrls[(i + 17) % avatarUrls.length], 'Community member', delay);
+      const img3Clone = createAvatarImg(avatarUrls[(i + 17) % avatarUrls.length], 'Community member', isPriority);
       row3Clone.appendChild(img3Clone);
     }
   }
