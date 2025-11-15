@@ -6,24 +6,33 @@
 (function() {
   'use strict';
 
-  // Avatar image URLs
+  // Avatar image URLs - using local images for better performance
   const avatarImages = [
-    'https://randomuser.me/api/portraits/women/44.jpg',
-    'https://randomuser.me/api/portraits/men/32.jpg',
-    'https://randomuser.me/api/portraits/women/65.jpg',
-    'https://randomuser.me/api/portraits/men/12.jpg',
-    'https://randomuser.me/api/portraits/women/29.jpg',
-    'https://randomuser.me/api/portraits/men/28.jpg',
-    'https://randomuser.me/api/portraits/women/19.jpg',
-    'https://randomuser.me/api/portraits/men/53.jpg',
-    'https://randomuser.me/api/portraits/women/15.jpg',
-    'https://randomuser.me/api/portraits/men/45.jpg',
-    'https://randomuser.me/api/portraits/women/31.jpg',
-    'https://randomuser.me/api/portraits/men/21.jpg',
-    'https://randomuser.me/api/portraits/women/24.jpg',
-    'https://randomuser.me/api/portraits/men/40.jpg',
-    'https://randomuser.me/api/portraits/women/52.jpg',
-    'https://randomuser.me/api/portraits/men/35.jpg'
+    'avatar_1.jpg',
+    'avatar_2.jpg',
+    'avatar_3.jpg',
+    'avatar_4.jpg',
+    'avatar_5.jpg',
+    'avatar_6.jpg',
+    'avatar_7.jpg',
+    'avatar_8.jpg',
+    'avatar_9.jpg',
+    'avatar_10.jpg',
+    'avatar_11.jpg',
+    'avatar_12.jpg',
+    'avatar_13.jpg',
+    'avatar_14.jpg',
+    'avatar_15.jpg',
+    'avatar_16.jpg',
+    'avatar_17.jpg',
+    'avatar_18.jpg',
+    'avatar_19.jpg',
+    'avatar_20.jpg',
+    'avatar_21.jpg',
+    'avatar_22.jpg',
+    'avatar_23.jpg',
+    'avatar_24.jpg',
+    'avatar_25.jpg'
   ];
 
   // State
