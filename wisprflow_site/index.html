@@ -1639,7 +1639,7 @@ margin: 0rem !important;
   background-color: #FFFFF5;
   transform: none;
   transform-origin: center;
-  opacity: 0;
+  opacity: 1; /* Show immediately */
   transition: opacity 0.3s ease-in;
 }
 
@@ -4082,65 +4082,74 @@ initGSAPQuarterlyRefresh();
     
     if (!row1Track || !row1Clone || !row2Track || !row2Clone || !row3Track || !row3Clone || !container) return;
     
-    const avatarCount = 15;
-    let imagesLoaded = 0;
-    const totalImages = avatarCount * 6; // 15 avatars × 6 tracks (3 rows × 2 clones each)
+    // Show container immediately - don't wait for images
+    container.classList.add('loaded');
     
-    function onImageLoad() {
-      imagesLoaded++;
-      // Show container after first batch loads (don't wait for all)
-      if (imagesLoaded === Math.min(18, totalImages)) { // Show after first 3 avatars per track
-        container.classList.add('loaded');
-      }
-    }
+    const avatarCount = 10; // Reduced from 15 to 10 for faster loading
+    let loadedImages = new Set();
     
-    function createAvatarImg(src, alt, isPriority = false) {
+    function createAvatarImg(src, alt, delay = 0) {
       const img = document.createElement('img');
-      img.src = src;
       img.alt = alt;
-      // Only first few avatars in each track load eagerly, rest lazy load
-      img.loading = isPriority ? 'eager' : 'lazy';
-      img.addEventListener('load', onImageLoad);
-      img.addEventListener('error', onImageLoad);
+      img.style.width = '60px';
+      img.style.height = '60px';
+      img.style.borderRadius = '20%';
+      img.style.objectFit = 'cover';
+      img.style.flexShrink = '0';
+      img.style.opacity = '0';
+      img.style.transition = 'opacity 0.3s ease-in';
+      
+      // Load image with delay for progressive loading
+      setTimeout(() => {
+        img.src = src;
+        img.loading = 'lazy';
+        img.addEventListener('load', () => {
+          img.style.opacity = '1';
+          loadedImages.add(src);
+        });
+        img.addEventListener('error', () => {
+          // On error, try to use a placeholder or hide
+          img.style.opacity = '0.3';
+        });
+      }, delay);
+      
       return img;
     }
     
+    // Load first batch immediately (first 2 avatars per track = 12 images)
+    // Then progressively load the rest
+    const batchSize = 2;
+    const batchDelay = 100; // 100ms between batches
+    
     // Create avatars for Row 1 and its clone
     for (let i = 0; i < avatarCount; i++) {
-      const isPriority = i < 3; // First 3 avatars per track load eagerly
-      const img1 = createAvatarImg(avatarUrls[i % avatarUrls.length], 'Community member', isPriority);
+      const delay = i < batchSize ? 0 : (i - batchSize) * batchDelay;
+      const img1 = createAvatarImg(avatarUrls[i % avatarUrls.length], 'Community member', delay);
       row1Track.appendChild(img1);
       
-      const img1Clone = createAvatarImg(avatarUrls[i % avatarUrls.length], 'Community member', isPriority);
+      const img1Clone = createAvatarImg(avatarUrls[i % avatarUrls.length], 'Community member', delay);
       row1Clone.appendChild(img1Clone);
     }
     
     // Create avatars for Row 2 and its clone - offset for variety
     for (let i = 0; i < avatarCount; i++) {
-      const isPriority = i < 3; // First 3 avatars per track load eagerly
-      const img2 = createAvatarImg(avatarUrls[(i + 8) % avatarUrls.length], 'Community member', isPriority);
+      const delay = i < batchSize ? 0 : (i - batchSize) * batchDelay;
+      const img2 = createAvatarImg(avatarUrls[(i + 8) % avatarUrls.length], 'Community member', delay);
       row2Track.appendChild(img2);
       
-      const img2Clone = createAvatarImg(avatarUrls[(i + 8) % avatarUrls.length], 'Community member', isPriority);
+      const img2Clone = createAvatarImg(avatarUrls[(i + 8) % avatarUrls.length], 'Community member', delay);
       row2Clone.appendChild(img2Clone);
     }
     
     // Create avatars for Row 3 and its clone - different offset
     for (let i = 0; i < avatarCount; i++) {
-      const isPriority = i < 3; // First 3 avatars per track load eagerly
-      const img3 = createAvatarImg(avatarUrls[(i + 17) % avatarUrls.length], 'Community member', isPriority);
+      const delay = i < batchSize ? 0 : (i - batchSize) * batchDelay;
+      const img3 = createAvatarImg(avatarUrls[(i + 17) % avatarUrls.length], 'Community member', delay);
       row3Track.appendChild(img3);
       
-      const img3Clone = createAvatarImg(avatarUrls[(i + 17) % avatarUrls.length], 'Community member', isPriority);
+      const img3Clone = createAvatarImg(avatarUrls[(i + 17) % avatarUrls.length], 'Community member', delay);
       row3Clone.appendChild(img3Clone);
     }
-    
-    // Fallback: ensure container shows even if some images fail
-    setTimeout(() => {
-      if (!container.classList.contains('loaded')) {
-        container.classList.add('loaded');
-      }
-    }, 2000);
   }
 
   // Hero Avatar Shake and Notification Animation
