@@ -4088,68 +4088,59 @@ initGSAPQuarterlyRefresh();
     
     function onImageLoad() {
       imagesLoaded++;
-      if (imagesLoaded === totalImages) {
-        // All images loaded, show the container
+      // Show container after first batch loads (don't wait for all)
+      if (imagesLoaded === Math.min(18, totalImages)) { // Show after first 3 avatars per track
         container.classList.add('loaded');
       }
     }
     
+    function createAvatarImg(src, alt, isPriority = false) {
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = alt;
+      // Only first few avatars in each track load eagerly, rest lazy load
+      img.loading = isPriority ? 'eager' : 'lazy';
+      img.addEventListener('load', onImageLoad);
+      img.addEventListener('error', onImageLoad);
+      return img;
+    }
+    
     // Create avatars for Row 1 and its clone
     for (let i = 0; i < avatarCount; i++) {
-      const img1 = document.createElement('img');
-      img1.src = avatarUrls[i % avatarUrls.length];
-      img1.alt = 'Community member';
-      img1.loading = 'eager';
-      img1.addEventListener('load', onImageLoad);
-      img1.addEventListener('error', onImageLoad); // Count errors as loaded to prevent hanging
+      const isPriority = i < 3; // First 3 avatars per track load eagerly
+      const img1 = createAvatarImg(avatarUrls[i % avatarUrls.length], 'Community member', isPriority);
       row1Track.appendChild(img1);
       
-      const img1Clone = document.createElement('img');
-      img1Clone.src = avatarUrls[i % avatarUrls.length];
-      img1Clone.alt = 'Community member';
-      img1Clone.loading = 'eager';
-      img1Clone.addEventListener('load', onImageLoad);
-      img1Clone.addEventListener('error', onImageLoad);
+      const img1Clone = createAvatarImg(avatarUrls[i % avatarUrls.length], 'Community member', isPriority);
       row1Clone.appendChild(img1Clone);
     }
     
     // Create avatars for Row 2 and its clone - offset for variety
     for (let i = 0; i < avatarCount; i++) {
-      const img2 = document.createElement('img');
-      img2.src = avatarUrls[(i + 8) % avatarUrls.length];
-      img2.alt = 'Community member';
-      img2.loading = 'eager';
-      img2.addEventListener('load', onImageLoad);
-      img2.addEventListener('error', onImageLoad);
+      const isPriority = i < 3; // First 3 avatars per track load eagerly
+      const img2 = createAvatarImg(avatarUrls[(i + 8) % avatarUrls.length], 'Community member', isPriority);
       row2Track.appendChild(img2);
       
-      const img2Clone = document.createElement('img');
-      img2Clone.src = avatarUrls[(i + 8) % avatarUrls.length];
-      img2Clone.alt = 'Community member';
-      img2Clone.loading = 'eager';
-      img2Clone.addEventListener('load', onImageLoad);
-      img2Clone.addEventListener('error', onImageLoad);
+      const img2Clone = createAvatarImg(avatarUrls[(i + 8) % avatarUrls.length], 'Community member', isPriority);
       row2Clone.appendChild(img2Clone);
     }
     
     // Create avatars for Row 3 and its clone - different offset
     for (let i = 0; i < avatarCount; i++) {
-      const img3 = document.createElement('img');
-      img3.src = avatarUrls[(i + 17) % avatarUrls.length];
-      img3.alt = 'Community member';
-      img3.loading = 'eager';
-      img3.addEventListener('load', onImageLoad);
-      img3.addEventListener('error', onImageLoad);
+      const isPriority = i < 3; // First 3 avatars per track load eagerly
+      const img3 = createAvatarImg(avatarUrls[(i + 17) % avatarUrls.length], 'Community member', isPriority);
       row3Track.appendChild(img3);
       
-      const img3Clone = document.createElement('img');
-      img3Clone.src = avatarUrls[(i + 17) % avatarUrls.length];
-      img3Clone.alt = 'Community member';
-      img3Clone.loading = 'eager';
-      img3Clone.addEventListener('load', onImageLoad);
-      img3Clone.addEventListener('error', onImageLoad);
+      const img3Clone = createAvatarImg(avatarUrls[(i + 17) % avatarUrls.length], 'Community member', isPriority);
       row3Clone.appendChild(img3Clone);
     }
+    
+    // Fallback: ensure container shows even if some images fail
+    setTimeout(() => {
+      if (!container.classList.contains('loaded')) {
+        container.classList.add('loaded');
+      }
+    }, 2000);
   }
 
   // Hero Avatar Shake and Notification Animation

@@ -270,7 +270,8 @@
     img.style.width = '100%';
     img.style.height = '100%';
     img.style.objectFit = 'cover';
-    img.loading = 'eager';
+    // Lazy load avatars since they animate in from off-screen
+    img.loading = 'lazy';
 
     avatarEl.appendChild(img);
     return avatarEl;
