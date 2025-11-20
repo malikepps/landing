@@ -878,12 +878,20 @@ fs-list
 </style>
 
 <script>
-  window.addEventListener('load', () => {
+  // Initialize immediately when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      const el = document.querySelector('.hero_animation-wrapper');
+      if (el) {
+        el.style.opacity = '1';
+      }
+    });
+  } else {
     const el = document.querySelector('.hero_animation-wrapper');
     if (el) {
       el.style.opacity = '1';
     }
-  });
+  }
 </script>
 
 <script>
@@ -2937,7 +2945,8 @@ if (navbar && window.matchMedia('(max-width: 991px)').matches) {
 <!-- Bottom Sticky Nav -->
 <script>
 if (window.matchMedia("(max-width: 991px)").matches) {
-  window.addEventListener("load", () => {
+  // Initialize immediately when DOM is ready
+  const initBottomNav = () => {
     gsap.registerPlugin(ScrollTrigger);
     const bottomBar = document.querySelector(".nav_bottom");
 
@@ -2976,7 +2985,13 @@ if (window.matchMedia("(max-width: 991px)").matches) {
         }
       });
     }
-  });
+  };
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initBottomNav);
+  } else {
+    initBottomNav();
+  }
 }
 </script>
 
@@ -3173,14 +3188,18 @@ setupButtonAnimations(".dropdown-link", ".dropdown-link-text"); // Dropdown link
 
   // add a rule for screens â¥768px
   mm.add("(min-width: 768px)", () => {
-    // when this rule first matches, wait for load + a frame then init
-    window.addEventListener("load", () => {
-      requestAnimationFrame(initCtaDots);
-    });
+    // Initialize immediately when DOM is ready, not waiting for all resources
+    const initCtaDotsHandler = () => requestAnimationFrame(initCtaDots);
+    
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initCtaDotsHandler);
+    } else {
+      initCtaDotsHandler();
+    }
 
     // return a cleanup function to remove the listener if rule no longer matches
     return () => {
-      window.removeEventListener("load", initCtaDots);
+      document.removeEventListener('DOMContentLoaded', initCtaDotsHandler);
     };
   });
 </script>
@@ -3437,7 +3456,12 @@ $(document).ready(function () {
     }
   }
 
-  window.addEventListener('load', updateResponsive);
+  // Initialize immediately on DOM ready, not waiting for all resources
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updateResponsive);
+  } else {
+    updateResponsive(); // Already loaded
+  }
   window.addEventListener('resize', updateResponsive);
 </script>
 
@@ -3937,8 +3961,29 @@ function initGSAPQuarterlyRefresh() {
 // call once after ScrollTrigger and gsap are registered
 initGSAPQuarterlyRefresh();
 
-  // combine and run them all after full load + layout
-  function initAllAnimations() {
+  // Animation initialization tracking
+  const animationInitialized = new Set();
+  
+  // Above-fold animations that should initialize immediately
+  function initAboveFoldAnimations() {
+    initHeroAvatarScrolling();
+    initHeroSpeechBubbleRotation();
+    initGSAPQuarterlyRefresh(); // Needed for ScrollTrigger refresh
+  }
+  
+  // Near-fold animations (next section after hero) - initialize very early
+  function initNearFoldAnimations() {
+    if (animationInitialized.has('nearFold')) return;
+    animationInitialized.add('nearFold');
+    
+    initIconPath(30, 48);
+  }
+  
+  // Below-fold animations that initialize lazily when in viewport
+  function initBelowFoldAnimations() {
+    if (animationInitialized.has('belowFold')) return;
+    animationInitialized.add('belowFold');
+    
     initChipsAnimation();
     initMessagesAnimation();
     initContactImportAnimation();
@@ -3948,12 +3993,14 @@ initGSAPQuarterlyRefresh();
     initUnderlineDraw();
     initContactsUnderlineDraw();
     initMarqueeText();
-    initIconPath(30, 48);
-    initGSAPQuarterlyRefresh();
     initDashboardSlideIn();
     initAvatarMarquees();
-    initHeroAvatarScrolling();
-    initHeroSpeechBubbleRotation();
+  }
+  
+  // Legacy function for backwards compatibility
+  function initAllAnimations() {
+    initAboveFoldAnimations();
+    initBelowFoldAnimations();
   }
   
   function initAvatarMarquees() {
@@ -4283,10 +4330,74 @@ initGSAPQuarterlyRefresh();
     scheduleNextNotification();
   }
 
-  window.addEventListener("load", () => {
-    // wait one frame so CSS and SVG layout settle
-    requestAnimationFrame(initAllAnimations);
-  });
+  // FAST INITIALIZATION: Use DOMContentLoaded instead of window.load
+  // This fires immediately when DOM is ready, not waiting for all resources
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initialize above-fold animations immediately
+      requestAnimationFrame(initAboveFoldAnimations);
+      
+      // Initialize near-fold animations (icon section) with aggressive IntersectionObserver
+      // This triggers almost immediately since icons are right after hero section
+      const iconSection = document.querySelector('.icon_svg-wrapper') || 
+                          document.querySelector('.icon-item');
+      
+      if (iconSection) {
+        const nearFoldObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              requestAnimationFrame(initNearFoldAnimations);
+              nearFoldObserver.disconnect();
+            }
+          });
+        }, {
+          rootMargin: '800px' // Very aggressive - triggers when element is 800px away from viewport
+        });
+        
+        nearFoldObserver.observe(iconSection);
+        
+        // Fallback: initialize after a short delay if IntersectionObserver doesn't trigger quickly
+        setTimeout(() => {
+          if (!animationInitialized.has('nearFold')) {
+            requestAnimationFrame(initNearFoldAnimations);
+            nearFoldObserver.disconnect();
+          }
+        }, 300);
+      } else {
+        // Fallback if icon section not found
+        setTimeout(() => requestAnimationFrame(initNearFoldAnimations), 200);
+      }
+      
+      // Lazy-load below-fold animations when they're about to enter viewport
+      const belowFoldObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            requestAnimationFrame(initBelowFoldAnimations);
+            belowFoldObserver.disconnect(); // Only initialize once
+          }
+        });
+      }, {
+        rootMargin: '200px' // Start loading 200px before element enters viewport
+      });
+      
+      // Observe a representative below-fold element (first scroll-triggered animation)
+      const firstBelowFoldElement = document.querySelector('[data-gsap-trigger="dictionary"]') || 
+                                     document.querySelector('[data-gsap-trigger="messages"]') ||
+                                     document.querySelector('#collections-branch-animation');
+      
+      if (firstBelowFoldElement) {
+        belowFoldObserver.observe(firstBelowFoldElement);
+      } else {
+        // Fallback: initialize after a short delay if no trigger found
+        setTimeout(() => requestAnimationFrame(initBelowFoldAnimations), 100);
+      }
+    });
+  } else {
+    // DOM already loaded, initialize immediately
+    requestAnimationFrame(initAboveFoldAnimations);
+    setTimeout(() => requestAnimationFrame(initNearFoldAnimations), 100);
+    setTimeout(() => requestAnimationFrame(initBelowFoldAnimations), 200);
+  }
   
   window.addEventListener("resize", () => {
   if (window.innerWidth > 991) {
@@ -4404,12 +4515,33 @@ function initTierCarouselAnimation() {
   });
 }
 
-// Initialize after load
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    initTierCarouselAnimation();
-  }, 500);
-});
+// Initialize tier carousel lazily when it enters viewport
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    const tierCarouselObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          requestAnimationFrame(initTierCarouselAnimation);
+          tierCarouselObserver.disconnect();
+        }
+      });
+    }, {
+      rootMargin: '100px'
+    });
+    
+    const tierCarousel = document.querySelector('.tier-card-0') || 
+                         document.querySelector('.tier-carousel-container');
+    if (tierCarousel) {
+      tierCarouselObserver.observe(tierCarousel);
+    } else {
+      // Fallback if element not found
+      setTimeout(() => requestAnimationFrame(initTierCarouselAnimation), 200);
+    }
+  });
+} else {
+  // DOM already loaded
+  setTimeout(() => requestAnimationFrame(initTierCarouselAnimation), 100);
+}
 </script>
 
 <!-- Avatar Animation for Hero Section -->
