@@ -436,6 +436,11 @@ margin: 0rem !important;
     font-size: 1.75rem !important;
   }
   
+  .quote-content-wrapper img {
+    width: 60px !important;
+    height: 60px !important;
+  }
+  
   /* Top icons smaller on mobile */
   .top-icons-image {
     max-width: 280px !important;
@@ -1108,16 +1113,31 @@ margin: 0rem !important;
 }
 
 .new-sticky-navbar .nav_logo {
-  height: 60px !important;
+  height: 56px !important;
   width: auto !important;
-  max-height: 60px !important;
-  filter: brightness(0) invert(1);
+  max-height: 56px !important;
+  max-width: none !important;
+}
+
+.new-sticky-navbar .nav_brand {
+  width: auto !important;
+  max-width: none !important;
+  flex-shrink: 0;
 }
 
 @media (max-width: 991px) {
   .new-sticky-navbar .nav_logo {
-    height: 50px !important;
-    max-height: 50px !important;
+    height: 35px !important;
+    max-height: 35px !important;
+  }
+  
+  .new-sticky-navbar .nav_brand {
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+  }
+  
+  .new-sticky-navbar .nav_container-v2 {
+    padding-left: 0 !important;
   }
 }
 
@@ -1260,16 +1280,14 @@ margin: 0rem !important;
   <div data-wf--navbar--variant="base" data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="nav_component w-nav">
     <div class="nav_container-v2">
       <a href="index.html" id="w-node-_7957dad2-de7a-14a6-130e-6e11898d1050-63dfdea9" class="nav_brand w-nav-brand">
-        <img src="Collective corwn black transparent.png" loading="eager" alt="Collective Logo" class="nav_logo"/>
+        <img src="Collective_logo_white_long.png" loading="eager" alt="Collective Logo" class="nav_logo"/>
       </a>
       <nav role="navigation" id="w-node-_7957dad2-de7a-14a6-130e-6e11898d1052-63dfdea9" class="nav_menu v2 w-nav-menu">
         <div class="nav_menu-wrapper grid v2">
           <div class="nav-link-wrap"><a href="index.html" class="nav_menu-link w-inline-block"><div>Home</div></a></div>
-          <div class="nav-link-wrap"><a href="application.html" aria-current="page" class="nav_menu-link w-inline-block w--current"><div>Apply</div></a></div>
-          <div class="nav-link-wrap"><a href="about.html" class="nav_menu-link w-inline-block"><div>About</div></a></div>
         </div>
       </nav>
-      <div class="nav_mobile-cta"><a id="nav-mobile-download" cta="" cta_location="nav_mobile" cta_type="apply" href="application.html" class="nav_mobile-btn w-button">Apply to Join Collective</a></div>
+      <div class="nav_mobile-cta"><a id="nav-mobile-download" cta="" cta_location="nav_mobile" cta_type="learn_more" href="index.html" class="nav_mobile-btn w-button">Learn more</a></div>
       <div class="nav_button w-nav-button">
         <div class="hamburger_12_wrap">
           <div class="hamburger_12_line"></div>
@@ -1304,7 +1322,7 @@ margin: 0rem !important;
           <div class="hamburger_12_line"></div>
         </div>
       </div>
-      <a id="nav-download" cta="" cta_location="navbar" cta_type="apply" href="application.html" class="nav_big-button button w-node-c3e00823-9abf-42db-4599-adf2322aefc8-63dfdea9 w-inline-block"><div>Apply to Join Collective</div></a>
+      <a id="nav-download" cta="" cta_location="navbar" cta_type="learn_more" href="index.html" class="nav_big-button button w-node-c3e00823-9abf-42db-4599-adf2322aefc8-63dfdea9 w-inline-block"><div>Learn more</div></a>
     </div>
   </div>
 </div><div class="main-wrapper"><section class="section_icpv2-hero" style="background-color: #034F46;"><div class="padding-global"><div class="container-large"><div class="icpv2-hero_content"><div><h1 class="heading-style-h1" style="color: #FFFFF5;">Let's launch your community, together.</h1><div class="spacer-medium"></div><div class="spacer-xsmall hide-mobile-landscape"></div><div class="text-wrap-balance"><p class="text-size-large" style="color: #FFFFF5;">We're launching Collective with a small group of growth-minded changemaking organizations that are focused on storytelling and modernizing the digital giving experience. <span style="color: #F0D7FF;">For no cost at all</span>, get bespoke setup, direct support from our team, and marketing resources.</p></div><a href="#application-form" class="button hero-cta-button w-button">Apply</a></div></div></div></div></section><div class="section_about-wispr" style="background-color: #FFFFF5;"><div class="padding-global"><div class="spacer-medium"></div><div class="z-index-3"><div class="container-large"><div class="max-width-large align-center text-align-center"><img src="top_icons_1.png" alt="Community Icons" class="top-icons-image" style="max-width: 400px; width: 100%; height: auto; margin: 0 auto 2rem auto; display: block;"/><p class="font-primary heading-style-h4" style="color: #000000;">We know building a new digital presence from scratch is hard. So let us do all of the hard parts and get your organization up and running in less than a week.</p><div class="spacer-large"></div><div class="spacer-xsmall hide-mobile-landscape"></div><div id="application-form" style="max-width: 500px; margin: 0 auto;"><form class="catalyst-form" id="catalyst-application-form" style="max-width: 100%;"><div class="form-field" style="margin-bottom: 20px; padding: 0;"><label for="name" class="form-label" style="color: #034F46; display: block; font-size: 16px; font-weight: 600; margin-bottom: 8px; text-align: left;">Your Name</label><input type="text" id="name" name="name" class="form-input" placeholder="Your name" style="width: 100%; padding: 14px 18px; font-size: 16px; border: 2px solid #034F46; border-radius: 12px; background: #FFFFFF; color: #034F46; transition: all 0.2s ease; font-family: inherit; margin: 0; box-sizing: border-box;" required/></div><div class="form-field" style="margin-bottom: 20px; padding: 0;"><label for="email" class="form-label" style="color: #034F46; display: block; font-size: 16px; font-weight: 600; margin-bottom: 8px; text-align: left;">Email Address</label><input type="email" id="email" name="email" class="form-input" placeholder="your@email.com" style="width: 100%; padding: 14px 18px; font-size: 16px; border: 2px solid #034F46; border-radius: 12px; background: #FFFFFF; color: #034F46; transition: all 0.2s ease; font-family: inherit; margin: 0; box-sizing: border-box;" required/></div><div class="form-field" style="margin-bottom: 20px; padding: 0;"><label for="organization" class="form-label" style="color: #034F46; display: block; font-size: 16px; font-weight: 600; margin-bottom: 8px; text-align: left;">Organization Name</label><input type="text" id="organization" name="organization" class="form-input" placeholder="Your Organization" style="width: 100%; padding: 14px 18px; font-size: 16px; border: 2px solid #034F46; border-radius: 12px; background: #FFFFFF; color: #034F46; transition: all 0.2s ease; font-family: inherit; margin: 0; box-sizing: border-box;" required/></div><div class="form-submit-wrapper" style="margin-top: 24px; text-align: center; padding: 0;"><button type="submit" class="button w-button" style="background-color: #F0D7FF; color: #034F46;">Submit</button></div></form></div></div><div class="spacer-xhuge"></div></div></div></div><div class="z-index-3"><div class="hide w-embed"><style>
@@ -1399,10 +1417,13 @@ margin: 0rem !important;
     <div style="width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1;">
         <div style="display: flex; flex-direction: column; gap: 40px; padding-top: 120px; padding-bottom: 120px;">
             <div class="quote-content-wrapper" style="display: flex; flex-direction: column; gap: 48px; justify-content: center; max-width: 700px; margin-left: auto; margin-right: 5rem;">
-                <div style="font-family: 'EB Garamond', serif; font-size: 2.5rem; line-height: 1.4; font-weight: 400; color: #FFFFF5;">"We're excited to be part of the Catalyst Cohort. Collective's team has been incredibly supportive in helping us build a direct connection with our community."</div>
-                <div style="display: flex; flex-direction: column; gap: 16px;">
-                    <h4 class="heading-style-h4" style="color: #F0D7FF;">Sample Organization Name</h4>
-                    <div class="text-size-large" style="color: #FFFFF5;">Mission-driven nonprofit</div>
+                <div style="font-family: 'EB Garamond', serif; font-size: 2.5rem; line-height: 1.4; font-weight: 400; color: #FFFFF5;">"This is exactly the type of platform that we've been looking for."</div>
+                <div style="display: flex; flex-direction: row; gap: 20px; align-items: center;">
+                    <img src="nick.webp" alt="Nick DiColandrea" style="width: 80px; height: 80px; border-radius: 12px; border: 3px solid #F0D7FF; object-fit: cover; flex-shrink: 0;"/>
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <h4 class="heading-style-h4" style="color: #F0D7FF; margin: 0;">Nick DiColandrea</h4>
+                        <div class="text-size-large" style="color: #FFFFF5;">Executive Director of Piedmont Wildlife Group</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1501,7 +1522,7 @@ margin: 0rem !important;
 <path d="M7.30209 4.39387C5.58154 4.37997 3.86103 4.36522 2.14057 4.34963C1.79759 4.34582 1.45417 4.31894 1.11266 4.28535C1.05617 4.27926 1.00284 4.25627 0.959627 4.21939C0.916414 4.18251 0.88533 4.13345 0.870437 4.07863C0.842351 3.99082 0.939919 3.86619 1.05679 3.84791C1.16971 3.83011 1.2821 3.80265 1.39573 3.79577C2.12069 3.75198 2.84552 3.68968 3.57115 3.67664C5.06198 3.65002 6.55317 3.64309 8.04409 3.64158C9.45874 3.63994 10.8733 3.65774 12.2882 3.66093C12.5152 3.66146 12.7424 3.63267 12.9693 3.61257C12.9844 3.60886 12.9982 3.60144 13.0097 3.59097C13.0211 3.5805 13.0297 3.56733 13.0347 3.55267C13.0388 3.51762 13.0288 3.45878 13.0052 3.44595C12.5704 3.2096 12.1412 2.96113 11.694 2.75006C10.6541 2.2595 9.67872 1.65767 8.70364 1.05423C8.54347 0.955023 8.37557 0.854219 8.31084 0.65726C8.29908 0.621454 8.28076 0.560097 8.29575 0.548117C8.34922 0.498263 8.4142 0.462417 8.4849 0.443795C8.5602 0.434903 8.6365 0.447087 8.70529 0.478984C8.94883 0.589421 9.19069 0.70447 9.42749 0.828484C11.1214 1.71282 12.8125 2.60248 14.5075 3.48451C15.147 3.8172 15.4508 4.13955 14.6833 4.87064C14.4621 5.08139 14.2384 5.29192 13.998 5.47948C12.8828 6.34954 11.7636 7.21439 10.6403 8.07401C10.4859 8.18478 10.323 8.28331 10.1532 8.36871C10.0424 8.42883 9.93159 8.39317 9.83597 8.32107C9.73072 8.24173 9.66536 8.01096 9.7017 7.90948C9.78232 7.68422 9.94289 7.51894 10.1154 7.36928C10.7796 6.79313 11.449 6.22298 12.1186 5.65327C12.555 5.28207 12.9957 4.91656 13.4313 4.54474C13.4528 4.52633 13.4537 4.46908 13.4451 4.43514C13.4393 4.42033 13.4301 4.40713 13.4181 4.39669C13.4061 4.38625 13.3918 4.37888 13.3763 4.3752C13.1485 4.36038 12.9206 4.34125 12.6927 4.34245C10.8957 4.35189 9.09869 4.36372 7.30168 4.37795L7.30209 4.39387Z" fill="currentColor"/>
 </svg></div></a><a rel="noopener noreferrer" href="https://docs.wisprflow.ai/" target="_blank" class="footer_link-block w-inline-block"><div>Help Center</div><div class="icon-embed-xxsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 9" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
 <path d="M7.30209 4.39387C5.58154 4.37997 3.86103 4.36522 2.14057 4.34963C1.79759 4.34582 1.45417 4.31894 1.11266 4.28535C1.05617 4.27926 1.00284 4.25627 0.959627 4.21939C0.916414 4.18251 0.88533 4.13345 0.870437 4.07863C0.842351 3.99082 0.939919 3.86619 1.05679 3.84791C1.16971 3.83011 1.2821 3.80265 1.39573 3.79577C2.12069 3.75198 2.84552 3.68968 3.57115 3.67664C5.06198 3.65002 6.55317 3.64309 8.04409 3.64158C9.45874 3.63994 10.8733 3.65774 12.2882 3.66093C12.5152 3.66146 12.7424 3.63267 12.9693 3.61257C12.9844 3.60886 12.9982 3.60144 13.0097 3.59097C13.0211 3.5805 13.0297 3.56733 13.0347 3.55267C13.0388 3.51762 13.0288 3.45878 13.0052 3.44595C12.5704 3.2096 12.1412 2.96113 11.694 2.75006C10.6541 2.2595 9.67872 1.65767 8.70364 1.05423C8.54347 0.955023 8.37557 0.854219 8.31084 0.65726C8.29908 0.621454 8.28076 0.560097 8.29575 0.548117C8.34922 0.498263 8.4142 0.462417 8.4849 0.443795C8.5602 0.434903 8.6365 0.447087 8.70529 0.478984C8.94883 0.589421 9.19069 0.70447 9.42749 0.828484C11.1214 1.71282 12.8125 2.60248 14.5075 3.48451C15.147 3.8172 15.4508 4.13955 14.6833 4.87064C14.4621 5.08139 14.2384 5.29192 13.998 5.47948C12.8828 6.34954 11.7636 7.21439 10.6403 8.07401C10.4859 8.18478 10.323 8.28331 10.1532 8.36871C10.0424 8.42883 9.93159 8.39317 9.83597 8.32107C9.73072 8.24173 9.66536 8.01096 9.7017 7.90948C9.78232 7.68422 9.94289 7.51894 10.1154 7.36928C10.7796 6.79313 11.449 6.22298 12.1186 5.65327C12.555 5.28207 12.9957 4.91656 13.4313 4.54474C13.4528 4.52633 13.4537 4.46908 13.4451 4.43514C13.4393 4.42033 13.4301 4.40713 13.4181 4.39669C13.4061 4.38625 13.3918 4.37888 13.3763 4.3752C13.1485 4.36038 12.9206 4.34125 12.6927 4.34245C10.8957 4.35189 9.09869 4.36372 7.30168 4.37795L7.30209 4.39387Z" fill="currentColor"/>
-</svg></div></a><div class="hide"><div class="w-embed w-script"><div data-tf-live="01JXE8C3H5DBPWEG1Y4WZE7FNZ"></div><script src="//embed.typeform.com/next/embed.js"></script></div></div></div></div></div><div data-w-id="a13f4943-95a2-60d3-e20e-e12854af9d42" class="footer_logo" style="display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; width: 100%; padding: 2rem 0;"><img src="Collective Logo HUGE.png" alt="Collective Logo" style="height: 60px; width: auto;"/><p style="margin: 0; color: #1A1A1A; font-size: 1.5rem; font-family: 'EB Garamond', serif; line-height: 1.4; text-align: left;">A new home for the modern mission-driven organization.</p></div><div class="footer_copyright-div"><div class="footer_copyright-content"><div class="text-block">© Collective <span year="">year</span></div><div class="footer_copyright-links-wrap"><a href="/terms-of-service" class="footer_link-block is-legal w-inline-block"><div>Terms</div></a><a href="/privacy-policy" class="footer_link-block is-legal w-inline-block"><div>Privacy</div></a><a href="/data-controls" class="footer_link-block is-legal w-inline-block"><div>Data Controls</div></a></div></div><div class="footer_socials-content" style="display: none;"><a rel="noopener noreferrer" href="https://www.youtube.com/@wisprflowai" target="_blank" class="footer_social-link w-inline-block"><div class="footer_social-icons w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 25 24" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
+</svg></div></a><div class="hide"><div class="w-embed w-script"><div data-tf-live="01JXE8C3H5DBPWEG1Y4WZE7FNZ"></div><script src="//embed.typeform.com/next/embed.js"></script></div></div></div></div></div><div data-w-id="a13f4943-95a2-60d3-e20e-e12854af9d42" class="footer_logo" style="display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; width: 100%; padding: 2rem 0;"><img src="Collective Logo HUGE.png" alt="Collective Logo" style="height: 60px; width: auto;"/><p style="margin: 0; color: #1A1A1A; font-size: 1.5rem; font-family: 'EB Garamond', serif; line-height: 1.4; text-align: left;">A new home for the modern mission-driven organization.</p></div><div class="footer_copyright-div"><div class="footer_copyright-content"><div class="text-block">© Collective <span year="">year</span></div></div><div class="footer_socials-content" style="display: none;"><a rel="noopener noreferrer" href="https://www.youtube.com/@wisprflowai" target="_blank" class="footer_social-link w-inline-block"><div class="footer_social-icons w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 25 24" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M21.0657 4.77345C22.0134 5.02692 22.7526 5.76903 23.0089 6.71673C23.6792 9.42042 23.6356 14.5321 23.023 17.278C22.7695 18.2257 22.0274 18.965 21.0797 19.2213C18.4042 19.8831 6.42063 19.8015 3.90001 19.2213C2.95231 18.9678 2.21302 18.2257 1.95673 17.278C1.32446 14.7011 1.36811 9.25144 1.94265 6.73081C2.19612 5.78311 2.93823 5.04382 3.88593 4.78753C7.46268 4.0412 19.7927 4.282 21.0657 4.77345ZM10.3639 8.70227L16.1093 11.9974L10.3639 15.2925V8.70227Z" fill="currentColor"/>
 </svg></div></a><a rel="noopener noreferrer" href="https://www.crunchbase.com/organization/wispr-ai" target="_blank" class="footer_social-link w-inline-block"><div class="icon-embed-custom w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 25 25" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
 <g clip-path="url(#clip0_7503_2610)">
