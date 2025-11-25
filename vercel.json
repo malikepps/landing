@@ -1,5 +1,7 @@
 {
   "buildCommand": "cd wisprflow_site && echo 'Static site, no build needed'",
-  "outputDirectory": "wisprflow_site"
+  "outputDirectory": "wisprflow_site",
+  "cleanUrls": true,
+  "trailingSlash": false
 }
 
